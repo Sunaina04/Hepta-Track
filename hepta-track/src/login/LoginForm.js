@@ -95,7 +95,7 @@ class LoginForm extends Component {
                         fontSize: '18px',
                         color: 'black',
                         borderRadius: '10px',
-                        width: '1000px',
+                        width: '500px',
                         height: '60px',
                       }}
                     />
@@ -138,7 +138,7 @@ class LoginForm extends Component {
                       textAlign: 'right',
                       color: 'black',
                     }}>
-                     <Link>Forgot password?</Link>
+                     <Link className="text-black">Forgot password?</Link>
                   </span>
                 </div>
 
