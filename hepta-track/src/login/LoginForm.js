@@ -1,31 +1,38 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
-import { Toast } from 'primereact/toast';
-import { Password } from 'primereact/password';
-import './../index.css';
-import './login.css'; 
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
+import { Password } from "primereact/password";
+import "./../index.css";
+import "./login.css";
 
 class LoginForm extends Component {
   render() {
     return (
       <>
-        <Toast 
-          // ref={toast} 
+        <Toast
+        // ref={toast}
         />
         <div
           className="w-full h-screen flex justify-center items-center"
           id="header"
           style={{
             backgroundImage: "url('/assets/images/loginBackgroundImage.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            overflow: 'auto',
-          }}>
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            overflow: "auto",
+          }}
+        >
           <div
             className={`bg-white rounded-xl p-8 top-227 left-420 gap-8 h-auto}`}
-            style={{ width: '600px', position: 'relative', overflow: 'auto', maxHeight: '100vh' }}>
+            style={{
+              width: "600px",
+              position: "relative",
+              overflow: "auto",
+              maxHeight: "100vh",
+            }}
+          >
             <div className="text-center mt-[1rem]">
               <img
                 src="/assets/images/Group 5.png"
@@ -49,13 +56,13 @@ class LoginForm extends Component {
                     // placeholder={isLoading ? 'Loading...' : 'Enter Your Email'}
                     id="input-field"
                     style={{
-                      width: '500px',
-                      height: '60px',
-                      padding: '0 4rem 0 3rem',
-                      border: '1px solid #C5D9E0',
-                      fontSize: '14px',
-                      color: 'black',
-                      borderRadius: '10px',
+                      width: "500px",
+                      height: "60px",
+                      padding: "0 4rem 0 3rem",
+                      border: "1px solid #C5D9E0",
+                      fontSize: "14px",
+                      color: "black",
+                      borderRadius: "10px",
                     }}
                   />
                   <img
@@ -63,12 +70,12 @@ class LoginForm extends Component {
                     alt="Envelope Icon"
                     className="p-clickable"
                     style={{
-                      position: 'absolute',
-                      left: '10px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      width: '20px',
-                      height: '15px',
+                      position: "absolute",
+                      left: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      width: "20px",
+                      height: "15px",
                     }}
                   />
                 </div>
@@ -78,9 +85,10 @@ class LoginForm extends Component {
                 <div className="p-input-icon-left">
                   <div
                     className="card flex justify-content-center"
-                    style={{ position: 'relative', width: '100%' }}>
+                    style={{ position: "relative", width: "100%" }}
+                  >
                     <Password
-                      type={'text'}
+                      type={"text"}
                       name="password"
                       // value={password}
                       // onChange={handleChange}
@@ -90,13 +98,13 @@ class LoginForm extends Component {
                       // disabled={isLoading}
                       // placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
                       style={{
-                        padding: '0 2rem 0 3rem',
-                        border: '1px solid #C5D9E0',
-                        fontSize: '18px',
-                        color: 'black',
-                        borderRadius: '10px',
-                        width: '1000px',
-                        height: '60px',
+                        padding: "0 2rem 0 3rem",
+                        border: "1px solid #C5D9E0",
+                        fontSize: "18px",
+                        color: "black",
+                        borderRadius: "10px",
+                        width: "1000px",
+                        height: "60px",
                       }}
                     />
                     <img
@@ -104,13 +112,13 @@ class LoginForm extends Component {
                       alt="Key Icon"
                       className="p-clickable"
                       style={{
-                        position: 'absolute',
-                        left: '13px',
-                        top: '55%',
-                        transform: 'translateY(-50%)',
-                        width: '22px',
-                        height: '20px',
-                        pointerEvents: 'none',
+                        position: "absolute",
+                        left: "13px",
+                        top: "55%",
+                        transform: "translateY(-50%)",
+                        width: "22px",
+                        height: "20px",
+                        pointerEvents: "none",
                       }}
                     />
                   </div>
@@ -132,45 +140,53 @@ class LoginForm extends Component {
                   <span
                     className="font-normal"
                     style={{
-                      fontSize: '16px',
+                      fontSize: "16px",
                       fontWeight: 400,
-                      lineHeight: '18.75px',
-                      textAlign: 'right',
-                      color: 'black',
-                    }}>
-                     <Link>Forgot password?</Link>
+                      lineHeight: "18.75px",
+                      textAlign: "right",
+                      color: "black",
+                    }}
+                  >
+                    <Link>Forgot password?</Link>
                   </span>
                 </div>
 
                 <Button
                   style={{
-                    width: '500px',
-                    height: '60px',
-                    minHeight: '60px',
-                    padding: '0 4rem 0 3rem',
-                    border: '1px solid #C5D9E0',
-                    fontSize: '22px',
-                    lineHeight: '25.78px',
-                    color: 'green',
-                    borderRadius: '10px',
-                    backgroundColor: 'green',
-                    textAlign: 'center',
-                    display: 'flex',
-                    fontWeight: '500',
-                    justifyContent: 'center',
+                    width: "500px",
+                    height: "60px",
+                    minHeight: "60px",
+                    padding: "0 4rem 0 3rem",
+                    border: "1px solid #C5D9E0",
+                    fontSize: "22px",
+                    lineHeight: "25.78px",
+                    color: "green",
+                    borderRadius: "10px",
+                    backgroundColor: "green",
+                    textAlign: "center",
+                    display: "flex",
+                    fontWeight: "500",
+                    justifyContent: "center",
                   }}
                   // onClick={signInHandler}
                   // disabled={isLoading}
                 >
-                  <p className='text-white'>Login</p>
+                  <p className="text-white">Login</p>
                 </Button>
               </div>
             </div>
             <div
-              style={{ width: '500px', fontSize: '14px', textAlign: 'center', lineHeight: '22px' }}>
+              style={{
+                width: "500px",
+                fontSize: "14px",
+                textAlign: "center",
+                lineHeight: "22px",
+              }}
+            >
               <p className="text-center mt-8 text-[#00426F] leading-6 font-[400]">
-              Lorem Ipsum is simply dummy text of prinitng and typesetting industry.
-              Lorem ipsum has been the industry's standard dummy text ever since the 1500's
+                Lorem Ipsum is simply dummy text of prinitng and typesetting
+                industry. Lorem ipsum has been the industry's standard dummy
+                text ever since the 1500's
               </p>
             </div>
           </div>
