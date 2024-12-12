@@ -18,7 +18,7 @@ class LoginForm extends Component {
           className="w-full h-screen flex justify-center items-center"
           id="header"
           style={{
-            backgroundImage: "url('/assets/images/loginBackgroundImage.png')",
+            backgroundColor: "#052316",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             overflow: 'auto',
@@ -47,6 +47,7 @@ class LoginForm extends Component {
                     // onKeyUp={handleKeyUp}
                     // disabled={isLoading}
                     // placeholder={isLoading ? 'Loading...' : 'Enter Your Email'}
+                    placeholder='Enter your registered email'
                     id="input-field"
                     style={{
                       width: '500px',
@@ -54,7 +55,7 @@ class LoginForm extends Component {
                       padding: '0 4rem 0 3rem',
                       border: '1px solid #C5D9E0',
                       fontSize: '14px',
-                      color: 'black',
+                      color: '#082825',
                       borderRadius: '10px',
                     }}
                   />
@@ -63,6 +64,7 @@ class LoginForm extends Component {
                     alt="Envelope Icon"
                     className="p-clickable"
                     style={{
+                      color: "#082825",
                       position: 'absolute',
                       left: '10px',
                       top: '50%',
@@ -78,7 +80,7 @@ class LoginForm extends Component {
                 <div className="p-input-icon-left">
                   <div
                     className="card flex justify-content-center"
-                    style={{ position: 'relative', width: '100%' }}>
+                    style={{ position: 'relative' }}>
                     <Password
                       type={'text'}
                       name="password"
@@ -90,13 +92,13 @@ class LoginForm extends Component {
                       // disabled={isLoading}
                       // placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
                       style={{
-                        padding: '0 2rem 0 3rem',
-                        border: '1px solid #C5D9E0',
-                        fontSize: '18px',
-                        color: 'black',
-                        borderRadius: '10px',
-                        width: '500px',
-                        height: '60px',
+                      width: '500px',
+                      height: '60px',
+                      padding: '0 4rem 0 3rem',
+                      border: '1px solid #C5D9E0',
+                      fontSize: '14px',
+                      color: '#082825',
+                      borderRadius: '10px',
                       }}
                     />
                     <img
@@ -138,7 +140,7 @@ class LoginForm extends Component {
                       textAlign: 'right',
                       color: 'black',
                     }}>
-                     <Link className="text-black">Forgot password?</Link>
+                     <Link to='/forgotPassword' className="text-#082825">Forgot password?</Link>
                   </span>
                 </div>
 
@@ -151,9 +153,9 @@ class LoginForm extends Component {
                     border: '1px solid #C5D9E0',
                     fontSize: '22px',
                     lineHeight: '25.78px',
-                    color: 'green',
                     borderRadius: '10px',
-                    backgroundColor: 'green',
+                    color: '#FFFFFF',
+                    backgroundColor: '#00B300',
                     textAlign: 'center',
                     display: 'flex',
                     fontWeight: '500',
@@ -162,13 +164,13 @@ class LoginForm extends Component {
                   // onClick={signInHandler}
                   // disabled={isLoading}
                 >
-                  <p className='text-white'>Login</p>
+                  <p>Login</p>
                 </Button>
               </div>
             </div>
             <div
               style={{ width: '500px', fontSize: '14px', textAlign: 'center', lineHeight: '22px' }}>
-              <p className="text-center mt-8 text-[#00426F] leading-6 font-[400]">
+              <p className=" mt-8 text-center  text-[#00426F] leading-6 font-[400]">
               Lorem Ipsum is simply dummy text of prinitng and typesetting industry.
               Lorem ipsum has been the industry's standard dummy text ever since the 1500's
               </p>
