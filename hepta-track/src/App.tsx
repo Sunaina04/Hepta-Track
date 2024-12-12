@@ -29,7 +29,7 @@ const App: React.FC = () => {
           <AppProvider>
             <FormDataProvider>
               <Toaster toastOptions={toasterOptions} />
-              {allPages} {/* Rendering the route pages here */}
+              {allPages}
               <ToastContainer hideProgressBar autoClose={2000} position="top-right" />
             </FormDataProvider>
           </AppProvider>
