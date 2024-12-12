@@ -98,7 +98,7 @@ const SidebarLayout = () => {
               alt="Moorfind Logo"
               style={{
                 width: open ? '45%' : '2rem',
-                height: open ? 'auto' : '2.5rem',
+                height: open ? 'auto' : '3rem',
                 display: 'block',
                 transition: 'width 0.3s ease-in-out',
                 marginRight: open ? '15px' : '5px',
@@ -115,13 +115,13 @@ const SidebarLayout = () => {
                     onClick={() => setSelectedItem(item.link)}
                     style={{
                       display: 'flex',
-                      height: '42px',
+                      height: '40px',
                       width: open ? '16rem' : '3rem',
                       minWidth: open ? '16rem' : '3rem',
-                      marginLeft: open ? '14px' : '10px',
-                      marginRight: open ? '14px' : '10px',
+                      marginLeft: open ? '20px' : '10px',
+                      marginRight: open ? '20px' : '10px',
                       background: selectedItem === item.link ? secondary[400] : '',
-                      borderRadius: '6px',
+                      borderRadius: '4px',
                       flexDirection: 'row',
                       alignItems: 'center',
                       position: 'relative',
@@ -129,15 +129,15 @@ const SidebarLayout = () => {
                     <img
                       src={selectedItem === item.link ? item?.selectedIcon : item?.icon}
                       alt=""
-                      width={24}
+                      width={22}
                       style={{
-                        marginRight: open ? '12px' : '5px',
-                        marginLeft: open ? '16px' : '14px',
+                        marginRight: open ? '15px' : '5px',
+                        marginLeft: open ? '30px' : '14px',
                       }}
                     />
                     <span
                       style={{
-                        fontSize: '16px',
+                        fontSize: '15px',
                         fontWeight: 700,
                         letterSpacing: '0.2px',
                         textAlign: 'left',
@@ -151,7 +151,7 @@ const SidebarLayout = () => {
                 )}
 
                 {/* Add spacer between items */}
-                {index !== menuItems.length - 1 && <div style={{ height: '20px' }} />}
+                {index !== menuItems.length - 1 && <div style={{ height: '40px' }} />}
               </React.Fragment>
             ))}
           </div>
@@ -159,6 +159,7 @@ const SidebarLayout = () => {
           {/* Logout Button */}
           <div
             style={{
+              //   background: '#F2F2F2',
               transition: 'width 0.3s ease-in-out',
               marginLeft: open ? '25px' : '6px',
             }}>
@@ -177,20 +178,20 @@ const SidebarLayout = () => {
                 alt="Logout"
                 width={20}
                 style={{
-                  marginRight: open ? '12px' : '20px',
-                  marginLeft: open ? '16px' : '20px',
+                  marginRight: open ? '15px' : '20px',
+                  marginLeft: open ? '30px' : '20px',
                 }}
               />
               <span
                 style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   fontWeight: 700,
                   letterSpacing: '0.2px',
                   textAlign: 'left',
                   color: '#082825',
                   display: open ? 'flex' : 'none',
                 }}>
-                {'Logout'}
+                {'LOGOUT'}
               </span>
             </NavLink>
           </div>

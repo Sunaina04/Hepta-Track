@@ -15,7 +15,6 @@ export const primary = {
   purple: '#A798FF',
   yellow: '#FF9777',
   white: '#F9F9FA',
-  black: '#082825',
 }
 
 export const secondary = {
@@ -66,6 +65,4 @@ export const greyShades = {
   200: '#f2f2f2',
   300: '#d5d5d5',
   400: '#9f9d9d',
-  500: '#D4D4D4',
-  600: '#F9F9FA',
 }
