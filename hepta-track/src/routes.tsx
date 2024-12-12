@@ -10,6 +10,8 @@ import SmartTractorKit from './Components/SmartTractorKit/SmartTractorKit'
 import Subscriptions from './Components/Subscriptions/Subscriptions'
 import AdsPromotions from './Components/AdsPromotions/AdsPromotions'
 import InstructionalVideos from './Components/InstructionalVideos/InstructionalVideos'
+import ResetPassword from './Components/ResetPassword/ResetPassword'
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 
 const routes = [
   {
@@ -23,11 +25,11 @@ const routes = [
 
   {
     path: 'resetPassword',
-    element: '',
+    element: <ResetPassword />,
   },
   {
     path: 'forgotPassword',
-    element: '',
+    element: <ForgotPassword />,
   },
   {
     path: '',
