@@ -1,4 +1,3 @@
-
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import React , { Component, useState } from 'react'
@@ -7,6 +6,7 @@ import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
+import './ResetPassword.css'
 
 class ResetPassword extends Component {
 render() {
@@ -51,7 +51,7 @@ render() {
                 style={{ position: 'relative', width: '100%' }}
               >
                 
-                <Password
+                <Password 
                   placeholder="New Password"
                   name="newPassword"
                   type="text"
@@ -60,7 +60,7 @@ render() {
                   // footer={footer}
                   toggleMask
                   style={{
-                    padding: '0.8rem 4rem 1rem 3rem',
+                    padding: '1rem 4rem 1rem 3rem',
                     border: '1px solid #C5D9E0',
                     fontSize: '16px',
                     color: '#00426F',
@@ -86,7 +86,7 @@ render() {
                 />
               </div>
             </div>
-  
+
             {/* {isLoading && (
               <ProgressSpinner
                 style={{
@@ -112,7 +112,7 @@ render() {
                     toggleMask
               
                     style={{
-                      padding: '0.8rem 4rem 1rem 3rem',
+                      padding: '1rem 4rem 1rem 3rem',
                       border: '1px solid #C5D9E0',
                       fontSize: '16px',
                       color: '#00426F',

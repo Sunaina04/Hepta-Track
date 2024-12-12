@@ -125,7 +125,7 @@ class ForgotPassword extends Component {
                 border: '1px solid #C5D9E0',
                 fontSize: '22px',
                 lineHeight: '25.78px',
-                color: '#00426F',
+                color: 'white',
                 borderRadius: '10px',
                 backgroundColor: '#00B300',
                 textAlign: 'center',
