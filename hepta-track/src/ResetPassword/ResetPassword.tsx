@@ -1,6 +1,7 @@
+
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
-import { Component, useState } from 'react'
+import React , { Component, useState } from 'react'
 import { useNavigate, useSearchParams , Link } from 'react-router-dom'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
@@ -49,6 +50,7 @@ render() {
                 className="card flex justify-content-center"
                 style={{ position: 'relative', width: '100%' }}
               >
+                
                 <Password
                   placeholder="New Password"
                   name="newPassword"
@@ -67,6 +69,7 @@ render() {
                     height: '60px',
                   }}
                 />
+                
                 <img
                   src="/assets/images/key.png"
                   alt="Key Icon"
