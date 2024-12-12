@@ -2,8 +2,7 @@ import { ColumnBodyOptions, ColumnHeaderOptions } from "primereact/column";
 import { DataTableRowClickEvent, DataTableSelectionSingleChangeEvent, DataTableStateEvent } from "primereact/datatable";
 import { PaginatorTemplate } from "primereact/paginator";
 import { textColors } from "../../Components/Utils/Properties";
-import 
-
+ 
 export type TableBodyType =
   | React.ReactNode
   | ((data?: any, options?: ColumnBodyOptions) => React.ReactNode);
