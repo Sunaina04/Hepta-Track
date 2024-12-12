@@ -1,6 +1,15 @@
 import React from 'react'
 import LoginForm from './Components/Login/LoginForm'
 import SidebarLayout from './Components/Sidebar/SidebarLayout'
+import Dashboard from './Components/Dashboard/Dashboard'
+import UserManagement from './Components/UserManagement/UserManagement'
+import AgentManagement from './Components/AgentManagement/AgentManagement'
+import VehicleManagement from './Components/VehicleManagement/VehicleManagement'
+import ExpenseManagement from './Components/ExpenseManagement/ExpenseManagement'
+import SmartTractorKit from './Components/SmartTractorKit/SmartTractorKit'
+import Subscriptions from './Components/Subscriptions/Subscriptions'
+import AdsPromotions from './Components/AdsPromotions/AdsPromotions'
+import InstructionalVideos from './Components/InstructionalVideos/InstructionalVideos'
 
 const routes = [
   {
@@ -26,39 +35,39 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        element: '',
+        element: <Dashboard />,
       },
       {
         path: 'userManagement',
-        element: '',
+        element: <UserManagement />,
       },
       {
         path: 'agentManagement',
-        element: '',
+        element: <AgentManagement />,
       },
       {
         path: 'vehicleManagement',
-        element: '',
+        element: <VehicleManagement />,
       },
       {
         path: 'expenseManagement',
-        element: '',
+        element: <ExpenseManagement />,
       },
       {
         path: 'smartTractorKit',
-        element: '',
+        element: <SmartTractorKit />,
       },
       {
         path: 'subscriptions',
-        element: '',
+        element: <Subscriptions />,
       },
       {
         path: 'adsPromotions',
-        element: '',
+        element: <AdsPromotions />,
       },
       {
         path: 'instructionalVideos',
-        element: '',
+        element: <InstructionalVideos />,
       },
     ],
   },
