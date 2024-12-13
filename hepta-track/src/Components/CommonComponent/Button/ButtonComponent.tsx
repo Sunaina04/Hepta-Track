@@ -1,17 +1,6 @@
 import { Button } from 'primereact/button'
 import React, { ReactNode } from 'react'
-
-interface ButtonCompProps {
-  onClick: () => void
-  disabled?: boolean
-  label: string
-  style?: React.CSSProperties
-  size?: 'small' | 'large'
-  icon?: any
-  color?: string
-  children?: ReactNode
-  text?: boolean
-}
+import { ButtonCompProps } from '../../../Type/CommonTypes'
 
 const ButtonComponent: React.FC<ButtonCompProps> = ({
   disabled,
