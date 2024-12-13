@@ -37,92 +37,37 @@ render() {
           />
         </div>
         <div className="flex flex-col justify-center text-center">
-          <div className="flex flex-col gap-5 mt-20">
-            {/* {message && (
-              <div className="flex justify-center">
-                <span className="text-red-500 text-sm break-words max-w-md overflow-wrap-normal">
-                  {message}
-                </span>
-              </div>
-            )} */}
-            <div>
-              <div
-                className="card flex justify-content-center"
-                style={{ position: 'relative', width: '100%' }}
-              >
-                
-                <Password 
-                  placeholder="New Password"
-                  name="newPassword"
-                  type="text"
-                  // onChange={handleChange}
-                  // value={password}
-                  // footer={footer}
-                  toggleMask
-                  style={{
-                    padding: '1rem 4rem 1rem 3rem',
-                    border: '1px solid #C5D9E0',
-                    fontSize: '16px',
-                    color: '#00426F',
-                    borderRadius: '10px',
-                    width: '500px',
-                    height: '60px',
-                  }}
-                />
-                
-                <img
-                  src="/assets/images/key.png"
-                  alt="Key Icon"
-                  className="p-clickable"
-                  style={{
-                    position: 'absolute',
-                    left: '10px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: '20px',
-                    height: '20px',
-                    pointerEvents: 'none',
-                  }}
-                />
-              </div>
+        <div className="flex flex-col gap-5 mt-20">
+          {/* {message && (
+            <div className="flex justify-center">
+              <span className="text-red-500 text-sm break-words max-w-md overflow-wrap-normal">
+                {message}
+              </span>
             </div>
-
-            {/* {isLoading && (
-              <ProgressSpinner
+          )} */}
+          <div>
+            <div
+              className="card flex justify-content-center"
+              style={{ position: 'relative', width: '100%' }}
+            >
+              <Password
+                placeholder="New Password"
+                name="newPassword"
+                type="text"
+                // onChange={handleChange}
+                // value={password}
+                // footer={footer}
+                toggleMask
                 style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '50px',
-                  height: '50px',
+                  padding: '1rem 4rem 0 3rem',
+                  border: '1px solid #C5D9E0',
+                  fontSize: '16px',
+                  color: '#00426F',
+                  borderRadius: '10px',
+                  width: '500px',
+                  height: '60px',
                 }}
-                strokeWidth="4"
               />
-            )} */}
-            <div className="p-input-icon-left relative flex justify-center">
-              <div>
-                <div className="card flex justify-content-center">
-                  <Password
-                    placeholder="Confirm Password"
-                    name="confirmPassword"
-                    // onChange={handleChange}
-                    // value={confirmPassword}
-                    // footer={footer}
-                    toggleMask
-              
-                    style={{
-                      padding: '1rem 4rem 1rem 3rem',
-                      border: '1px solid #C5D9E0',
-                      fontSize: '16px',
-                      color: '#00426F',
-                      borderRadius: '10px',
-                      width: '500px',
-                      height: '60px',
-                    }}
-                  />
-                </div>
-              </div>
               <img
                 src="/assets/images/key.png"
                 alt="Key Icon"
@@ -134,10 +79,63 @@ render() {
                   transform: 'translateY(-50%)',
                   width: '20px',
                   height: '20px',
+                  pointerEvents: 'none',
                 }}
               />
             </div>
           </div>
+{/* 
+          {isLoading && (
+            <ProgressSpinner
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '50px',
+                height: '50px',
+              }}
+              strokeWidth="4"
+            />
+          )} */}
+          <div className="p-input-icon-left relative flex justify-center">
+            <div>
+              <div className="card flex justify-content-center">
+                <Password
+                 toggleMask
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  // onChange={handleChange}
+                  // value={confirmPassword}
+                  // footer={footer}
+                  
+                  style={{
+                    padding: '1rem 4rem 0 3rem',
+                    border: '1px solid #C5D9E0',
+                    fontSize: '16px',
+                    color: '#00426F',
+                    borderRadius: '10px',
+                    width: '500px',
+                    height: '60px',
+                  }}
+                />
+              </div>
+            </div>
+            <img
+              src="/assets/images/key.png"
+              alt="Key Icon"
+              className="p-clickable"
+              style={{
+                position: 'absolute',
+                left: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '20px',
+                height: '20px',
+              }}
+            />
+          </div>
+        </div>
         </div>
         <div className="flex flex-col items-center mt-8">
           <Button
