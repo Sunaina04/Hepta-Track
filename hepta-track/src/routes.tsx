@@ -13,6 +13,7 @@ import InstructionalVideos from './Components/InstructionalVideos/InstructionalV
 import ResetPassword from './Components/ResetPassword/ResetPassword'
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 
+
 const routes = [
   {
     path: '',
@@ -41,7 +42,8 @@ const routes = [
       },
       {
         path: 'userManagement',
-        element: <UserManagement />,
+        element: <UserManagement/>,
+        
       },
       {
         path: 'agentManagement',
