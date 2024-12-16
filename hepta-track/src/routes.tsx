@@ -11,6 +11,7 @@ import SmartTractorKit from './Components/SmartTractorKit/SmartTractorKit'
 import Subscriptions from './Components/Subscriptions/Subscriptions'
 import AdsPromotions from './Components/AdsPromotions/AdsPromotions'
 import InstructionalVideos from './Components/InstructionalVideos/InstructionalVideos'
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 
 const routes = [
   {
@@ -28,7 +29,7 @@ const routes = [
   },
   {
     path: 'forgotPassword',
-    element: '',
+    element: <ForgotPassword />,
   },
   {
     path: '',

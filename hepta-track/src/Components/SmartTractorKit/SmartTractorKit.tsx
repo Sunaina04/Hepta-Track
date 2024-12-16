@@ -54,7 +54,7 @@ const SmartTractorKit = () => {
     header: '',
     buttons: [
       {
-        color: 'green',
+        color: 'darkGreen',
         label: 'Unlink',
         underline: true,
         // onClick: (rowData) => {

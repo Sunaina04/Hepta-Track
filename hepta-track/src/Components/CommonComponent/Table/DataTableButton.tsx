@@ -1,7 +1,6 @@
 import React from 'react'
 import { ButtonProps } from '../../../Type/Components/TableTypes'
- import { bgColor, textColors } from '../../Utils/Properties'
-
+import { bgColor, textColors } from '../../Utils/Properties'
 
 const DataTableButton: React.FC<ButtonProps> = ({
   underline = false,
@@ -12,14 +11,14 @@ const DataTableButton: React.FC<ButtonProps> = ({
   onClick,
   label,
 }) => {
-  let klassName = textColors[color] + ' cursor-pointer'
+  let klassName: any = textColors[color] + ' cursor-pointer'
 
   if (underline) {
-    klassName += ' underline'
+    klassName += 'underline'
   }
 
   if (filled) {
-    klassName += ` ${bgColor[color]}`
+    klassName += `${bgColor[color]}`
   }
 
   return (
