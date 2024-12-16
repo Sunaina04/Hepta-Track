@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../Store'
-import { InitialState } from '../../Type/CommonType'
 import { UserData } from '../../Type/ApiTypes'
+import { InitialState } from '../../Type/CommonTypes'
 
 export const userSlice = createSlice({
   name: 'user',
@@ -46,6 +46,5 @@ export const {
 export const selectSidebar = (state: RootState) => state.user.sidebar
 export const selectCustomerId = (state: RootState) => state.user.customerId
 export const selectCustomerName = (state: RootState) => state.user.customerName
-export const selectUserRole = (state: RootState) => state.user.userData?.role?.id
 
 export default userSlice.reducer
