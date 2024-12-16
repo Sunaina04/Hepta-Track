@@ -8,10 +8,10 @@ import {
   setToken,
   setUserData,
 } from '../../Store/Slice/userSlice'
-import { RootState } from '../../Store/Store'
-import { primary, secondary } from '../../Theme/ThemeColors'
 import SidebarMenu from './LayoutComponents/SidebarMenu'
+import { RootState } from '../../Store/Store'
 import { ErrorResponse } from '../../Type/ApiTypes'
+import { primary, secondary } from '../../Theme/ThemeColors'
 
 const SidebarLayout = () => {
   const dispatch = useDispatch()
@@ -115,10 +115,10 @@ const SidebarLayout = () => {
                     onClick={() => setSelectedItem(item.link)}
                     style={{
                       display: 'flex',
-                      height: '42px',
+                      height: '44px',
                       width: open ? '16rem' : '3rem',
                       minWidth: open ? '16rem' : '3rem',
-                      marginLeft: open ? '14px' : '10px',
+                      marginLeft: open ? '10px' : '10px',
                       marginRight: open ? '14px' : '10px',
                       background: selectedItem === item.link ? secondary[400] : '',
                       borderRadius: '6px',
@@ -131,8 +131,8 @@ const SidebarLayout = () => {
                       alt=""
                       width={24}
                       style={{
-                        marginRight: open ? '12px' : '5px',
-                        marginLeft: open ? '16px' : '14px',
+                        marginRight: open ? '10px' : '5px',
+                        marginLeft: open ? '12px' : '14px',
                       }}
                     />
                     <span
@@ -151,7 +151,7 @@ const SidebarLayout = () => {
                 )}
 
                 {/* Add spacer between items */}
-                {index !== menuItems.length - 1 && <div style={{ height: '20px' }} />}
+                {index !== menuItems.length - 1 && <div style={{ height: '8px' }} />}
               </React.Fragment>
             ))}
           </div>
@@ -177,8 +177,8 @@ const SidebarLayout = () => {
                 alt="Logout"
                 width={20}
                 style={{
-                  marginRight: open ? '12px' : '20px',
-                  marginLeft: open ? '16px' : '20px',
+                  marginRight: open ? '10px' : '20px',
+                  marginLeft: open ? '' : '20px',
                 }}
               />
               <span
