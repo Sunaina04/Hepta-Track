@@ -1,18 +1,14 @@
-import { useMemo } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
+import React, { useMemo } from 'react'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import Header from '../Sidebar/LayoutComponents/Header'
-import CustomModal from '../CustomComponent/CustomModal'
-import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
-import StatCard from '../CommonComponent/StatCard/StatCard'
+import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 
-const UserManagement = () => {
+function User() {
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#FFFFFF',
-    padding: '14px',
+    padding: '15px',
   }
 
   const userColumns = useMemo(
@@ -64,7 +60,7 @@ const UserManagement = () => {
         // },
       },
       {
-        color:'green',
+        
         label: 'View/edit',
         underline: true,
         // onClick: (rowData) => {
@@ -72,13 +68,7 @@ const UserManagement = () => {
         // },
       },
     ],
-    headerStyle: { backgroundColor: '#082825', color: 'white', fontSize:'12px',  },
-    style: {
-      borderBottom: '1px solid #D5E1EA ',
-      width: '150px',
-      fontWeight: 700,
-    },
-    
+    headerStyle: { backgroundColor: '#082825', color: 'white' },
   }
 
   const dummyUserData = [
@@ -146,68 +136,21 @@ const UserManagement = () => {
         address: '456 Oak Avenue, Boulder, CO',
         subscriptionPlan: 'Basic',
       },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
   ]
+
   return (
-    <>
-      <Header header="USER MANAGEMENT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
-      </div>
-      <div className="flex justify-end mr-12 ">
-        <div className="flex mt-6 ">
-          <CustomModal
-            buttonText={'ADD NEW'}
-            buttonStyle={AddNewButtonStyle}
-            onHide={() => {}}
-            icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-4" />}
-            dialogStyle={{
-              height: '580px',
-              minHeight: '580px',
-              overflowY: 'auto',
-              ...DialogStyle,
-            }}
-          />
-        </div>
-      </div>
+    <div>
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}
-        >
-        <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA] ">
+        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[3px] ml-[15px] mr-[15px] table-container flex flex-col rounded-t-lg`}>
+        <div className="flex-grow overflow-auto">
           <DataTableComponent
             tableStyle={{
-              fontSize: '13px',
+              fontSize: '12px',
               color: '#000000',
-              fontWeight: 600,
+              fontWeight: 500,
               backgroundColor: '#FFFFFF',
+              border:' 1px solid #D5E1EA',
+              borderBottomLeftRadius:'10px'
             }}
             data={dummyUserData}
             //   selectionMode="single"
@@ -219,7 +162,6 @@ const UserManagement = () => {
             dataKey="id"
             columns={userColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -234,8 +176,8 @@ const UserManagement = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
-export default UserManagement
+export default User

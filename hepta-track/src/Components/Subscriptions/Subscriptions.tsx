@@ -1,12 +1,10 @@
-import StatCard from '../CommonComponent/StatCard/StatCard'
 import { useMemo } from 'react'
-import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
+import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 
-const SmartTractorKit = () => {
+const Subscriptions = () => {
 
-  
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -15,34 +13,34 @@ const SmartTractorKit = () => {
     padding: '15px',
   }
 
-  const tractorKitColumns = useMemo(
+  const subscriptionColumns = useMemo(
     () => [
       {
-        id: 'deviceId',
-        label: ' Device ID',
+        id: 's.No',
+        label: 'S.No',
         style: columnStyle,
       },
       {
-        id: 'regNumber',
-        label: 'Reg.Number',
+        id: 'subscriptionName',
+        label: 'Subscription Name',
         style: columnStyle,
       },
       {
-        id: 'date',
-        label: 'Date',
+        id: 'createdDate',
+        label: 'Created Date',
         style: columnStyle,
       },
       {
-        id: 'activationCode',
-        label: 'Activation Code',
+        id: 'detail',
+        label: 'Detail',
         style: columnStyle,
       },
       {
-        id: 'subscriptionPlan',
-        label: 'Subscription Plan',
+        id: 'amount',
+        label: 'Amount',
         style: columnStyle,
       },
-      {
+       {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -57,7 +55,7 @@ const SmartTractorKit = () => {
     buttons: [
       {
         color: 'green',
-        label: 'Unlink',
+        label: 'Edit',
         underline: true,
         // onClick: (rowData) => {
         //   handleMooringTableRowClick(rowData)
@@ -80,65 +78,57 @@ const SmartTractorKit = () => {
     },
   }
 
-  const tractorKitData = [
+  const subscriptionData = [
     {
-      deviceId: 'TK001',
-      regNumber: 'REG12345',
-      date: '2024-12-01',
-      activationCode: 'ACT-001',
-      subscriptionPlan: 'Basic',
+      's.No': 1,
+      subscriptionName: 'Premium Plan',
+      createdDate: '2024-12-01',
+      detail: 'Access to all features and priority support',
+      amount: '$99.99',
+      status: 'Active',
     },
     {
-      deviceId: 'TK002',
-      regNumber: 'REG12346',
-      date: '2024-11-28',
-      activationCode: 'ACT-002',
-      subscriptionPlan: 'Premium',
+      's.No': 2,
+      subscriptionName: 'Standard Plan',
+      createdDate: '2024-11-25',
+      detail: 'Access to most features with limited support',
+      amount: '$49.99',
+      status: 'Inactive',
     },
     {
-      deviceId: 'TK003',
-      regNumber: 'REG12347',
-      date: '2024-11-25',
-      activationCode: 'ACT-003',
-      subscriptionPlan: 'Standard',
+      's.No': 3,
+      subscriptionName: 'Basic Plan',
+      createdDate: '2024-11-20',
+      detail: 'Access to basic features only',
+      amount: '$19.99',
+      status: 'Active',
     },
     {
-      deviceId: 'TK004',
-      regNumber: 'REG12348',
-      date: '2024-11-20',
-      activationCode: 'ACT-004',
-      subscriptionPlan: 'Basic',
+      's.No': 4,
+      subscriptionName: 'Enterprise Plan',
+      createdDate: '2024-11-15',
+      detail: 'Custom plan tailored for businesses',
+      amount: '$499.99',
+      status: 'Pending',
     },
     {
-      deviceId: 'TK005',
-      regNumber: 'REG12349',
-      date: '2024-11-15',
-      activationCode: 'ACT-005',
-      subscriptionPlan: 'Premium',
+      's.No': 5,
+      subscriptionName: 'Trial Plan',
+      createdDate: '2024-12-10',
+      detail: 'Free trial for 14 days',
+      amount: '$0.00',
+      status: 'Active',
     },
   ];
-
+  
+  
+  
   return (
     <>
-      <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
+      <Header header="SUBSCRIPTIONS" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -147,7 +137,7 @@ const SmartTractorKit = () => {
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
             }}
-            data={tractorKitData}
+            data={subscriptionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -155,9 +145,9 @@ const SmartTractorKit = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={tractorKitColumns}
+            columns={subscriptionColumns}
             actionButtons={ActionButtonColumn}
-             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -172,9 +162,8 @@ const SmartTractorKit = () => {
           />
         </div>
       </div>
-      </div>
     </>
   )
 }
 
-export default SmartTractorKit
+export default Subscriptions

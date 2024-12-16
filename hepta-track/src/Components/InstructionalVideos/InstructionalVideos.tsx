@@ -1,12 +1,10 @@
-import StatCard from '../CommonComponent/StatCard/StatCard'
 import { useMemo } from 'react'
-import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import Header from '../Sidebar/LayoutComponents/Header'
 
-const SmartTractorKit = () => {
+const InstructionalVideos = () => {
 
-  
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -15,16 +13,26 @@ const SmartTractorKit = () => {
     padding: '15px',
   }
 
-  const tractorKitColumns = useMemo(
+  const instructionalColumns = useMemo(
     () => [
       {
-        id: 'deviceId',
-        label: ' Device ID',
+        id: 's.No',
+        label: 'S.No',
         style: columnStyle,
       },
       {
-        id: 'regNumber',
-        label: 'Reg.Number',
+        id: 'image',
+        label: 'Image',
+        style: columnStyle,
+      },
+      {
+        id: 'name',
+        label: 'Name',
+        style: columnStyle,
+      },
+      {
+        id: 'detail',
+        label: 'Detail',
         style: columnStyle,
       },
       {
@@ -32,17 +40,7 @@ const SmartTractorKit = () => {
         label: 'Date',
         style: columnStyle,
       },
-      {
-        id: 'activationCode',
-        label: 'Activation Code',
-        style: columnStyle,
-      },
-      {
-        id: 'subscriptionPlan',
-        label: 'Subscription Plan',
-        style: columnStyle,
-      },
-      {
+       {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -57,7 +55,7 @@ const SmartTractorKit = () => {
     buttons: [
       {
         color: 'green',
-        label: 'Unlink',
+        label: 'Edit',
         underline: true,
         // onClick: (rowData) => {
         //   handleMooringTableRowClick(rowData)
@@ -80,62 +78,53 @@ const SmartTractorKit = () => {
     },
   }
 
-  const tractorKitData = [
+  const instructionalData = [
     {
-      deviceId: 'TK001',
-      regNumber: 'REG12345',
+      's.No': 1,
+      image: 'https://via.placeholder.com/100',
+      name: 'Safety Training',
+      detail: 'Comprehensive safety protocols for tractor operation.',
+      date: '2024-11-30',
+      status: 'Active',
+    },
+    {
+      's.No': 2,
+      image: 'https://via.placeholder.com/100',
+      name: 'Maintenance Guide',
+      detail: 'Step-by-step instructions for daily maintenance.',
       date: '2024-12-01',
-      activationCode: 'ACT-001',
-      subscriptionPlan: 'Basic',
+      status: 'Active',
     },
     {
-      deviceId: 'TK002',
-      regNumber: 'REG12346',
-      date: '2024-11-28',
-      activationCode: 'ACT-002',
-      subscriptionPlan: 'Premium',
+      's.No': 3,
+      image: 'https://via.placeholder.com/100',
+      name: 'Operational Best Practices',
+      detail: 'Guidelines to maximize efficiency and minimize wear.',
+      date: '2024-12-02',
+      status: 'Inactive',
     },
     {
-      deviceId: 'TK003',
-      regNumber: 'REG12347',
-      date: '2024-11-25',
-      activationCode: 'ACT-003',
-      subscriptionPlan: 'Standard',
+      's.No': 4,
+      image: 'https://via.placeholder.com/100',
+      name: 'Emergency Procedures',
+      detail: 'Quick actions for common emergencies.',
+      date: '2024-12-03',
+      status: 'Active',
     },
     {
-      deviceId: 'TK004',
-      regNumber: 'REG12348',
-      date: '2024-11-20',
-      activationCode: 'ACT-004',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      deviceId: 'TK005',
-      regNumber: 'REG12349',
-      date: '2024-11-15',
-      activationCode: 'ACT-005',
-      subscriptionPlan: 'Premium',
+      's.No': 5,
+      image: 'https://via.placeholder.com/100',
+      name: 'Advanced Features',
+      detail: 'Tutorial on utilizing advanced features effectively.',
+      date: '2024-12-04',
+      status: 'Inactive',
     },
   ];
+  
 
   return (
     <>
-      <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
+      <Header header="INSTRUCTIONAL VIDEOS" />
 
       <div
         className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
@@ -146,8 +135,10 @@ const SmartTractorKit = () => {
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
+              border:' 1px solid #D5E1EA',
+              borderBottomLeftRadius:'10px'
             }}
-            data={tractorKitData}
+            data={instructionalData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -155,9 +146,9 @@ const SmartTractorKit = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={tractorKitColumns}
+            columns={instructionalColumns}
             actionButtons={ActionButtonColumn}
-             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -172,9 +163,8 @@ const SmartTractorKit = () => {
           />
         </div>
       </div>
-      </div>
     </>
   )
 }
 
-export default SmartTractorKit
+export default InstructionalVideos

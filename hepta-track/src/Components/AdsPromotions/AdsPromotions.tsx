@@ -1,12 +1,10 @@
-import StatCard from '../CommonComponent/StatCard/StatCard'
 import { useMemo } from 'react'
-import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import Header from '../Sidebar/LayoutComponents/Header'
 
-const SmartTractorKit = () => {
+const AdsPromotions = () => {
 
-  
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -15,34 +13,34 @@ const SmartTractorKit = () => {
     padding: '15px',
   }
 
-  const tractorKitColumns = useMemo(
+  const promotionColumns = useMemo(
     () => [
       {
-        id: 'deviceId',
-        label: ' Device ID',
+        id: 's.No',
+        label: 'S.No',
         style: columnStyle,
       },
       {
-        id: 'regNumber',
-        label: 'Reg.Number',
+        id: 'image',
+        label: 'Image',
         style: columnStyle,
       },
       {
-        id: 'date',
-        label: 'Date',
+        id: 'detail',
+        label: 'Detail',
         style: columnStyle,
       },
       {
-        id: 'activationCode',
-        label: 'Activation Code',
+        id: 'createdDate',
+        label: 'Created Date',
         style: columnStyle,
       },
       {
-        id: 'subscriptionPlan',
-        label: 'Subscription Plan',
+        id: 'expDate',
+        label: 'Exp.Date',
         style: columnStyle,
       },
-      {
+       {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -57,7 +55,7 @@ const SmartTractorKit = () => {
     buttons: [
       {
         color: 'green',
-        label: 'Unlink',
+        label: 'Edit',
         underline: true,
         // onClick: (rowData) => {
         //   handleMooringTableRowClick(rowData)
@@ -80,65 +78,55 @@ const SmartTractorKit = () => {
     },
   }
 
-  const tractorKitData = [
-    {
-      deviceId: 'TK001',
-      regNumber: 'REG12345',
-      date: '2024-12-01',
-      activationCode: 'ACT-001',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      deviceId: 'TK002',
-      regNumber: 'REG12346',
-      date: '2024-11-28',
-      activationCode: 'ACT-002',
-      subscriptionPlan: 'Premium',
-    },
-    {
-      deviceId: 'TK003',
-      regNumber: 'REG12347',
-      date: '2024-11-25',
-      activationCode: 'ACT-003',
-      subscriptionPlan: 'Standard',
-    },
-    {
-      deviceId: 'TK004',
-      regNumber: 'REG12348',
-      date: '2024-11-20',
-      activationCode: 'ACT-004',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      deviceId: 'TK005',
-      regNumber: 'REG12349',
-      date: '2024-11-15',
-      activationCode: 'ACT-005',
-      subscriptionPlan: 'Premium',
-    },
-  ];
+  const promotionData = [
+  {
+    's.No': 1,
+    image: 'https://via.placeholder.com/100',
+    detail: '50% off on all items during Black Friday sale.',
+    createdDate: '2024-12-01',
+    expDate: '2024-12-31',
+    status: 'Active',
+  },
+  {
+    's.No': 2,
+    image: 'https://via.placeholder.com/100',
+    detail: 'Buy one, get one free on selected items.',
+    createdDate: '2024-11-20',
+    expDate: '2024-12-15',
+    status: 'Expired',
+  },
+  {
+    's.No': 3,
+    image: 'https://via.placeholder.com/100',
+    detail: 'Free shipping on orders above $50.',
+    createdDate: '2024-11-10',
+    expDate: '2024-12-01',
+    status: 'Expired',
+  },
+  {
+    's.No': 4,
+    image: 'https://via.placeholder.com/100',
+    detail: 'Holiday special discount: 20% off on electronics.',
+    createdDate: '2024-12-10',
+    expDate: '2025-01-10',
+    status: 'Active',
+  },
+  {
+    's.No': 5,
+    image: 'https://via.placeholder.com/100',
+    detail: 'End of season sale: Flat 30% off.',
+    createdDate: '2024-12-05',
+    expDate: '2024-12-20',
+    status: 'Inactive',
+  },
+];
 
   return (
     <>
-      <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
+      <Header header="ADS PROMOTIONS" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -147,7 +135,7 @@ const SmartTractorKit = () => {
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
             }}
-            data={tractorKitData}
+            data={promotionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -155,9 +143,9 @@ const SmartTractorKit = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={tractorKitColumns}
+            columns={promotionColumns}
             actionButtons={ActionButtonColumn}
-             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -172,9 +160,8 @@ const SmartTractorKit = () => {
           />
         </div>
       </div>
-      </div>
     </>
   )
 }
 
-export default SmartTractorKit
+export default AdsPromotions
