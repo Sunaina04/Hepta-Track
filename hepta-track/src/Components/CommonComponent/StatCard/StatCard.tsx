@@ -1,10 +1,17 @@
 import React from 'react'
 import { Card } from 'primereact/card'
-import { StatCardProps } from '../../../Type/ComponentBasedTypes'
+
+interface StatCardProps {
+  percentage: string
+  percentageColor: string
+  icon: string
+  value: string
+  label: string
+}
 
 const StatCard: React.FC<StatCardProps> = ({ percentage, percentageColor, icon, value, label }) => {
   return (
-    <Card className="p-4 rounded-lg shadow ml-4 mr-6 w-[16rem]">
+    <Card className="p-4 rounded-lg shadow ml-8 mr-4">
       <div className="flex items-center justify-between mb-2">
         <span className={`text-sm font-semibold ${percentageColor}`}>{percentage}</span>
         <i className={`pi ${icon} ${percentageColor}`}></i>
