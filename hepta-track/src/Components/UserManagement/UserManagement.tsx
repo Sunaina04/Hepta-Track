@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import Header from '../Sidebar/LayoutComponents/Header'
@@ -6,8 +6,15 @@ import CustomModal from '../CustomComponent/CustomModal'
 import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
+import AddUser from '../Add User/AddUser'
 
 const UserManagement = () => {
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const handleButtonClick = () => {
+    setModalVisible(true)
+  }
+
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -166,64 +173,7 @@ const UserManagement = () => {
   return (
     <>
       <Header header="USER MANAGEMENT" />
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5 p-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
-      </div>
-      <InputTextWithHeader
-        // value={searchText}
-        // onChange={handleSearch}
-        placeholder="Search"
-        inputTextStyle={{
-          width: '100%',
-          height: '44px',
-          padding: '0 4rem 0 3rem',
-          border: '1px solid #C5D9E0',
-          fontSize: '16px',
-          color: '#000000',
-          borderRadius: '4px',
-          minHeight: '44px',
-          fontWeight: 400,
-          backgroundColor: 'rgb(242 242 242 / 0%)',
-        }}
-        borderBottom={{ border: '1px solid #D5E1EA' }}
-        iconStyle={{
-          position: 'absolute',
-          left: '15px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: '18px',
-          height: '18px',
-        }}
-      />
-      <div className="flex justify-end mr-12">
-        <div className="flex">
-          <CustomModal
-            buttonText={'ADD NEW'}
-            buttonStyle={AddNewButtonStyle}
-            onHide={() => {}}
-            icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-4" />}
-            dialogStyle={{
-              height: '580px',
-              minHeight: '580px',
-              overflowY: 'auto',
-              ...DialogStyle,
-            }}
-          />
-        </div>
-      </div> */}
+
       <div className="flex flex-wrap items-center p-4 mb-2">
         {/* Stat Cards */}
         <div className="flex gap-6 w-1/2 md:w-1/3 lg:w-1/4">
@@ -278,8 +228,13 @@ const UserManagement = () => {
           <CustomModal
             buttonText={'ADD New'}
             buttonStyle={AddNewButtonStyle}
-            onHide={() => {}}
+            onHide={() => {
+              setModalVisible(false)
+            }}
+            visible={modalVisible}
+            onClick={handleButtonClick}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
+            children={<AddUser />}
             dialogStyle={{
               height: '580px',
               minHeight: '580px',
