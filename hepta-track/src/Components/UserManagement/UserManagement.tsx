@@ -5,6 +5,7 @@ import Header from '../Sidebar/LayoutComponents/Header'
 import CustomModal from '../CustomComponent/CustomModal'
 import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
 import StatCard from '../CommonComponent/StatCard/StatCard'
+import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
 
 const UserManagement = () => {
   const columnStyle = {
@@ -64,7 +65,7 @@ const UserManagement = () => {
         // },
       },
       {
-        color:'green',
+        color: 'green',
         label: 'View/edit',
         underline: true,
         // onClick: (rowData) => {
@@ -72,13 +73,12 @@ const UserManagement = () => {
         // },
       },
     ],
-    headerStyle: { backgroundColor: '#082825', color: 'white', fontSize:'12px',  },
+    headerStyle: { backgroundColor: '#082825', color: 'white', fontSize: '12px' },
     style: {
       borderBottom: '1px solid #D5E1EA ',
       width: '150px',
       fontWeight: 700,
     },
-    
   }
 
   const dummyUserData = [
@@ -99,74 +99,74 @@ const UserManagement = () => {
       subscriptionPlan: 'Basic',
     },
     {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
-      {
-        userId: 'U002',
-        userName: 'Jane Smith',
-        phoneNumber: '987-654-3210',
-        email: 'janesmith@example.com',
-        address: '456 Oak Avenue, Boulder, CO',
-        subscriptionPlan: 'Basic',
-      },
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
+    {
+      userId: 'U002',
+      userName: 'Jane Smith',
+      phoneNumber: '987-654-3210',
+      email: 'janesmith@example.com',
+      address: '456 Oak Avenue, Boulder, CO',
+      subscriptionPlan: 'Basic',
+    },
   ]
   return (
     <>
       <Header header="USER MANAGEMENT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5 p-4">
         <StatCard
           percentage="+11.01%"
           percentageColor="text-green-500"
@@ -182,8 +182,34 @@ const UserManagement = () => {
           label="Active Users"
         />
       </div>
-      <div className="flex justify-end mr-12 ">
-        <div className="flex mt-6 ">
+      <InputTextWithHeader
+        // value={searchText}
+        // onChange={handleSearch}
+        placeholder="Search"
+        inputTextStyle={{
+          width: '100%',
+          height: '44px',
+          padding: '0 4rem 0 3rem',
+          border: '1px solid #C5D9E0',
+          fontSize: '16px',
+          color: '#000000',
+          borderRadius: '4px',
+          minHeight: '44px',
+          fontWeight: 400,
+          backgroundColor: 'rgb(242 242 242 / 0%)',
+        }}
+        borderBottom={{ border: '1px solid #D5E1EA' }}
+        iconStyle={{
+          position: 'absolute',
+          left: '15px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: '18px',
+          height: '18px',
+        }}
+      />
+      <div className="flex justify-end mr-12">
+        <div className="flex">
           <CustomModal
             buttonText={'ADD NEW'}
             buttonStyle={AddNewButtonStyle}
@@ -197,10 +223,75 @@ const UserManagement = () => {
             }}
           />
         </div>
+      </div> */}
+      <div className="flex flex-wrap items-center p-4 mb-2">
+        {/* Stat Cards */}
+        <div className="flex gap-6 w-1/2 md:w-1/3 lg:w-1/4">
+          <StatCard
+            percentage="+11.01%"
+            percentageColor="text-green-500"
+            icon="pi-arrow-up"
+            value="$2,554.00"
+            label="Total Revenue"
+          />
+        </div>
+        <div className="flex gap-6 w-1/2 md:w-1/3 lg:w-1/4">
+          <StatCard
+            percentage="-0.03%"
+            percentageColor="text-red-500"
+            icon="pi-arrow-down"
+            value="3,454"
+            label="Active Users"
+          />
+        </div>
+
+        {/* Search Input */}
+        <div className="flex-grow lg:w-1/3 mt-36">
+          <InputTextWithHeader
+            placeholder="Search"
+            inputTextStyle={{
+              width: '100%',
+              height: '44px',
+              padding: '0 4rem 0 3rem',
+              border: '1px solid #C5D9E0',
+              fontSize: '16px',
+              color: '#000000',
+              borderRadius: '4px',
+              minHeight: '44px',
+              fontWeight: 400,
+              backgroundColor: 'rgb(242 242 242 / 0%)',
+            }}
+            borderBottom={{ border: '1px solid #D5E1EA' }}
+            iconStyle={{
+              position: 'absolute',
+              left: '15px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '18px',
+              height: '18px',
+            }}
+          />
+        </div>
+
+        {/* Add New Button */}
+        <div className="flex justify-end lg:w-auto mt-44">
+          <CustomModal
+            buttonText={'ADD New'}
+            buttonStyle={AddNewButtonStyle}
+            onHide={() => {}}
+            icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
+            dialogStyle={{
+              height: '580px',
+              minHeight: '580px',
+              overflowY: 'auto',
+              ...DialogStyle,
+            }}
+          />
+        </div>
       </div>
+
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}
-        >
+        className={`bg-#00426F overflow-x-hidden mt-[4px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA] ">
           <DataTableComponent
             tableStyle={{
@@ -219,7 +310,7 @@ const UserManagement = () => {
             dataKey="id"
             columns={userColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">

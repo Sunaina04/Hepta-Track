@@ -4,7 +4,7 @@ export const AddNewButtonStyle = {
   minHeight: '44px',
   backgroundColor: '#00B300',
   cursor: 'pointer',
-  fontSize: '14px',
+  fontSize: '16px',
   fontWeight: 600,
   color: 'white',
   borderRadius: '0.50rem',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'primereact/chart'
 
-export default function LineStylesDemo() {
+const UserChart: React.FC = () => {
   const [chartData, setChartData] = useState({})
   const [chartOptions, setChartOptions] = useState({})
 
@@ -78,8 +78,10 @@ export default function LineStylesDemo() {
   }, [])
 
   return (
-    <div className="card mt-2 ml-8 p-4 rounded-lg shadow">
+    <div className="card mt-2 ml-4 p-4 rounded-lg shadow">
       <Chart type="line" data={chartData} options={chartOptions} />
     </div>
   )
 }
+
+export default UserChart

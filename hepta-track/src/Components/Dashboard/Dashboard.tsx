@@ -8,8 +8,8 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Header header="DASHBOARD" />
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+      <div className="p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5">
           <StatCard
             percentage="+11.01%"
             percentageColor="text-green-500"
@@ -40,10 +40,12 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 w-[65rem]">
             <UserChart />
           </div>
-          <Notifications />
+          <div className="w-[25rem]">
+            <Notifications />
+          </div>
         </div>
       </div>
     </>

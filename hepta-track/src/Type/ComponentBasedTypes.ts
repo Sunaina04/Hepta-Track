@@ -22,3 +22,22 @@ export interface CustomModalProps {
   dialogStyle?: React.CSSProperties
   footerContent?: React.ReactNode
 }
+
+export interface StatCardProps {
+  percentage: string
+  percentageColor: string
+  icon: string
+  value: string
+  label: string
+}
+
+export interface inputHeader {
+  header?: string
+  iconStyle?: React.CSSProperties
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  placeholder: string
+  headerStyle?: React.CSSProperties
+  inputTextStyle?: React.CSSProperties
+  value?: string | undefined
+  borderBottom?: React.CSSProperties
+}

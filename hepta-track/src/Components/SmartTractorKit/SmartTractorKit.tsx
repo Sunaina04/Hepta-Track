@@ -5,8 +5,6 @@ import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 
 const SmartTractorKit = () => {
-
-  
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -64,7 +62,7 @@ const SmartTractorKit = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -116,7 +114,7 @@ const SmartTractorKit = () => {
       activationCode: 'ACT-005',
       subscriptionPlan: 'Premium',
     },
-  ];
+  ]
 
   return (
     <>
@@ -136,6 +134,7 @@ const SmartTractorKit = () => {
           value="3,454"
           label="Active Users"
         />
+      </div>
 
       <div
         className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
@@ -157,7 +156,7 @@ const SmartTractorKit = () => {
             dataKey="id"
             columns={tractorKitColumns}
             actionButtons={ActionButtonColumn}
-             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -171,7 +170,6 @@ const SmartTractorKit = () => {
             //   }
           />
         </div>
-      </div>
       </div>
     </>
   )
