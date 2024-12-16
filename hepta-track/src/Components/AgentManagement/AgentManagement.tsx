@@ -33,8 +33,6 @@ const AgentManagement = () => {
             dialogStyle={{
               height: '580px',
               minHeight: '580px',
-              overflowY: 'auto',
-              ...DialogStyle,
             }}
           />
         </div>
