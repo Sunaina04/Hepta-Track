@@ -7,6 +7,7 @@ import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import { dummyAgentData } from '../Utils/DummyData'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
+import AddUser from '../Add User/AddUser'
 
 const AgentManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -75,8 +76,8 @@ const AgentManagement = () => {
   return (
     <>
       <Header header="AGENT MANAGEMENT" />
-      <div className="flex mt-10 ml-4">
-        <div className="flex">
+      <div className="flex justify-between">
+        <div className="flex mt-8 ml-4">
           <div className="w-[270px] h-[140px]">
             <StatCard
               percentage="+11.01%"
@@ -98,7 +99,7 @@ const AgentManagement = () => {
         </div>
 
         {/* Search Input */}
-        <div className="flex mt-14 ml-4">
+        <div className="flex mt-20 mr-10">
           <div className="">
             <InputTextWithHeader
               placeholder="Search"
@@ -137,7 +138,7 @@ const AgentManagement = () => {
               visible={modalVisible}
               onClick={handleButtonClick}
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-              // children={<AddUser />}
+              children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
                 height: '580px',
                 minHeight: '580px',

@@ -86,8 +86,8 @@ const UserManagement = () => {
     <>
       <Header header="USER MANAGEMENT" />
       {/* Stat Cards */}
-      <div className="flex mt-10 ml-4">
-        <div className="flex">
+      <div className="flex justify-between">
+        <div className="flex mt-8 ml-4">
           <div className="w-[270px] h-[140px]">
             <StatCard
               percentage="+11.01%"
@@ -109,7 +109,7 @@ const UserManagement = () => {
         </div>
 
         {/* Search Input */}
-        <div className="flex mt-14 ml-4">
+        <div className="flex mt-20 mr-10">
           <div className="">
             <InputTextWithHeader
               placeholder="Search"
@@ -160,41 +160,6 @@ const UserManagement = () => {
         </div>
       </div>
 
-      {/* <div
-        className={`bg-#00426F overflow-x-hidden mt-[4px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}>
-        <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA] ">
-          <DataTableComponent
-            tableStyle={{
-              fontSize: '13px',
-              color: '#000000',
-              fontWeight: 600,
-              backgroundColor: '#FFFFFF',
-            }}
-            data={dummyUserData}
-            //   selectionMode="single"
-            //   onSelectionChange={(e: any) => {
-            //     setSelectedMooring(e.value)
-            //   }}
-            //   selection={selectedMooring}
-            rowStyle={(rowData: any) => rowData}
-            dataKey="id"
-            columns={userColumns}
-            actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
-            //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
-            //   emptyMessage={
-            //     <div className="text-center mt-14">
-            //       <img
-            //         src="/assets/images/empty.png"
-            //         alt="Empty Data"
-            //         className="w-20 mx-auto mb-4"
-            //       />
-            //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
-            //     </div>
-            //   }
-          />
-        </div>
-      </div> */}
       <div className="flex-grow overflow-hidden ml-[3rem] mr-[2.30rem]  border border-solid border-[#D5E1EA] bg-white rounded-lg">
         <div className="flex flex-col h-[570px]">
           <div className="flex-grow overflow-auto">
