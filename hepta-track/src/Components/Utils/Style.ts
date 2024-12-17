@@ -18,3 +18,11 @@ export const DialogStyle = {
   borderRadius: '1rem',
   maxHeight: '60% !important',
 }
+
+export const columnStyle = {
+  backgroundColor: '#082825',
+  fontSize: '12px',
+  fontWeight: '700',
+  color: '#FFFFFF',
+  padding: '14px',
+}

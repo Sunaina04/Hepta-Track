@@ -3,15 +3,10 @@ import { useMemo } from 'react'
 import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import { columnStyle } from '../Utils/Style'
+import { tractorKitData } from '../Utils/DummyData'
 
 const SmartTractorKit = () => {
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
 
   const tractorKitColumns = useMemo(
     () => [
@@ -78,44 +73,6 @@ const SmartTractorKit = () => {
     },
   }
 
-  const tractorKitData = [
-    {
-      deviceId: 'TK001',
-      regNumber: 'REG12345',
-      date: '2024-12-01',
-      activationCode: 'ACT-001',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      deviceId: 'TK002',
-      regNumber: 'REG12346',
-      date: '2024-11-28',
-      activationCode: 'ACT-002',
-      subscriptionPlan: 'Premium',
-    },
-    {
-      deviceId: 'TK003',
-      regNumber: 'REG12347',
-      date: '2024-11-25',
-      activationCode: 'ACT-003',
-      subscriptionPlan: 'Standard',
-    },
-    {
-      deviceId: 'TK004',
-      regNumber: 'REG12348',
-      date: '2024-11-20',
-      activationCode: 'ACT-004',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      deviceId: 'TK005',
-      regNumber: 'REG12349',
-      date: '2024-11-15',
-      activationCode: 'ACT-005',
-      subscriptionPlan: 'Premium',
-    },
-  ]
-
   return (
     <>
       <Header header="SMART TRACTOR KIT" />
@@ -135,7 +92,6 @@ const SmartTractorKit = () => {
           label="Active Users"
         />
       </div>
-
       <div
         className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">

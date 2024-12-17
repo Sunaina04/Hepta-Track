@@ -3,24 +3,19 @@ import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import Header from '../Sidebar/LayoutComponents/Header'
 import CustomModal from '../CustomComponent/CustomModal'
-import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
+import { AddNewButtonStyle, columnStyle, DialogStyle } from '../Utils/Style'
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
 import AddUser from '../Add User/AddUser'
+import { dummyUserData } from '../Utils/DummyData'
+import { Paginator } from 'primereact/paginator'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const UserManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
 
   const handleButtonClick = () => {
     setModalVisible(true)
-  }
-
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#FFFFFF',
-    padding: '14px',
   }
 
   const userColumns = useMemo(
@@ -87,96 +82,11 @@ const UserManagement = () => {
       fontWeight: 700,
     },
   }
-
-  const dummyUserData = [
-    {
-      userId: 'U001',
-      userName: 'John Doe',
-      phoneNumber: '123-456-7890',
-      email: 'johndoe@example.com',
-      address: '123 Elm Street, Springfield, IL',
-      subscriptionPlan: 'Premium',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-      subscriptionPlan: 'Basic',
-    },
-  ]
   return (
     <>
       <Header header="USER MANAGEMENT" />
-
-      <div className="flex flex-wrap items-center p-4 mb-2">
         {/* Stat Cards */}
-        <div className="flex gap-6 w-1/2 md:w-1/3 lg:w-1/4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           <StatCard
             percentage="+11.01%"
             percentageColor="text-green-500"
@@ -184,8 +94,6 @@ const UserManagement = () => {
             value="$2,554.00"
             label="Total Revenue"
           />
-        </div>
-        <div className="flex gap-6 w-1/2 md:w-1/3 lg:w-1/4">
           <StatCard
             percentage="-0.03%"
             percentageColor="text-red-500"
@@ -196,56 +104,58 @@ const UserManagement = () => {
         </div>
 
         {/* Search Input */}
-        <div className="flex-grow lg:w-1/3 mt-36">
-          <InputTextWithHeader
-            placeholder="Search"
-            inputTextStyle={{
-              width: '100%',
-              height: '44px',
-              padding: '0 4rem 0 3rem',
-              border: '1px solid #C5D9E0',
-              fontSize: '16px',
-              color: '#000000',
-              borderRadius: '4px',
-              minHeight: '44px',
-              fontWeight: 400,
-              backgroundColor: 'rgb(242 242 242 / 0%)',
-            }}
-            borderBottom={{ border: '1px solid #D5E1EA' }}
-            iconStyle={{
-              position: 'absolute',
-              left: '15px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '18px',
-              height: '18px',
-            }}
-          />
-        </div>
+        <div className="flex justify-end mr-12">
+          <div className="">
+            <InputTextWithHeader
+              placeholder="Search"
+              inputTextStyle={{
+                width: '100%',
+                height: '44px',
+                padding: '0 4rem 0 3rem',
+                border: '1px solid #C5D9E0',
+                fontSize: '16px',
+                color: '#000000',
+                borderRadius: '4px',
+                minHeight: '44px',
+                fontWeight: 400,
+                backgroundColor: 'rgb(242 242 242 / 0%)',
+              }}
+              borderBottom={{ border: '1px solid #D5E1EA' }}
+              iconStyle={{
+                position: 'absolute',
+                left: '15px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '18px',
+                height: '18px',
+              }}
+            />
+          </div>
 
-        {/* Add New Button */}
-        <div className="flex justify-end lg:w-auto mt-44">
-          <CustomModal
-            buttonText={'ADD New'}
-            buttonStyle={AddNewButtonStyle}
-            onHide={() => {
-              setModalVisible(false)
-            }}
-            visible={modalVisible}
-            onClick={handleButtonClick}
-            icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-            children={<AddUser />}
-            dialogStyle={{
-              height: '580px',
-              minHeight: '580px',
-              overflowY: 'auto',
-              ...DialogStyle,
-            }}
-          />
+          {/* Add New Button */}
+          <div className="mt-4">
+            <CustomModal
+              buttonText={'ADD New'}
+              buttonStyle={AddNewButtonStyle}
+              onHide={() => {
+                setModalVisible(false)
+              }}
+              visible={modalVisible}
+              onClick={handleButtonClick}
+              icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
+              children={<AddUser />}
+              dialogStyle={{
+                height: '580px',
+                minHeight: '580px',
+                overflowY: 'auto',
+                ...DialogStyle,
+              }}
+            />
+          </div>
         </div>
-      </div>
+      
 
-      <div
+      {/* <div
         className={`bg-#00426F overflow-x-hidden mt-[4px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA] ">
           <DataTableComponent
@@ -278,6 +188,63 @@ const UserManagement = () => {
             //     </div>
             //   }
           />
+        </div>
+      </div> */}
+      <div className="flex-grow overflow-hidden ml-[3rem] mr-[2.30rem] mt-3 border border-solid border-[#D5E1EA] bg-white rounded-lg">
+        <div className="flex flex-col h-[570px]">
+          <div className="flex-grow overflow-auto">
+            <DataTableComponent
+              tableStyle={{
+                fontSize: '12px',
+                color: '#000000',
+                fontWeight: 600,
+                backgroundColor: '#FFFFFF',
+                cursor: 'pointer',
+              }}
+              data={dummyUserData}
+              columns={userColumns}
+              actionButtons={ActionButtonColumn}
+              style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #D5E1EA', padding:'10px' }}
+              emptyMessage={
+                <div className="text-center mt-40">
+                  <img
+                    src="/assets/images/empty.png"
+                    alt="Empty Data"
+                    className="w-28 mx-auto mb-4"
+                  />
+                  {/* <p className="text-gray-500 font-[600] text-lg">{properties.noDataMessage}</p> */}
+                  <div data-testid="progress">
+                    <ProgressSpinner
+                      style={{
+                        position: 'absolute',
+                        top: '70%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '50px',
+                        height: '50px',
+                      }}
+                      strokeWidth="4"
+                    />
+                  </div>
+                </div>
+              }
+            />
+          </div>
+
+          <div data-testid="PaginatorOne" className="mt-4">
+            <Paginator
+              // first={pageNumber1}
+              // rows={pageSize}
+              // totalRecords={totalRecords}
+              // rowsPerPageOptions={[5, 10, 20, 30]}
+              // onPageChange={onPageChange}
+              style={{
+                backgroundColor: 'white',
+                borderTop: '1px solid #D5E1EA',
+                padding: '0.5rem',
+              }}
+            />
+          </div>
         </div>
       </div>
     </>

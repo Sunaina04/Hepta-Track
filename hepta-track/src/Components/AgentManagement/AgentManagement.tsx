@@ -1,20 +1,13 @@
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import CustomModal from '../CustomComponent/CustomModal'
-import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
+import { AddNewButtonStyle, columnStyle, DialogStyle } from '../Utils/Style'
 import { useMemo } from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import { dummyAgentData } from '../Utils/DummyData'
 
 const AgentManagement = () => {
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
-
   const agentColumns = useMemo(
     () => [
       {
@@ -43,7 +36,6 @@ const AgentManagement = () => {
         style: columnStyle,
       },
     ],
-    // [allowExpansion],
     [],
   )
 
@@ -74,65 +66,6 @@ const AgentManagement = () => {
       fontWeight: 700,
     },
   }
-
-  const dummyUserData = [
-    {
-      userId: 'U001',
-      userName: 'John Doe',
-      phoneNumber: '123-456-7890',
-      email: 'johndoe@example.com',
-      address: '123 Elm Street, Springfield, IL',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-    {
-      userId: 'U002',
-      userName: 'Jane Smith',
-      phoneNumber: '987-654-3210',
-      email: 'janesmith@example.com',
-      address: '456 Oak Avenue, Boulder, CO',
-    },
-  ]
   return (
     <>
       <Header header="AGENT MANAGEMENT" />
@@ -181,7 +114,7 @@ const AgentManagement = () => {
               // border:' 1px solid #D5E1EA',
               // borderBottomLeftRadius:'10px'
             }}
-            data={dummyUserData}
+            data={dummyAgentData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)

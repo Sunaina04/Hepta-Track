@@ -3,17 +3,10 @@ import { useMemo } from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import { columnStyle } from '../Utils/Style'
 
 const VehicleManagement = () => {
-
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
-
+  
   const vehicleColumns = useMemo(
     () => [
       {
@@ -68,7 +61,7 @@ const VehicleManagement = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -130,7 +123,7 @@ const VehicleManagement = () => {
       totalArea: 5.0,
       stoppedTime: '30m',
     },
-  ];
+  ]
 
   return (
     <>
@@ -150,6 +143,7 @@ const VehicleManagement = () => {
           value="3,454"
           label="Active Users"
         />
+      </div>
 
       <div
         className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
@@ -171,7 +165,7 @@ const VehicleManagement = () => {
             dataKey="id"
             columns={vehicleColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -185,7 +179,6 @@ const VehicleManagement = () => {
             //   }
           />
         </div>
-      </div>
       </div>
     </>
   )

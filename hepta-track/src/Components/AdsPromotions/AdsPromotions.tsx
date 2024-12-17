@@ -2,16 +2,10 @@ import { useMemo } from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import Header from '../Sidebar/LayoutComponents/Header'
+import { columnStyle } from '../Utils/Style'
+import { promotionData } from '../Utils/DummyData'
 
 const AdsPromotions = () => {
-
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
 
   const promotionColumns = useMemo(
     () => [
@@ -77,49 +71,6 @@ const AdsPromotions = () => {
       fontWeight: 700,
     },
   }
-
-  const promotionData = [
-  {
-    's.No': 1,
-    image: 'https://via.placeholder.com/100',
-    detail: '50% off on all items during Black Friday sale.',
-    createdDate: '2024-12-01',
-    expDate: '2024-12-31',
-    status: 'Active',
-  },
-  {
-    's.No': 2,
-    image: 'https://via.placeholder.com/100',
-    detail: 'Buy one, get one free on selected items.',
-    createdDate: '2024-11-20',
-    expDate: '2024-12-15',
-    status: 'Expired',
-  },
-  {
-    's.No': 3,
-    image: 'https://via.placeholder.com/100',
-    detail: 'Free shipping on orders above $50.',
-    createdDate: '2024-11-10',
-    expDate: '2024-12-01',
-    status: 'Expired',
-  },
-  {
-    's.No': 4,
-    image: 'https://via.placeholder.com/100',
-    detail: 'Holiday special discount: 20% off on electronics.',
-    createdDate: '2024-12-10',
-    expDate: '2025-01-10',
-    status: 'Active',
-  },
-  {
-    's.No': 5,
-    image: 'https://via.placeholder.com/100',
-    detail: 'End of season sale: Flat 30% off.',
-    createdDate: '2024-12-05',
-    expDate: '2024-12-20',
-    status: 'Inactive',
-  },
-];
 
   return (
     <>

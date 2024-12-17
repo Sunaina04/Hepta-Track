@@ -3,16 +3,10 @@ import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import StatCard from '../CommonComponent/StatCard/StatCard'
+import { columnStyle } from '../Utils/Style'
+import { expenseData } from '../Utils/DummyData'
 
 const ExpenseManagement = () => {
-
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
 
   const expenseColumns = useMemo(
     () => [
@@ -71,48 +65,7 @@ const ExpenseManagement = () => {
     },
   }
 
-  const expenseData = [
-    {
-      userId: '1',
-      regNumber: 'EXP123',
-      date: '2024-12-01',
-      detail: 'Purchase of raw materials',
-      spend: 5000,
-      profit: 1500,
-    },
-    {
-      userId: '2',
-      regNumber: 'EXP124',
-      date: '2024-11-28',
-      detail: 'Office supplies',
-      spend: 300,
-      profit: 100,
-    },
-    {
-      userId: '3',
-      regNumber: 'EXP125',
-      date: '2024-11-25',
-      detail: 'Employee salaries',
-      spend: 20000,
-      profit: -5000,
-    },
-    {
-      userId: '4',
-      regNumber: 'EXP126',
-      date: '2024-11-20',
-      detail: 'Utility bills',
-      spend: 800,
-      profit: 200,
-    },
-    {
-      userId: '5',
-      regNumber: 'EXP127',
-      date: '2024-11-15',
-      detail: 'Marketing campaigns',
-      spend: 1200,
-      profit: 400,
-    },
-  ];
+ 
 
   return (
     <>
