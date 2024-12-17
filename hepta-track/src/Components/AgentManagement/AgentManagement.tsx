@@ -1,12 +1,16 @@
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import CustomModal from '../CustomComponent/CustomModal'
 import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
-import { useMemo } from 'react'
+import { useMemo, useState} from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import AddAgent from '../Add Agent /AddAgent'
 
 const AgentManagement = () => {
+
+  const [modalVisible, setModalVisible] = useState(false)
+
   const columnStyle = {
     backgroundColor: '#082825',
     fontSize: '12px',
@@ -14,6 +18,10 @@ const AgentManagement = () => {
     color: '#FFFFFF',
     padding: '15px',
   }
+
+ const handleButtonClick = () => {
+  setModalVisible(true)
+ }
 
   const agentColumns = useMemo(
     () => [
@@ -156,8 +164,11 @@ const AgentManagement = () => {
         <div className="flex mt-6 ">
           <CustomModal
             buttonText={'ADD NEW'}
+            visible= {modalVisible}
             buttonStyle={AddNewButtonStyle}
-            onHide={() => {}}
+            onHide={() => setModalVisible(false)}
+            onClick={handleButtonClick}
+            children= {<AddAgent/>}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-4" />}
             dialogStyle={{
               height: '580px',

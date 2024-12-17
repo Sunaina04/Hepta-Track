@@ -7,9 +7,9 @@ import { FaFileUpload, FaLessThanEqual } from 'react-icons/fa'
 import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
 
-import './AddUser.css'
 
-const AddUser = () => {
+
+const AddAgent = () => {
   const [visible, setVisible] = useState(true)
   const [userName, setUserName] = useState('')
   const [phone, setPhone] = useState('')
@@ -39,7 +39,7 @@ const AddUser = () => {
         modal= {false}
         visible={visible}
         style={{
-          width: '90vh',
+          width: '85vh',
           backgroundColor: 'white',
           minWidth: '200px',
           height: '700px',
@@ -54,21 +54,21 @@ const AddUser = () => {
           setVisible(false)
         }}>
 
-        <h1 className="font-bold text-2xl">Edit/Add User</h1>
+        <h1 className="font-bold text-2xl">Edit/Add Agent</h1>
 
         <div className="flex mt-4">
   {/* User Name */}
   <div>
           <div>
-            <span className="text-sm">
+            <span className="font-medium text-sm text-[#000000]">
               <div className="flex gap-1">
                 User Name
               </div>
             </span>
-            <div className="mt-2"></div>
+            <div className="mt-1"></div>
     <InputText
       style={{
-        width: '270px',
+        width: '230px',
         height: '32px',
         border: '1px solid #D5E1EA',
         borderRadius: '0.50rem',
@@ -81,11 +81,11 @@ const AddUser = () => {
   </div>
 
  {/* Phone Number */}
-<div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-  <label className="text-sm  mb-1">Phone</label>
+<div className="flex flex-col items-start mt-1" style={{ marginLeft: '55px' }}>
+  <label className="text-sm font-medium text-[#000000] mb-1">Phone</label>
   <InputText
     style={{
-      width: '270px',
+      width: '230px',
       height: '32px',
       border: '1px solid #D5E1EA',
       borderRadius: '0.50rem',
@@ -100,11 +100,11 @@ const AddUser = () => {
 
   {/* Email */}
  
-<div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-  <label className="text-sm mb-1">Email Address</label>
+<div className="flex flex-col items-start mt-1" style={{ marginLeft: '55px' }}>
+  <label className="text-sm font-medium text-[#000000] mb-1">Email Address</label>
   <InputText
     style={{
-      width: '270px',
+      width: '230px',
       height: '32px',
       border: '1px solid #D5E1EA',
       borderRadius: '0.50rem',
@@ -120,11 +120,11 @@ const AddUser = () => {
       
 
   {/* Adress */}
-  <div className="flex gap-6 mt-6">
+  <div className="flex gap-6 mt-4">
           <div>
            
-              <div className="text-sm">
-               Address
+              <div className="">
+               Adresss
               </div>
             <div className="mt-1"></div>
           {/*Street*/}
@@ -134,7 +134,7 @@ const AddUser = () => {
             //value={phone}
             //onChange={(e) => setPhone(e.target.value)}
             style={{
-              width: '200px',
+              width: '190px',
               height: '32px',
               border: '1px solid #D5E1EA',
               borderRadius: '0.50rem',
@@ -149,7 +149,7 @@ const AddUser = () => {
             //value={phone}
             //onChange={(e) => setPhone(e.target.value)}
             style={{
-              width: '200px',
+              width: '190px',
               height: '32px',
               border: '1px solid #D5E1EA',
               borderRadius: '0.50rem',
@@ -166,7 +166,7 @@ const AddUser = () => {
             placeholder="Country"
             editable
             style={{
-              width: '200px',
+              width: '190px',
               height: '32px',
               border: '1px solid #D5E1EA',
               borderRadius: '0.50rem',
@@ -184,25 +184,25 @@ const AddUser = () => {
             placeholder="State"
             editable
             style={{
-              width: '200px',
+              width: '190px',
               height: '32px',
               border: '1px solid #D5E1EA',
               borderRadius: '0.50rem',
               fontSize: '0.8rem',
               paddingLeft: '0.5rem',
-              marginLeft: "19px"
+              marginLeft: "15px"
             }}
           />
 
 
           {/*ZipCode*/}
-        <div className='mt-3'>
+        <div className='mt-2'>
           <InputText
             placeholder='Zip Code'
             //value={phone}
             //onChange={(e) => setPhone(e.target.value)}
             style={{
-              width: '200px',
+              width: '190px',
               height: '32px',
               border: '1px solid #D5E1EA',
               borderRadius: '0.50rem',
@@ -215,7 +215,7 @@ const AddUser = () => {
 </div>
        
 
-<div className="flex gap-8 mt-5">
+<div className="flex gap-8 mt-4">
   {/* Role */}
   <div>
     <h1 className="font-medium text-sm text-[#000000] mb-2">Role</h1>
@@ -223,7 +223,7 @@ const AddUser = () => {
       placeholder="Select Role"
       editable
       style={{
-        width: '270px',
+        width: '230px',
         height: '32px',
         border: '1px solid #D5E1EA',
         borderRadius: '0.50rem',
@@ -235,13 +235,13 @@ const AddUser = () => {
 
   {/* Account Status */}
   
-<div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-  <label className="text-sm  mb-1">Account Status</label>
+<div className="flex flex-col items-start mt-1" style={{ marginLeft: '25px' }}>
+  <label className="text-sm font-medium text-[#000000] mb-1">Account Status</label>
   <Dropdown
       placeholder="Select Status"
       editable
       style={{
-        width: '270px',
+        width: '230px',
         height: '32px',
         border: '1px solid #D5E1EA',
         borderRadius: '0.50rem',
@@ -254,11 +254,11 @@ const AddUser = () => {
  
  
  {/* Phone Number */}
-<div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-  <label className="text-sm  mb-1">Phone</label>
+<div className="flex flex-col items-start mt-1" style={{ marginLeft: '25px' }}>
+  <label className="text-sm font-medium text-[#000000] mb-1">Phone</label>
   <InputText
     style={{
-      width: '265px',
+      width: '230px',
       height: '32px',
       border: '1px solid #D5E1EA',
       borderRadius: '0.50rem',
@@ -266,36 +266,40 @@ const AddUser = () => {
       paddingLeft: '0.5rem',
     }}
   />
-</div> 
+</div>
+ 
+  
+ 
 </div>
 
 
         {/* Set Password */}
-        <div className="  mt-6  ">
+        <div className="mt-4 ">
             {/* Container for inputs and button */}
 
             <div
               className="  flex  p-2 border rounded-lg"
               style={{
                 backgroundColor: '#DCEEFB',
-                width: '880px',
+                width: '805px',
                 height: '120px',
               }}>
               {/* New password */}
               <div className="mb-4">
-              <div className='text-sm  mb-1'>Set password</div>
+              <h3>Set Password</h3>
                 <InputText
                   className='mt-2'
                   //value={phone}
                   placeholder="New Password"
                   //onChange={(e) => setPhone(e.target.value)}
                   style={{
-                    width: '270px',
+                    width: '230px',
                     height: '32px',
                     border: '1px solid #D5E1EA',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
+                    marginRight: '20px',
                   }}
                 />
               </div>
@@ -307,14 +311,14 @@ const AddUser = () => {
                   placeholder="Confirm New Password"
                   //onChange={(e) => setPhone(e.target.value)}
                   style={{
-                    width: '270px',
+                    width: '230px',
                     height: '32px',
                     border: '1px solid #D5E1EA',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
                     marginLeft: "20px",
-                    marginTop: "32px"
+                    marginTop: "30px"
                   }}
                 />
              </div>
@@ -328,10 +332,10 @@ const AddUser = () => {
                 borderRadius: '0.50rem',
                 color: 'white',
                 border: 'none',
-                width: '270px',
+                width: '230px',
                 height: '32px',
-                marginLeft: "20px",
-                marginTop: '32px'
+                marginLeft: "55px",
+                marginTop: '30px'
                 
               }}
             />
@@ -377,7 +381,7 @@ const AddUser = () => {
         {/*Delete user button */}
 
         <Button
-          label="Delete User"
+          label="Delete Agent"
           style={{
             width: '100px',
             height: '42px',
@@ -397,4 +401,4 @@ const AddUser = () => {
   )
 }
 
-export default AddUser
+export default AddAgent;
