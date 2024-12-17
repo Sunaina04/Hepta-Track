@@ -86,77 +86,71 @@ const UserManagement = () => {
     <>
       <Header header="USER MANAGEMENT" />
       {/* Stat Cards */}
-      <div className="flex mt-10 ml-4">
-        <div className="flex">
-          <div className="w-[270px] h-[140px]">
-            <StatCard
-              percentage="+11.01%"
-              percentageColor="text-green-500"
-              icon="pi-arrow-up"
-              value="$2,554.00"
-              label="Total Revenue"
-            />
-          </div>
-          <div className="w-[270px] h-[150px]">
-            <StatCard
-              percentage="-0.03%"
-              percentageColor="text-red-500"
-              icon="pi-arrow-down"
-              value="3,454"
-              label="Active Users"
-            />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <StatCard
+          percentage="+11.01%"
+          percentageColor="text-green-500"
+          icon="pi-arrow-up"
+          value="$2,554.00"
+          label="Total Revenue"
+        />
+        <StatCard
+          percentage="-0.03%"
+          percentageColor="text-red-500"
+          icon="pi-arrow-down"
+          value="3,454"
+          label="Active Users"
+        />
+      </div>
+
+      {/* Search Input */}
+      <div className="flex justify-end mr-12">
+        <div className="">
+          <InputTextWithHeader
+            placeholder="Search"
+            inputTextStyle={{
+              width: '100%',
+              height: '44px',
+              padding: '0 4rem 0 3rem',
+              border: '1px solid #C5D9E0',
+              fontSize: '16px',
+              color: '#000000',
+              borderRadius: '4px',
+              minHeight: '44px',
+              fontWeight: 400,
+              backgroundColor: 'rgb(242 242 242 / 0%)',
+            }}
+            borderBottom={{ border: '1px solid #D5E1EA' }}
+            iconStyle={{
+              position: 'absolute',
+              left: '15px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '18px',
+              height: '18px',
+            }}
+          />
         </div>
 
-        {/* Search Input */}
-        <div className="flex mt-14 ml-4">
-          <div className="">
-            <InputTextWithHeader
-              placeholder="Search"
-              inputTextStyle={{
-                width: '100%',
-                height: '44px',
-                padding: '0 4rem 0 3rem',
-                border: '1px solid #C5D9E0',
-                fontSize: '16px',
-                color: '#000000',
-                borderRadius: '4px',
-                minHeight: '44px',
-                fontWeight: 400,
-                backgroundColor: 'rgb(242 242 242 / 0%)',
-              }}
-              borderBottom={{ border: '1px solid #D5E1EA' }}
-              iconStyle={{
-                position: 'absolute',
-                left: '15px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '18px',
-                height: '18px',
-              }}
-            />
-          </div>
-
-          {/* Add New Button */}
-          <div className="mt-4">
-            <CustomModal
-              buttonText={'ADD New'}
-              buttonStyle={AddNewButtonStyle}
-              onHide={() => {
-                setModalVisible(false)
-              }}
-              visible={modalVisible}
-              onClick={handleButtonClick}
-              icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-              children={<AddUser />}
-              dialogStyle={{
-                height: '580px',
-                minHeight: '580px',
-                overflowY: 'auto',
-                ...DialogStyle,
-              }}
-            />
-          </div>
+        {/* Add New Button */}
+        <div className="mt-4">
+          <CustomModal
+            buttonText={'ADD New'}
+            buttonStyle={AddNewButtonStyle}
+            onHide={() => {
+              setModalVisible(false)
+            }}
+            visible={modalVisible}
+            onClick={handleButtonClick}
+            icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
+            children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
+            dialogStyle={{
+              height: '580px',
+              minHeight: '580px',
+              overflowY: 'auto',
+              ...DialogStyle,
+            }}
+          />
         </div>
       </div>
 
@@ -200,20 +194,16 @@ const UserManagement = () => {
           <div className="flex-grow overflow-auto">
             <DataTableComponent
               tableStyle={{
-                fontSize: '12px',
+                fontSize: '14px',
                 color: '#000000',
-                fontWeight: 600,
+                fontWeight: 500,
                 backgroundColor: '#FFFFFF',
                 cursor: 'pointer',
               }}
               data={dummyUserData}
               columns={userColumns}
               actionButtons={ActionButtonColumn}
-              style={{
-                backgroundColor: '#FFFFFF',
-                borderBottom: '1px solid #D5E1EA',
-                padding: '10px',
-              }}
+              style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
               emptyMessage={
                 <div className="text-center mt-40">
                   <img

@@ -18,7 +18,7 @@ const DataTableButton: React.FC<ButtonProps> = ({
   }
 
   if (filled) {
-    klassName += `${bgColor[color]}`
+    klassName += ``
   }
 
   return (

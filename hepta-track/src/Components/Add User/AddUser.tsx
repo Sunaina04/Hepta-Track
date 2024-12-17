@@ -8,22 +8,21 @@ import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
 
 import './AddUser.css'
+import { AddUserProps } from '../../Type/ComponentBasedTypes'
 
-const AddUser = () => {
-  const [visible, setVisible] = useState(false)
+const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
   const [userName, setUserName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
 
   return (
     <>
-      <Button label="Show" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-      <div className="card flex justify-content-center">
+      <div className=" blurred p-6 bg-gray-100">
         <Dialog
           visible={visible}
           style={{
             width: '110vh',
-            backgroundColor: '#FFFFFF',
+            backgroundColor: 'white',
             minWidth: '700px',
             height: '700px',
             minHeight: '260px',
@@ -32,17 +31,35 @@ const AddUser = () => {
             cursor: 'alias',
           }}
           onHide={() => {
-            if (!visible) return
             setVisible(false)
           }}>
-          <h1 className="font-bold text-2xl ">Edit/Add User</h1>
-          <div>
-            {/*User Name*/}
-            <div className="mt-4">User Name</div>
-            <div className="mt-3 card flex justify-content-center border">
+          <h1 className="font-bold text-2xl">Edit/Add User</h1>
+
+          <div className="flex mt-4">
+            {/* User Name */}
+            <div>
+              <div>
+                <span className="font-medium text-sm text-[#000000]">
+                  <div className="flex gap-1">User Name</div>
+                </span>
+                <div className="mt-1"></div>
+                <InputText
+                  style={{
+                    width: '230px',
+                    height: '32px',
+                    border: '1px solid #D5E1EA',
+                    borderRadius: '0.50rem',
+                    fontSize: '0.8rem',
+                    paddingLeft: '0.5rem',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Phone Number */}
+            <div className="flex flex-col items-start mt-1" style={{ marginLeft: '55px' }}>
+              <label className="text-sm font-medium text-[#000000] mb-1">Phone</label>
               <InputText
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
                 style={{
                   width: '230px',
                   height: '32px',
@@ -54,30 +71,11 @@ const AddUser = () => {
               />
             </div>
 
-            {/*Phone Number*/}
-            <div className=" ml-[260px] mt-[-34px] card flex justify-content-center border">
-              <h1 className="mt-[-36px] mr-[-50px]">Phone</h1>
-              <InputText
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                style={{
-                  width: '230px',
-                  height: '32px',
-                  border: '1px solid #D5E1EA',
-                  borderRadius: '0.50rem',
-                  fontSize: '0.8rem',
-                  paddingLeft: '0.5rem',
-                }}
-              />
-            </div>
+            {/* Email */}
 
-            {/*Email*/}
-
-            <div className=" ml-[530px] mt-[-34px] card flex justify-content-center border">
-              <h1 className="mt-[-36px] mr-[-50px]">Email</h1>
+            <div className="flex flex-col items-start mt-1" style={{ marginLeft: '55px' }}>
+              <label className="text-sm font-medium text-[#000000] mb-1">Email</label>
               <InputText
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
                 style={{
                   width: '230px',
                   height: '32px',
@@ -89,93 +87,84 @@ const AddUser = () => {
               />
             </div>
           </div>
-          <div>
-            <h1 className="mt-4">Adress</h1>
+
+          {/* Adress */}
+          <div className="flex gap-6 mt-4">
             <div>
+              <div className="">Adresss</div>
+              <div className="mt-1"></div>
               {/*Street*/}
 
-              <div className="mt-3 card flex justify-content-center border">
-                <InputText
-                  value={userName}
-                  placeholder="Street/Building"
-                  onChange={(e) => setUserName(e.target.value)}
-                  style={{
-                    width: '230px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                  }}
-                />
-              </div>
+              <InputText
+                placeholder="Street/Building"
+                //value={phone}
+                //onChange={(e) => setPhone(e.target.value)}
+                style={{
+                  width: '190px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                }}
+              />
 
               {/*Apt/suite*/}
-              <div className=" ml-[260px] mt-[-34px] flex justify-content-center border">
-                <InputText
-                  value={userName}
-                  placeholder="Apt/Suite"
-                  onChange={(e) => setUserName(e.target.value)}
-                  style={{
-                    width: '230px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                  }}
-                />
-              </div>
+              <InputText
+                placeholder="Apt/Suite"
+                //value={phone}
+                //onChange={(e) => setPhone(e.target.value)}
+                style={{
+                  width: '190px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                  marginLeft: '15px',
+                }}
+              />
 
-              <div>
-                {/*country*/}
+              {/*country*/}
 
-                <div>
-                  <div className="ml-[520px] mt-[-34px]">
-                    <Dropdown
-                      placeholder="Country"
-                      editable
-                      style={{
-                        width: '230px',
-                        height: '32px',
-                        border: '1px solid #D5E1EA',
-                        borderRadius: '0.50rem',
-                        fontSize: '0.8rem',
-                        paddingLeft: '0.5rem',
-                      }}
-                    />
-                  </div>
-                </div>
+              <Dropdown
+                placeholder="Country"
+                editable
+                style={{
+                  width: '190px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                  marginLeft: '15px',
+                }}
+              />
 
-                {/*State*/}
+              {/*State*/}
 
-                <div>
-                  <div className="mt-[-32px] ml-[790px]">
-                    <Dropdown
-                      placeholder="State"
-                      editable
-                      style={{
-                        width: '230px',
-                        height: '32px',
-                        border: '1px solid #D5E1EA',
-                        borderRadius: '0.50rem',
-                        fontSize: '0.8rem',
-                        paddingLeft: '0.5rem',
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+              <Dropdown
+                placeholder="State"
+                editable
+                style={{
+                  width: '190px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                  marginLeft: '15px',
+                }}
+              />
 
               {/*ZipCode*/}
-
-              <div className=" mt-4 card flex justify-content-center border">
+              <div className="mt-2">
                 <InputText
-                  value={phone}
                   placeholder="Zip Code"
-                  onChange={(e) => setPhone(e.target.value)}
+                  //value={phone}
+                  //onChange={(e) => setPhone(e.target.value)}
                   style={{
-                    width: '230px',
+                    width: '190px',
                     height: '32px',
                     border: '1px solid #D5E1EA',
                     borderRadius: '0.50rem',
@@ -187,61 +176,56 @@ const AddUser = () => {
             </div>
           </div>
 
-          {/*Role*/}
-
-          <div>
-            <h1 className="mt-6">Role</h1>
+          <div className="flex gap-8 mt-4">
+            {/* Role */}
             <div>
-              <div className="mt-3">
-                <Dropdown
-                  placeholder="Select Role"
-                  editable
-                  style={{
-                    width: '230px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                  }}
-                />
-              </div>
+              <h1 className="font-medium text-sm text-[#000000] mb-2">Role</h1>
+              <Dropdown
+                placeholder="Select Role"
+                editable
+                style={{
+                  width: '230px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                }}
+              />
             </div>
-          </div>
 
-          {/*Account Status*/}
-          <h1 className="ml-[260px] mt-[-66px]">Account Status</h1>
-          <div className="ml-[260px] mt-3">
-            <Dropdown
-              placeholder="Active"
-              editable
-              style={{
-                width: '230px',
-                height: '32px',
-                border: '1px solid #D5E1EA',
-                borderRadius: '0.50rem',
-                fontSize: '0.8rem',
-                paddingLeft: '0.5rem',
-              }}
-            />
-          </div>
+            {/* Account Status */}
 
-          {/*phone*/}
+            <div className="flex flex-col items-start mt-1" style={{ marginLeft: '25px' }}>
+              <label className="text-sm font-medium text-[#000000] mb-1">Account Status</label>
+              <Dropdown
+                placeholder="Select Status"
+                editable
+                style={{
+                  width: '230px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                }}
+              />
+            </div>
 
-          <div className="ml-[530px] mt-[-64px]">Phone</div>
-          <div className=" ml-[530px] mt-2 flex justify-content-center border">
-            <InputText
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              style={{
-                width: '230px',
-                height: '32px',
-                border: '1px solid #D5E1EA',
-                borderRadius: '0.50rem',
-                fontSize: '0.8rem',
-                paddingLeft: '0.5rem',
-              }}
-            />
+            {/* Phone Number */}
+            <div className="flex flex-col items-start mt-1" style={{ marginLeft: '25px' }}>
+              <label className="text-sm font-medium text-[#000000] mb-1">Phone</label>
+              <InputText
+                style={{
+                  width: '230px',
+                  height: '32px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  fontSize: '0.8rem',
+                  paddingLeft: '0.5rem',
+                }}
+              />
+            </div>
           </div>
 
           {/* Set Password */}
@@ -249,21 +233,20 @@ const AddUser = () => {
             {/* Container for inputs and button */}
 
             <div
-              className="  flex flex-auto p-6 border rounded-lg gap-20"
+              className="  flex  p-2 border rounded-lg"
               style={{
                 backgroundColor: '#DCEEFB',
-                width: '1090px',
-                margin: '0 auto',
+                width: '805px',
                 height: '120px',
-                marginLeft: '-1px',
               }}>
-              <h3 className="-mt-3 -ml-4">Set Password</h3>
               {/* New password */}
-              <div className=" -ml-[180px] mt-6 card flex justify-content-center">
+              <div className="mb-4">
+                <h3>Set Password</h3>
                 <InputText
-                  value={phone}
+                  className="mt-2"
+                  //value={phone}
                   placeholder="New Password"
-                  onChange={(e) => setPhone(e.target.value)}
+                  //onChange={(e) => setPhone(e.target.value)}
                   style={{
                     width: '230px',
                     height: '32px',
@@ -271,16 +254,17 @@ const AddUser = () => {
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
+                    marginRight: '20px',
                   }}
                 />
               </div>
 
               {/* Confirm New Password */}
-              <div className=" ml-[-52px] mt-6 card flex justify-content-center">
+              <div>
                 <InputText
-                  value={phone}
+                  //value={phone}
                   placeholder="Confirm Password"
-                  onChange={(e) => setPhone(e.target.value)}
+                  //onChange={(e) => setPhone(e.target.value)}
                   style={{
                     width: '230px',
                     height: '32px',
@@ -288,28 +272,32 @@ const AddUser = () => {
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
+                    marginLeft: '20px',
+                    marginTop: '30px',
                   }}
                 />
               </div>
 
-              {/* Save Password */}
-              <Button
-                label="Save Password"
-                style={{
-                  backgroundColor: 'black',
-                  color: 'white',
-                  border: 'none',
-                  width: '200px',
-                  height: '32px',
-                  marginLeft: '-39px',
-                  marginTop: '24px',
-                }}
-              />
+              <div>
+                {/* Save Password */}
+                <Button
+                  label="Save Password"
+                  style={{
+                    backgroundColor: 'black',
+                    borderRadius: '0.50rem',
+                    color: 'white',
+                    border: 'none',
+                    width: '230px',
+                    height: '32px',
+                    marginLeft: '55px',
+                    marginTop: '30px',
+                  }}
+                />
+              </div>
             </div>
           </div>
 
           {/*Save button*/}
-
           <Button
             label="Save"
             style={{
@@ -324,9 +312,7 @@ const AddUser = () => {
           />
 
           {/*Back button*/}
-
           <Button
-            onClick={() => setVisible(false)}
             label="Back"
             style={{
               width: '89px',
@@ -337,13 +323,14 @@ const AddUser = () => {
               borderRadius: '0.50rem',
               marginTop: '10px',
               marginLeft: '30px',
-              borderBlock: '5px',
-              borderColor: 'black',
+              border: '1px solid black',
+            }}
+            onClick={() => {
+              setVisible(false)
             }}
           />
 
           {/*Delete user button */}
-
           <Button
             label="Delete User"
             style={{
@@ -353,8 +340,7 @@ const AddUser = () => {
               boxShadow: 'none',
               color: 'white',
               borderRadius: '0.50rem',
-              marginTop: '10px',
-              marginLeft: '700px',
+              marginLeft: '500px',
             }}
           />
         </Dialog>

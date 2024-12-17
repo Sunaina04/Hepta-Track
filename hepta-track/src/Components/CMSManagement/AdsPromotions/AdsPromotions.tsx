@@ -1,19 +1,19 @@
 import { useMemo, useState } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import Header from '../Sidebar/LayoutComponents/Header'
-import { AddNewButtonStyle, columnStyle, DialogStyle } from '../Utils/Style'
-import { promotionData } from '../Utils/DummyData'
-import CustomModal from '../CustomComponent/CustomModal'
-import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
+import { AddNewButtonStyle, columnStyle, DialogStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { promotionData } from '../../Utils/DummyData'
+import InputTextWithHeader from '../../CommonComponent/InputTextWithHeader'
+import CustomModal from '../../CustomComponent/CustomModal'
 
 const AdsPromotions = () => {
-  const [modalVisible, setModalVisible] = useState(false)
 
-  const handleButtonClick = () => {
-    setModalVisible(true)
-  }
-
+   const [modalVisible, setModalVisible] = useState(false)
+  
+    const handleButtonClick = () => {
+      setModalVisible(true)
+    }
   const promotionColumns = useMemo(
     () => [
       {

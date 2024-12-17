@@ -1,20 +1,18 @@
 import { useMemo, useState } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import Header from '../Sidebar/LayoutComponents/Header'
-import { AddNewButtonStyle, columnStyle, DialogStyle } from '../Utils/Style'
-import { instructionalData } from '../Utils/DummyData'
-import CustomModal from '../CustomComponent/CustomModal'
-import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
-
-const InstructionalVideos = () => {
+import { AddNewButtonStyle, columnStyle, DialogStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { subscriptionData } from '../../Utils/DummyData'
+import InputTextWithHeader from '../../CommonComponent/InputTextWithHeader'
+import CustomModal from '../../CustomComponent/CustomModal'
+const Subscriptions = () => {
   const [modalVisible, setModalVisible] = useState(false)
-
-  const handleButtonClick = () => {
-    setModalVisible(true)
-  }
-
-  const instructionalColumns = useMemo(
+    
+      const handleButtonClick = () => {
+        setModalVisible(true)
+      }
+  const subscriptionColumns = useMemo(
     () => [
       {
         id: 's.No',
@@ -22,13 +20,13 @@ const InstructionalVideos = () => {
         style: columnStyle,
       },
       {
-        id: 'image',
-        label: 'Image',
+        id: 'subscriptionName',
+        label: 'Subscription Name',
         style: columnStyle,
       },
       {
-        id: 'name',
-        label: 'Name',
+        id: 'createdDate',
+        label: 'Created Date',
         style: columnStyle,
       },
       {
@@ -37,8 +35,8 @@ const InstructionalVideos = () => {
         style: columnStyle,
       },
       {
-        id: 'date',
-        label: 'Date',
+        id: 'amount',
+        label: 'Amount',
         style: columnStyle,
       },
       {
@@ -78,9 +76,10 @@ const InstructionalVideos = () => {
       fontWeight: 700,
     },
   }
+
   return (
     <>
-      <Header header="INSTRUCTIONAL VIDEOS" />
+      <Header header="SUBSCRIPTIONS" />
 
       <div className="flex justify-end mr-12">
         <div className="">
@@ -133,7 +132,7 @@ const InstructionalVideos = () => {
       </div>
 
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden  mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -141,10 +140,8 @@ const InstructionalVideos = () => {
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
-              border: ' 1px solid #D5E1EA',
-              borderBottomLeftRadius: '10px',
             }}
-            data={instructionalData}
+            data={subscriptionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -152,7 +149,7 @@ const InstructionalVideos = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={instructionalColumns}
+            columns={subscriptionColumns}
             actionButtons={ActionButtonColumn}
             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
@@ -173,4 +170,4 @@ const InstructionalVideos = () => {
   )
 }
 
-export default InstructionalVideos
+export default Subscriptions
