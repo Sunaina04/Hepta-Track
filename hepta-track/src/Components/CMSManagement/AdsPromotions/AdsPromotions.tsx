@@ -1,13 +1,12 @@
 import { useMemo } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import Header from '../Sidebar/LayoutComponents/Header'
-import { columnStyle } from '../Utils/Style'
-import { instructionalData } from '../Utils/DummyData'
+import { columnStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { promotionData } from '../../Utils/DummyData'
 
-const InstructionalVideos = () => {
-
-  const instructionalColumns = useMemo(
+const AdsPromotions = () => {
+  const promotionColumns = useMemo(
     () => [
       {
         id: 's.No',
@@ -20,21 +19,21 @@ const InstructionalVideos = () => {
         style: columnStyle,
       },
       {
-        id: 'name',
-        label: 'Name',
-        style: columnStyle,
-      },
-      {
         id: 'detail',
         label: 'Detail',
         style: columnStyle,
       },
       {
-        id: 'date',
-        label: 'Date',
+        id: 'createdDate',
+        label: 'Created Date',
         style: columnStyle,
       },
-       {
+      {
+        id: 'expDate',
+        label: 'Exp.Date',
+        style: columnStyle,
+      },
+      {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -56,7 +55,7 @@ const InstructionalVideos = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -71,12 +70,13 @@ const InstructionalVideos = () => {
       fontWeight: 700,
     },
   }
+
   return (
     <>
-      <Header header="INSTRUCTIONAL VIDEOS" />
+      <Header header="ADS PROMOTIONS" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -84,10 +84,8 @@ const InstructionalVideos = () => {
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
-              border:' 1px solid #D5E1EA',
-              borderBottomLeftRadius:'10px'
             }}
-            data={instructionalData}
+            data={promotionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -95,9 +93,9 @@ const InstructionalVideos = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={instructionalColumns}
+            columns={promotionColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -116,4 +114,4 @@ const InstructionalVideos = () => {
   )
 }
 
-export default InstructionalVideos
+export default AdsPromotions

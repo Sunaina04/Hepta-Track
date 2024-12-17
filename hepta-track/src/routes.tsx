@@ -8,10 +8,12 @@ import AgentManagement from './Components/AgentManagement/AgentManagement'
 import VehicleManagement from './Components/VehicleManagement/VehicleManagement'
 import ExpenseManagement from './Components/ExpenseManagement/ExpenseManagement'
 import SmartTractorKit from './Components/SmartTractorKit/SmartTractorKit'
-import Subscriptions from './Components/Subscriptions/Subscriptions'
-import AdsPromotions from './Components/AdsPromotions/AdsPromotions'
-import InstructionalVideos from './Components/InstructionalVideos/InstructionalVideos'
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
+import Subscriptions from './Components/CMSManagement/Subscriptions/Subscriptions'
+import AdsPromotions from './Components/CMSManagement/AdsPromotions/AdsPromotions'
+import InstructionalVideos from './Components/CMSManagement/InstructionalVideos/InstructionalVideos'
+import General from './Components/CMSManagement/General/General'
+import CMSManagement from './Components/CMSManagement/CMSManagement'
 
 const routes = [
   {
@@ -60,16 +62,26 @@ const routes = [
         element: <SmartTractorKit />,
       },
       {
-        path: 'subscriptions',
-        element: <Subscriptions />,
-      },
-      {
-        path: 'adsPromotions',
-        element: <AdsPromotions />,
-      },
-      {
-        path: 'instructionalVideos',
-        element: <InstructionalVideos />,
+        path: 'cmsManagement',
+        element: <CMSManagement />,
+        children: [
+          {
+            path: 'general',
+            element: <General />,
+          },
+          {
+            path: 'subscriptions',
+            element: <Subscriptions />,
+          },
+          {
+            path: 'adsPromotions',
+            element: <AdsPromotions />,
+          },
+          {
+            path: 'instructionalVideos',
+            element: <InstructionalVideos />,
+          },
+        ],
       },
     ],
   },

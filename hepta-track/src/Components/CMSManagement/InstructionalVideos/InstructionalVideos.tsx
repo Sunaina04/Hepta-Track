@@ -1,13 +1,12 @@
 import { useMemo } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import Header from '../Sidebar/LayoutComponents/Header'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import { columnStyle } from '../Utils/Style'
-import { subscriptionData } from '../Utils/DummyData'
+import { columnStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { instructionalData } from '../../Utils/DummyData'
 
-const Subscriptions = () => {
-
-  const subscriptionColumns = useMemo(
+const InstructionalVideos = () => {
+  const instructionalColumns = useMemo(
     () => [
       {
         id: 's.No',
@@ -15,13 +14,13 @@ const Subscriptions = () => {
         style: columnStyle,
       },
       {
-        id: 'subscriptionName',
-        label: 'Subscription Name',
+        id: 'image',
+        label: 'Image',
         style: columnStyle,
       },
       {
-        id: 'createdDate',
-        label: 'Created Date',
+        id: 'name',
+        label: 'Name',
         style: columnStyle,
       },
       {
@@ -30,11 +29,11 @@ const Subscriptions = () => {
         style: columnStyle,
       },
       {
-        id: 'amount',
-        label: 'Amount',
+        id: 'date',
+        label: 'Date',
         style: columnStyle,
       },
-       {
+      {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -56,7 +55,7 @@ const Subscriptions = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -70,14 +69,13 @@ const Subscriptions = () => {
       width: '150px',
       fontWeight: 700,
     },
-  }  
-  
+  }
   return (
     <>
-      <Header header="SUBSCRIPTIONS" />
+      <Header header="INSTRUCTIONAL VIDEOS" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden  mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -85,8 +83,10 @@ const Subscriptions = () => {
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
+              border: ' 1px solid #D5E1EA',
+              borderBottomLeftRadius: '10px',
             }}
-            data={subscriptionData}
+            data={instructionalData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -94,9 +94,9 @@ const Subscriptions = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={subscriptionColumns}
+            columns={instructionalColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -115,4 +115,4 @@ const Subscriptions = () => {
   )
 }
 
-export default Subscriptions
+export default InstructionalVideos

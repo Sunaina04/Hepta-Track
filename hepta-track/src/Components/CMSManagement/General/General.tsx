@@ -1,13 +1,11 @@
 import { useMemo } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import Header from '../Sidebar/LayoutComponents/Header'
-import { columnStyle } from '../Utils/Style'
-import { promotionData } from '../Utils/DummyData'
-
-const AdsPromotions = () => {
-
-  const promotionColumns = useMemo(
+import { columnStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { subscriptionData } from '../../Utils/DummyData'
+const General = () => {
+  const subscriptionColumns = useMemo(
     () => [
       {
         id: 's.No',
@@ -15,13 +13,8 @@ const AdsPromotions = () => {
         style: columnStyle,
       },
       {
-        id: 'image',
-        label: 'Image',
-        style: columnStyle,
-      },
-      {
-        id: 'detail',
-        label: 'Detail',
+        id: 'subscriptionName',
+        label: 'Subscription Name',
         style: columnStyle,
       },
       {
@@ -30,11 +23,16 @@ const AdsPromotions = () => {
         style: columnStyle,
       },
       {
-        id: 'expDate',
-        label: 'Exp.Date',
+        id: 'detail',
+        label: 'Detail',
         style: columnStyle,
       },
-       {
+      {
+        id: 'amount',
+        label: 'Amount',
+        style: columnStyle,
+      },
+      {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -56,7 +54,7 @@ const AdsPromotions = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -74,10 +72,10 @@ const AdsPromotions = () => {
 
   return (
     <>
-      <Header header="ADS PROMOTIONS" />
+      <Header header="GENERAL" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden  mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -86,7 +84,7 @@ const AdsPromotions = () => {
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
             }}
-            data={promotionData}
+            data={subscriptionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -94,9 +92,9 @@ const AdsPromotions = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={promotionColumns}
+            columns={subscriptionColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -115,4 +113,4 @@ const AdsPromotions = () => {
   )
 }
 
-export default AdsPromotions
+export default General
