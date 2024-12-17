@@ -82,7 +82,7 @@ const AgentManagement = () => {
             <StatCard
               percentage="+11.01%"
               percentageColor="text-green-500"
-              icon="pi-arrow-up"
+              icon="/assets/icons/arrowUp.png"
               value="$2,554.00"
               label="Total Revenue"
             />
@@ -91,7 +91,7 @@ const AgentManagement = () => {
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
-              icon="pi-arrow-down"
+              icon="/assets/icons/arrowDown.png"
               value="3,454"
               label="Active Users"
             />
@@ -99,7 +99,7 @@ const AgentManagement = () => {
         </div>
 
         {/* Search Input */}
-        <div className="flex mt-28 mr-10">
+        <div className="flex mt-32 mr-10">
           <div className="">
             <InputTextWithHeader
               placeholder="Search"

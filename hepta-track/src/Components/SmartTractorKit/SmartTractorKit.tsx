@@ -75,24 +75,24 @@ const SmartTractorKit = () => {
   return (
     <>
       <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4 ml-4">
+      <div className="flex mt-8 ml-4">
         <StatCard
           percentage="+11.01%"
           percentageColor="text-green-500"
-          icon="pi-arrow-up"
+          icon="/assets/icons/arrowUp.png"
           value="$2,554.00"
           label="Total Revenue"
         />
         <StatCard
           percentage="-0.03%"
           percentageColor="text-red-500"
-          icon="pi-arrow-down"
+          icon="/assets/icons/arrowDown.png"
           value="3,454"
           label="Active Users"
         />
       </div>
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
