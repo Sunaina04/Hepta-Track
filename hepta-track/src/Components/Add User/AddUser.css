@@ -1,3 +1,9 @@
-.p-inputtext {
-  width: 150px,
+/* CSS for the blur effect */
+/* CSS for the blur effect */
+.main-content {
+  transition: filter 0.3s ease;
+}
+
+.main-content.blurred {
+  filter: blur(5px);
 }

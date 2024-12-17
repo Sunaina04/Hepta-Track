@@ -17,18 +17,36 @@ const AddUser = () => {
 
   return (
     <>
-    <div className=' blurred p-6 bg-gray-100'>
+{visible && (
+    <div
+      style={{
+        position: "fixed",
+        marginLeft: '300px',
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backdropFilter: "blur(5px)",
+        zIndex: 100,
+      }}
+    ></div>
+  )}
+
+
+          <div>
       <Dialog
         visible={visible}
         style={{
-          width: '110vh',
+          width: '85vh',
           backgroundColor: 'white',
-          minWidth: '700px',
+          minWidth: '200px',
           height: '700px',
           minHeight: '260px',
           borderRadius: '1rem',
           fontWeight: '400',
           cursor: 'alias',
+          padding: '2.5rem',
         }}
         onHide={() => {
           if (!visible) return
@@ -375,6 +393,9 @@ const AddUser = () => {
         />
       </Dialog>
       </div>
+      
+
+      
     </>
   )
 }
