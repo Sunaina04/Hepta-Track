@@ -41,3 +41,8 @@ export interface inputHeader {
   value?: string | undefined
   borderBottom?: React.CSSProperties
 }
+
+export interface AddUserProps {
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}

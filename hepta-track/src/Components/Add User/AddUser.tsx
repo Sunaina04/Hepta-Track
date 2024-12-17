@@ -8,9 +8,9 @@ import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
 
 import './AddUser.css'
+import { AddUserProps } from '../../Type/ComponentBasedTypes'
 
-const AddUser = () => {
-  const [visible, setVisible] = useState(true)
+const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
   const [userName, setUserName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -160,7 +160,7 @@ const AddUser = () => {
           />
 
 
-          {/*country*/}
+              {/*country*/}
 
           <Dropdown
             placeholder="Country"
@@ -178,7 +178,7 @@ const AddUser = () => {
 
 
 
-          {/*State*/}
+              {/*State*/}
 
           <Dropdown
             placeholder="State"
@@ -285,7 +285,7 @@ const AddUser = () => {
               <div className="mb-4">
               <div className='text-sm  mb-1'>Set password</div>
                 <InputText
-                  className='mt-2'
+                  className="mt-2"
                   //value={phone}
                   placeholder="New Password"
                   //onChange={(e) => setPhone(e.target.value)}
@@ -317,7 +317,7 @@ const AddUser = () => {
                     marginTop: "32px"
                   }}
                 />
-             </div>
+              </div>
 
  <div>
               {/* Save Password */}
@@ -342,53 +342,53 @@ const AddUser = () => {
 
           
 
-        {/*Save button*/}
+          {/*Save button*/}
+          <Button
+            label="Save"
+            style={{
+              backgroundColor: 'green',
+              color: 'white',
+              border: 'none',
+              width: '89px',
+              height: '42px',
+              marginTop: '40px',
+              borderRadius: '0.50rem',
+            }}
+          />
 
-        <Button
-          label="Save"
-          style={{
-            backgroundColor: 'green',
-            color: 'white',
-            border: 'none',
-            width: '89px',
-            height: '42px',
-            marginTop: '40px',
-            borderRadius: '0.50rem',
-          }}
-        />
+          {/*Back button*/}
+          <Button
+            label="Back"
+            style={{
+              width: '89px',
+              height: '42px',
+              backgroundColor: 'white',
+              boxShadow: 'none',
+              color: 'Black',
+              borderRadius: '0.50rem',
+              marginTop: '10px',
+              marginLeft: '30px',
+              border: '1px solid black',
+            }}
+            onClick={() => {
+              setVisible(false)
+            }}
+          />
 
-        {/*Back button*/}
-
-        <Button
-  label="Back"
-  style={{
-    width: '89px',
-    height: '42px',
-    backgroundColor: 'white',
-    boxShadow: 'none',
-    color: 'Black',
-    borderRadius: '0.50rem',
-    marginTop: '10px',
-    marginLeft: '30px',
-    border: '1px solid black', 
-  }}
-/>
-
-        {/*Delete user button */}
-
-        <Button
-          label="Delete User"
-          style={{
-            width: '100px',
-            height: '42px',
-            backgroundColor: 'red',
-            boxShadow: 'none',
-            color: 'white',
-            borderRadius: '0.50rem',
-            marginLeft: "500px"
-          }}
-        />
-      </Dialog>
+          {/*Delete user button */}
+          <Button
+            label="Delete User"
+            style={{
+              width: '100px',
+              height: '42px',
+              backgroundColor: 'red',
+              boxShadow: 'none',
+              color: 'white',
+              borderRadius: '0.50rem',
+              marginLeft: '500px',
+            }}
+          />
+        </Dialog>
       </div>
       
 

@@ -20,6 +20,14 @@ const SidebarLayout = () => {
   const location = useLocation()
 
   const [selectedItem, setSelectedItem] = useState<string>(menuItems[0]?.link || '')
+  const initialOpenSubMenus = new Array(menuItems.length).fill(false)
+  const [openSubMenus, setOpenSubMenus] = useState(initialOpenSubMenus)
+  const [selectedCategory, setSelectedCategory] = useState<any>()
+  const [selectedSubcategory, setSelectedSubcategory] = useState<any>()
+  const handleSubCategoryClick = (mainIndex: number, subIndex: number) => {
+    setSelectedCategory(mainIndex)
+    setSelectedSubcategory(subIndex)
+  }
 
   useEffect(() => {
     // Set the selected item based on the current location
@@ -28,6 +36,20 @@ const SidebarLayout = () => {
 
   const handleToggleDrawer = () => {
     dispatch(setOpen(!open))
+  }
+
+  const handleExpand = (index: number) => {
+    setOpenSubMenus((prev) => {
+      const updatedSubMenus = new Array(menuItems.length).fill(false)
+      updatedSubMenus[index] = !prev[index]
+      return updatedSubMenus
+    })
+  }
+
+  const handleMainCategoryClick = (index: number) => {
+    setSelectedCategory(selectedCategory === index ? null : index)
+    setSelectedSubcategory(0)
+    handleExpand(index)
   }
 
   const handleLogout = async () => {
@@ -112,7 +134,6 @@ const SidebarLayout = () => {
                 {item?.name && (
                   <NavLink
                     to={item?.link}
-                    onClick={() => setSelectedItem(item.link)}
                     style={{
                       display: 'flex',
                       height: '44px',
@@ -125,6 +146,9 @@ const SidebarLayout = () => {
                       flexDirection: 'row',
                       alignItems: 'center',
                       position: 'relative',
+                    }}
+                    onClick={() => {
+                      handleMainCategoryClick(index)
                     }}>
                     <img
                       src={selectedItem === item.link ? item?.selectedIcon : item?.icon}
@@ -148,6 +172,70 @@ const SidebarLayout = () => {
                       {item?.name}
                     </span>
                   </NavLink>
+                )}
+                {/* Submenu Items */}
+                {item?.subcategories && openSubMenus[index] && (
+                  <div style={{ marginTop: '10px' }}>
+                    {item?.subcategories?.map((subcategory: any, subIndex: any) => (
+                      <NavLink
+                        to={subcategory.link}
+                        style={{
+                          textDecoration: 'none',
+                        }}
+                        key={subIndex}
+                        onClick={() => handleSubCategoryClick(index, subIndex)}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            height: '40px',
+                            width: open ? '16rem' : '3rem',
+                            minWidth: open ? '16rem' : '3rem',
+                            marginLeft: open ? '10px' : '10px',
+                            marginRight: open ? '10px' : '10px',
+                            marginTop: '10px',
+                            borderRadius: '4px',
+                            flexDirection: 'row',
+                            padding: '0px 16px',
+                            cursor: 'pointer',
+                            background:
+                              selectedCategory === index && selectedSubcategory === subIndex
+                                ? secondary[400]
+                                : '',
+                          }}>
+                          <img
+                            src={
+                              selectedCategory === index && selectedSubcategory === subIndex
+                                ? subcategory.selectedIcon
+                                : subcategory.icon
+                            }
+                            style={{
+                              marginRight: '10px',
+                              marginLeft: open ? '30px' : '2px',
+                              width: '24px',
+                              height: '24px',
+                              marginTop: '10px',
+                            }}
+                          />
+                          {open && (
+                            <span
+                              style={{
+                                fontSize: '16px',
+                                fontWeight: 700,
+                                letterSpacing: '0.2px',
+                                textAlign: 'left',
+                                color:
+                                  selectedCategory === index && selectedSubcategory === subIndex
+                                    ? '#FFFFFF'
+                                    : '#000000',
+                                marginTop: '10px',
+                              }}>
+                              {subcategory.name}
+                            </span>
+                          )}
+                        </div>
+                      </NavLink>
+                    ))}
+                  </div>
                 )}
 
                 {/* Add spacer between items */}

@@ -1,38 +1,35 @@
-import StatCard from '../CommonComponent/StatCard/StatCard'
 import { useMemo } from 'react'
-import Header from '../Sidebar/LayoutComponents/Header'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
-import { columnStyle } from '../Utils/Style'
-import { tractorKitData } from '../Utils/DummyData'
-
-const SmartTractorKit = () => {
-
-  const tractorKitColumns = useMemo(
+import { columnStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { subscriptionData } from '../../Utils/DummyData'
+const Subscriptions = () => {
+  const subscriptionColumns = useMemo(
     () => [
       {
-        id: 'deviceId',
-        label: ' Device ID',
+        id: 's.No',
+        label: 'S.No',
         style: columnStyle,
       },
       {
-        id: 'regNumber',
-        label: 'Reg.Number',
+        id: 'subscriptionName',
+        label: 'Subscription Name',
         style: columnStyle,
       },
       {
-        id: 'date',
-        label: 'Date',
+        id: 'createdDate',
+        label: 'Created Date',
         style: columnStyle,
       },
       {
-        id: 'activationCode',
-        label: 'Activation Code',
+        id: 'detail',
+        label: 'Detail',
         style: columnStyle,
       },
       {
-        id: 'subscriptionPlan',
-        label: 'Subscription Plan',
+        id: 'amount',
+        label: 'Amount',
         style: columnStyle,
       },
       {
@@ -49,8 +46,8 @@ const SmartTractorKit = () => {
     header: '',
     buttons: [
       {
-        color: 'darkGreen',
-        label: 'Unlink',
+        color: 'green',
+        label: 'Edit',
         underline: true,
         // onClick: (rowData) => {
         //   handleMooringTableRowClick(rowData)
@@ -75,25 +72,10 @@ const SmartTractorKit = () => {
 
   return (
     <>
-      <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
-      </div>
+      <Header header="SUBSCRIPTIONS" />
+
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden  mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -102,7 +84,7 @@ const SmartTractorKit = () => {
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
             }}
-            data={tractorKitData}
+            data={subscriptionData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -110,7 +92,7 @@ const SmartTractorKit = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={tractorKitColumns}
+            columns={subscriptionColumns}
             actionButtons={ActionButtonColumn}
             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
@@ -131,4 +113,4 @@ const SmartTractorKit = () => {
   )
 }
 
-export default SmartTractorKit
+export default Subscriptions

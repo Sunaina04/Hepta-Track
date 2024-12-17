@@ -1,19 +1,12 @@
 import { useMemo } from 'react'
-import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
-import Header from '../Sidebar/LayoutComponents/Header'
-import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import { columnStyle } from '../../Utils/Style'
+import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
+import Header from '../../Sidebar/LayoutComponents/Header'
+import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
+import { instructionalData } from '../../Utils/DummyData'
 
-const Subscriptions = () => {
-
-  const columnStyle = {
-    backgroundColor: '#082825',
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#FFFFFF',
-    padding: '15px',
-  }
-
-  const subscriptionColumns = useMemo(
+const InstructionalVideos = () => {
+  const instructionalColumns = useMemo(
     () => [
       {
         id: 's.No',
@@ -21,13 +14,13 @@ const Subscriptions = () => {
         style: columnStyle,
       },
       {
-        id: 'subscriptionName',
-        label: 'Subscription Name',
+        id: 'image',
+        label: 'Image',
         style: columnStyle,
       },
       {
-        id: 'createdDate',
-        label: 'Created Date',
+        id: 'name',
+        label: 'Name',
         style: columnStyle,
       },
       {
@@ -36,11 +29,11 @@ const Subscriptions = () => {
         style: columnStyle,
       },
       {
-        id: 'amount',
-        label: 'Amount',
+        id: 'date',
+        label: 'Date',
         style: columnStyle,
       },
-       {
+      {
         id: 'status',
         label: 'Status',
         style: columnStyle,
@@ -62,7 +55,7 @@ const Subscriptions = () => {
         // },
       },
       {
-        color:'red',
+        color: 'red',
         label: 'Delete',
         underline: true,
         // onClick: (rowData) => {
@@ -77,58 +70,12 @@ const Subscriptions = () => {
       fontWeight: 700,
     },
   }
-
-  const subscriptionData = [
-    {
-      's.No': 1,
-      subscriptionName: 'Premium Plan',
-      createdDate: '2024-12-01',
-      detail: 'Access to all features and priority support',
-      amount: '$99.99',
-      status: 'Active',
-    },
-    {
-      's.No': 2,
-      subscriptionName: 'Standard Plan',
-      createdDate: '2024-11-25',
-      detail: 'Access to most features with limited support',
-      amount: '$49.99',
-      status: 'Inactive',
-    },
-    {
-      's.No': 3,
-      subscriptionName: 'Basic Plan',
-      createdDate: '2024-11-20',
-      detail: 'Access to basic features only',
-      amount: '$19.99',
-      status: 'Active',
-    },
-    {
-      's.No': 4,
-      subscriptionName: 'Enterprise Plan',
-      createdDate: '2024-11-15',
-      detail: 'Custom plan tailored for businesses',
-      amount: '$499.99',
-      status: 'Pending',
-    },
-    {
-      's.No': 5,
-      subscriptionName: 'Trial Plan',
-      createdDate: '2024-12-10',
-      detail: 'Free trial for 14 days',
-      amount: '$0.00',
-      status: 'Active',
-    },
-  ];
-  
-  
-  
   return (
     <>
-      <Header header="SUBSCRIPTIONS" />
+      <Header header="INSTRUCTIONAL VIDEOS" />
 
       <div
-        className={`bg-#00426F overflow-x-hidden h-[603px] mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
@@ -136,8 +83,10 @@ const Subscriptions = () => {
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
+              border: ' 1px solid #D5E1EA',
+              borderBottomLeftRadius: '10px',
             }}
-            data={subscriptionData}
+            data={instructionalData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -145,9 +94,9 @@ const Subscriptions = () => {
             //   selection={selectedMooring}
             rowStyle={(rowData: any) => rowData}
             dataKey="id"
-            columns={subscriptionColumns}
+            columns={instructionalColumns}
             actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400',padding:'10px'}}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
             //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
             //   emptyMessage={
             //     <div className="text-center mt-14">
@@ -166,4 +115,4 @@ const Subscriptions = () => {
   )
 }
 
-export default Subscriptions
+export default InstructionalVideos

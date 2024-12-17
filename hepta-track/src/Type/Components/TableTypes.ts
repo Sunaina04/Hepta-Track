@@ -25,6 +25,7 @@ export interface DataTableProps {
   paginatorTemplate?: PaginatorTemplate | undefined;
   scrollable?: boolean;
   columns?: TableColumnProps[];
+  // columnsStyle?: React.CSSProperties | undefined;
   tableStyle?: React.CSSProperties | undefined;
   style?: React.CSSProperties | undefined;
   header?: any;
