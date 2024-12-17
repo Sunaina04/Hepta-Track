@@ -143,7 +143,7 @@ const UserManagement = () => {
             visible={modalVisible}
             onClick={handleButtonClick}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-            children={<AddUser />}
+            children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
             dialogStyle={{
               height: '580px',
               minHeight: '580px',
