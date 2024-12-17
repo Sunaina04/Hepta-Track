@@ -85,26 +85,31 @@ const UserManagement = () => {
   return (
     <>
       <Header header="USER MANAGEMENT" />
-        {/* Stat Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <StatCard
-            percentage="+11.01%"
-            percentageColor="text-green-500"
-            icon="pi-arrow-up"
-            value="$2,554.00"
-            label="Total Revenue"
-          />
-          <StatCard
-            percentage="-0.03%"
-            percentageColor="text-red-500"
-            icon="pi-arrow-down"
-            value="3,454"
-            label="Active Users"
-          />
+      {/* Stat Cards */}
+      <div className="flex mt-10 ml-4">
+        <div className="flex">
+          <div className="w-[270px] h-[140px]">
+            <StatCard
+              percentage="+11.01%"
+              percentageColor="text-green-500"
+              icon="pi-arrow-up"
+              value="$2,554.00"
+              label="Total Revenue"
+            />
+          </div>
+          <div className="w-[270px] h-[150px]">
+            <StatCard
+              percentage="-0.03%"
+              percentageColor="text-red-500"
+              icon="pi-arrow-down"
+              value="3,454"
+              label="Active Users"
+            />
+          </div>
         </div>
 
         {/* Search Input */}
-        <div className="flex justify-end mr-12">
+        <div className="flex mt-14 ml-4">
           <div className="">
             <InputTextWithHeader
               placeholder="Search"
@@ -153,7 +158,7 @@ const UserManagement = () => {
             />
           </div>
         </div>
-      
+      </div>
 
       {/* <div
         className={`bg-#00426F overflow-x-hidden mt-[4px] ml-[48px] mr-[32px] table-container flex flex-col rounded-t-[10px]`}>
@@ -190,7 +195,7 @@ const UserManagement = () => {
           />
         </div>
       </div> */}
-      <div className="flex-grow overflow-hidden ml-[3rem] mr-[2.30rem] mt-3 border border-solid border-[#D5E1EA] bg-white rounded-lg">
+      <div className="flex-grow overflow-hidden ml-[3rem] mr-[2.30rem]  border border-solid border-[#D5E1EA] bg-white rounded-lg">
         <div className="flex flex-col h-[570px]">
           <div className="flex-grow overflow-auto">
             <DataTableComponent
@@ -204,7 +209,11 @@ const UserManagement = () => {
               data={dummyUserData}
               columns={userColumns}
               actionButtons={ActionButtonColumn}
-              style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #D5E1EA', padding:'10px' }}
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderBottom: '1px solid #D5E1EA',
+                padding: '10px',
+              }}
               emptyMessage={
                 <div className="text-center mt-40">
                   <img

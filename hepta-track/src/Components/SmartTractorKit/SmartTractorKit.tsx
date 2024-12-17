@@ -7,7 +7,6 @@ import { columnStyle } from '../Utils/Style'
 import { tractorKitData } from '../Utils/DummyData'
 
 const SmartTractorKit = () => {
-
   const tractorKitColumns = useMemo(
     () => [
       {
@@ -76,7 +75,7 @@ const SmartTractorKit = () => {
   return (
     <>
       <Header header="SMART TRACTOR KIT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4 ml-4">
         <StatCard
           percentage="+11.01%"
           percentageColor="text-green-500"
