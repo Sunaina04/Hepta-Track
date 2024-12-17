@@ -202,18 +202,14 @@ const UserManagement = () => {
               tableStyle={{
                 fontSize: '12px',
                 color: '#000000',
-                fontWeight: 600,
+                fontWeight: 500,
                 backgroundColor: '#FFFFFF',
                 cursor: 'pointer',
               }}
               data={dummyUserData}
               columns={userColumns}
               actionButtons={ActionButtonColumn}
-              style={{
-                backgroundColor: '#FFFFFF',
-                borderBottom: '1px solid #D5E1EA',
-                padding: '10px',
-              }}
+              style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
               emptyMessage={
                 <div className="text-center mt-40">
                   <img

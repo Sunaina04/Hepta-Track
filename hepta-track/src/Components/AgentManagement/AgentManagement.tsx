@@ -153,7 +153,7 @@ const AgentManagement = () => {
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
-              fontSize: '14px',
+              fontSize: '12px',
               color: '#000000',
               fontWeight: 500,
               backgroundColor: '#FFFFFF',
