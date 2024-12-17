@@ -76,8 +76,8 @@ const ExpenseManagement = () => {
     <>
       <Header header="EXPENSE MANAGEMENT" />
       <div className="flex justify-between">
-      <div className="flex mt-6 ml-4">
-          <div className="w-[270px] h-[140px]">
+        <div className="flex mt-6 ml-4">
+          <div>
             <StatCard
               percentage="+11.01%"
               percentageColor="text-green-500"
@@ -86,7 +86,7 @@ const ExpenseManagement = () => {
               label="Total Revenue"
             />
           </div>
-          <div className="w-[270px] h-[150px]">
+          <div>
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
@@ -97,7 +97,7 @@ const ExpenseManagement = () => {
           </div>
         </div>
 
-        <div className="flex mt-24 mr-8">
+        <div className="flex mt-28 mr-8">
           <div>
             <ButtonComponent
               label={'Download Statement'}

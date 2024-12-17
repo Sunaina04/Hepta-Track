@@ -78,7 +78,7 @@ const AgentManagement = () => {
       <Header header="AGENT MANAGEMENT" />
       <div className="flex justify-between">
         <div className="flex mt-8 ml-4">
-          <div className="w-[270px] h-[140px]">
+          <div>
             <StatCard
               percentage="+11.01%"
               percentageColor="text-green-500"
@@ -87,7 +87,7 @@ const AgentManagement = () => {
               label="Total Revenue"
             />
           </div>
-          <div className="w-[270px] h-[150px]">
+          <div>
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
@@ -99,7 +99,7 @@ const AgentManagement = () => {
         </div>
 
         {/* Search Input */}
-        <div className="flex mt-20 mr-10">
+        <div className="flex mt-28 mr-10">
           <div className="">
             <InputTextWithHeader
               placeholder="Search"

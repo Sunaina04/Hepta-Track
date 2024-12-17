@@ -130,7 +130,7 @@ const VehicleManagement = () => {
       <Header header="VEHICLE MANAGEMENT" />
       <div className="flex justify-between">
         <div className="flex mt-6 ml-4">
-          <div className="w-[270px] h-[140px]">
+          <div>
             <StatCard
               percentage="+11.01%"
               percentageColor="text-green-500"
@@ -139,7 +139,7 @@ const VehicleManagement = () => {
               label="Total Revenue"
             />
           </div>
-          <div className="w-[270px] h-[150px]">
+          <div>
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
@@ -150,7 +150,7 @@ const VehicleManagement = () => {
           </div>
         </div>
 
-        <div className="mt-20 mr-4">
+        <div className="mt-28 mr-4">
           <InputTextWithHeader
             placeholder="Search"
             inputTextStyle={{
