@@ -1,111 +1,110 @@
-import { useMemo } from 'react'
-import { columnStyle } from '../../Utils/Style'
-import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
 import Header from '../../Sidebar/LayoutComponents/Header'
-import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
-import { subscriptionData } from '../../Utils/DummyData'
+import { Panel } from 'primereact/panel'
+import { InputText } from 'primereact/inputtext'
+import { InputTextarea } from 'primereact/inputtextarea'
+import { FileUpload } from 'primereact/fileupload'
+import ButtonComponent from '../../CommonComponent/Button/ButtonComponent'
 const General = () => {
-  const subscriptionColumns = useMemo(
-    () => [
-      {
-        id: 's.No',
-        label: 'S.No',
-        style: columnStyle,
-      },
-      {
-        id: 'subscriptionName',
-        label: 'Subscription Name',
-        style: columnStyle,
-      },
-      {
-        id: 'createdDate',
-        label: 'Created Date',
-        style: columnStyle,
-      },
-      {
-        id: 'detail',
-        label: 'Detail',
-        style: columnStyle,
-      },
-      {
-        id: 'amount',
-        label: 'Amount',
-        style: columnStyle,
-      },
-      {
-        id: 'status',
-        label: 'Status',
-        style: columnStyle,
-      },
-    ],
-    // [allowExpansion],
-    [],
-  )
-
-  const ActionButtonColumn: ActionButtonColumnProps = {
-    header: '',
-    buttons: [
-      {
-        color: 'green',
-        label: 'Edit',
-        underline: true,
-        // onClick: (rowData) => {
-        //   handleMooringTableRowClick(rowData)
-        // },
-      },
-      {
-        color: 'red',
-        label: 'Delete',
-        underline: true,
-        // onClick: (rowData) => {
-        //   handleMooringTableRowClick(rowData)
-        // },
-      },
-    ],
-    headerStyle: { backgroundColor: '#082825', color: 'white' },
-    style: {
-      borderBottom: '1px solid #D5E1EA ',
-      width: '150px',
-      fontWeight: 700,
-    },
-  }
-
   return (
     <>
       <Header header="GENERAL" />
 
-      <div
-        className={`bg-#00426F overflow-x-hidden  mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
-        <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
-          <DataTableComponent
-            tableStyle={{
-              fontSize: '12px',
-              color: '#000000',
-              fontWeight: 500,
-              backgroundColor: '#FFFFFF',
+      <div className=" overflow-x-hidden h-[500px] mt-8 border-[1px] border-[#D5E1EA] ml-12 mr-8 rounded-lg">
+        <Panel
+          header="General"
+          className="bg-[#082825] text-white text-[12px] font-bold p-[14px] rounded-t-lg"
+        />
+        <div className="flex justify-between ">
+          <div>
+            <div className="flex ml-4 gap-6 mt-6">
+              <div>
+                <div className="font-medium text-sm text-[#000000]">
+                  <div>Name</div>
+                </div>
+                <div className="mt-2">
+                  <InputText
+                    style={{
+                      width: '350px',
+                      height: '32px',
+                      border: '1px solid #D5E1EA',
+                      borderRadius: '0.50rem',
+                      fontSize: '0.8rem',
+                      boxShadow: 'none',
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="font-medium text-sm text-[#000000]">
+                  <div className="flex gap-1">Phone no</div>
+                </div>
+                <div className="mt-2">
+                  <InputText
+                    style={{
+                      width: '350px',
+                      height: '32px',
+                      border: '1px solid #D5E1EA',
+                      borderRadius: '0.50rem',
+                      fontSize: '0.8rem',
+                      boxShadow: 'none',
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="ml-4 mt-6">
+              <div className="font-medium text-sm text-[#000000]">
+                <div className="flex gap-1">Detail</div>
+              </div>
+              <div className="mt-2">
+                <InputTextarea
+                  style={{
+                    width: '730px',
+                    height: '92px',
+                    border: '1px solid #D5E1EA',
+                    borderRadius: '0.50rem',
+                    fontSize: '0.8rem',
+                    resize: 'none',
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mt-6 mr-4">
+            <span className="font-medium text-sm text-[#000000]">
+              <div className="">Logo</div>
+            </span>
+            <div className="mt-2">
+              <FileUpload
+                mode="basic"
+                style={{
+                  width: '333px',
+                  height: '176px',
+                  border: '1px solid #D5E1EA',
+                  borderRadius: '0.50rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-40 ml-4">
+          <ButtonComponent
+            label={'Save'}
+            onClick={() => {}}
+            style={{
+              width: '80px',
+              height: '44px',
+              backgroundColor: '#00B300',
+              cursor: 'pointer',
+              fontWeight: 'bolder',
+              fontSize: '1rem',
+              boxShadow: 'none',
+              color: 'white',
+              borderRadius: '0.50rem',
+              overflowX: 'hidden',
             }}
-            data={subscriptionData}
-            //   selectionMode="single"
-            //   onSelectionChange={(e: any) => {
-            //     setSelectedMooring(e.value)
-            //   }}
-            //   selection={selectedMooring}
-            rowStyle={(rowData: any) => rowData}
-            dataKey="id"
-            columns={subscriptionColumns}
-            actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
-            //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
-            //   emptyMessage={
-            //     <div className="text-center mt-14">
-            //       <img
-            //         src="/assets/images/empty.png"
-            //         alt="Empty Data"
-            //         className="w-20 mx-auto mb-4"
-            //       />
-            //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
-            //     </div>
-            //   }
           />
         </div>
       </div>
