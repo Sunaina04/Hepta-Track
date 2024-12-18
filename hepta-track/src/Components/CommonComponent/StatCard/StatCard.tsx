@@ -7,17 +7,30 @@ interface StatCardProps {
   icon: string
   value: string
   label: string
+  width?: any
 }
 
-const StatCard: React.FC<StatCardProps> = ({ percentage, percentageColor, icon, value, label }) => {
+const StatCard: React.FC<StatCardProps> = ({
+  percentage,
+  percentageColor,
+  icon,
+  value,
+  label,
+  width,
+}) => {
   return (
-    <Card className="p-4 rounded-lg shadow ml-8 mr-4">
-      <div className="flex items-center justify-between mb-2">
-        <span className={`text-sm font-semibold ${percentageColor}`}>{percentage}</span>
-        <i className={`pi ${icon} ${percentageColor}`}></i>
+    <Card
+      className={`p-4 rounded-lg ml-8 mr-4 mb-6 border border-[#D4D4D4] h-[160px] w-[${
+        width ? width : '270px'
+      }]`}>
+      <div
+        className={`flex items-center mb-2 rounded-lg border border-[#D4D4D4] w-[100px] h-[30px]`}>
+        <span className={`text-sm font-semibold text-black ml-2`}>{percentage}</span>
+        <img src={icon} alt="icon" className="w-[15px] h-[15px] ml-2" />
       </div>
+
       <div className="text-2xl font-bold">{value}</div>
-      <div className="text-gray-500">{label}</div>
+      <div className="text-gray-700">{label}</div>
     </Card>
   )
 }

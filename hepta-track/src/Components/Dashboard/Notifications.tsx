@@ -12,7 +12,7 @@ const Notifications: React.FC = () => {
   ]
 
   return (
-    <Card className="p-4 rounded-lg shadow mr-4">
+    <Card className="p-4 rounded-lg shadow mr-4 bg-[#F9F9FA] border border-[#D4D4D4]">
       <h2 className="text-xl font-bold mb-4">Notifications</h2>
       <ul>
         {notifications.map((notification, index) => (

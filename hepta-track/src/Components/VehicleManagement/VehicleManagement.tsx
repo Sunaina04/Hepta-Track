@@ -4,9 +4,9 @@ import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import { columnStyle } from '../Utils/Style'
+import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
 
 const VehicleManagement = () => {
-  
   const vehicleColumns = useMemo(
     () => [
       {
@@ -128,25 +128,58 @@ const VehicleManagement = () => {
   return (
     <>
       <Header header="VEHICLE MANAGEMENT" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-        <StatCard
-          percentage="+11.01%"
-          percentageColor="text-green-500"
-          icon="pi-arrow-up"
-          value="$2,554.00"
-          label="Total Revenue"
-        />
-        <StatCard
-          percentage="-0.03%"
-          percentageColor="text-red-500"
-          icon="pi-arrow-down"
-          value="3,454"
-          label="Active Users"
-        />
+      <div className="flex justify-between">
+        <div className="flex mt-8 ml-4">
+          <div>
+            <StatCard
+              percentage="+11.01%"
+              percentageColor="text-green-500"
+              icon="/assets/icons/arrowUp.png"
+              value="$2,554.00"
+              label="Total Revenue"
+            />
+          </div>
+          <div>
+            <StatCard
+              percentage="-0.03%"
+              percentageColor="text-red-500"
+              icon="/assets/icons/arrowDown.png"
+              value="3,454"
+              label="Active Users"
+            />
+          </div>
+        </div>
+
+        <div className="mt-32 mr-4">
+          <InputTextWithHeader
+            placeholder="Search"
+            inputTextStyle={{
+              width: '100%',
+              height: '44px',
+              padding: '0 4rem 0 3rem',
+              border: '1px solid #C5D9E0',
+              fontSize: '16px',
+              color: '#000000',
+              borderRadius: '4px',
+              minHeight: '44px',
+              fontWeight: 400,
+              backgroundColor: 'rgb(242 242 242 / 0%)',
+            }}
+            borderBottom={{ border: '1px solid #D5E1EA' }}
+            iconStyle={{
+              position: 'absolute',
+              left: '15px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '18px',
+              height: '18px',
+            }}
+          />
+        </div>
       </div>
 
       <div
-        className={`bg-#00426F overflow-x-hidden mt-[10px]  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F overflow-x-hidden ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
           <DataTableComponent
             tableStyle={{
