@@ -12,11 +12,6 @@ import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
 
-
-
-
-
-
 const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
   const [userName, setUserName] = useState('')
   const [phone, setPhone] = useState('')

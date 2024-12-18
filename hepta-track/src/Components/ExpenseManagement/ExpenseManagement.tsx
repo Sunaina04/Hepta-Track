@@ -7,6 +7,8 @@ import { AddNewButtonStyle, columnStyle, DialogStyle } from '../Utils/Style'
 import { expenseData } from '../Utils/DummyData'
 import CustomModal from '../CustomComponent/CustomModal'
 import ButtonComponent from '../CommonComponent/Button/ButtonComponent'
+import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
+import AddExpense from '../Add Expense/AddExpense'
 
 const ExpenseManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -125,7 +127,7 @@ const ExpenseManagement = () => {
               visible={modalVisible}
               onClick={handleButtonClick}
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-              // children={<AddUser />}
+               children={<AddExpense visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
                 height: '580px',
                 minHeight: '580px',

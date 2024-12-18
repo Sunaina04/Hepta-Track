@@ -51,3 +51,8 @@ export interface AddAgentProps {
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface AddExpenseProps{
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}
