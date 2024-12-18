@@ -46,3 +46,8 @@ export interface AddUserProps {
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface AddAgentProps {
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}

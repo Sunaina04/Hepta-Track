@@ -1,11 +1,12 @@
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import CustomModal from '../CustomComponent/CustomModal'
 import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
-import { useMemo, useState} from 'react'
+import { useMemo, useState } from 'react'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import AddAgent from '../Add Agent /AddAgent'
+
 
 const AgentManagement = () => {
 
@@ -19,9 +20,9 @@ const AgentManagement = () => {
     padding: '15px',
   }
 
- const handleButtonClick = () => {
-  setModalVisible(true)
- }
+  const handleButtonClick = () => {
+    setModalVisible(true)
+  }
 
   const agentColumns = useMemo(
     () => [
@@ -104,11 +105,13 @@ const AgentManagement = () => {
         <div className="flex mt-6 ">
           <CustomModal
             buttonText={'ADD NEW'}
-            visible= {modalVisible}
+            visible={modalVisible}
             buttonStyle={AddNewButtonStyle}
             onHide={() => setModalVisible(false)}
             onClick={handleButtonClick}
-            children= {<AddAgent/>}
+            children={<AddAgent
+              visible={modalVisible}
+              setVisible={setModalVisible} />}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-4" />}
             dialogStyle={{
               height: '580px',
@@ -132,7 +135,7 @@ const AgentManagement = () => {
               // border:' 1px solid #D5E1EA',
               // borderBottomLeftRadius:'10px'
             }}
-            data={dummyAgentData}
+            //data={dummyAgentData}
             //   selectionMode="single"
             //   onSelectionChange={(e: any) => {
             //     setSelectedMooring(e.value)
@@ -143,17 +146,17 @@ const AgentManagement = () => {
             columns={agentColumns}
             actionButtons={ActionButtonColumn}
             style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
-            //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
-            //   emptyMessage={
-            //     <div className="text-center mt-14">
-            //       <img
-            //         src="/assets/images/empty.png"
-            //         alt="Empty Data"
-            //         className="w-20 mx-auto mb-4"
-            //       />
-            //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
-            //     </div>
-            //   }
+          //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
+          //   emptyMessage={
+          //     <div className="text-center mt-14">
+          //       <img
+          //         src="/assets/images/empty.png"
+          //         alt="Empty Data"
+          //         className="w-20 mx-auto mb-4"
+          //       />
+          //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
+          //     </div>
+          //   }
           />
         </div>
       </div>
