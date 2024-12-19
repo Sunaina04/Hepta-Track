@@ -1,0 +1,37 @@
+
+.main-content {
+    transition: filter 0.3s ease;
+  }
+  
+  .main-content.blurred {
+    filter: blur(5px);
+  }
+  
+  
+  .p-inputtext:focus {
+    border: 2px solid #00426F !important; 
+    box-shadow: none;
+  }
+  
+  .p-dropdown.p-focus {
+    border: 2px solid #00426F !important; 
+  }
+  
+  
+  .p-dropdown .p-dropdown-label {
+    border: none !important; 
+    box-shadow: none !important; 
+  }
+  
+  
+  .p-dropdown .p-dropdown-label:focus {
+    outline: none !important; 
+    box-shadow: none !important; 
+  }
+  
+  
+  .p-dropdown .p-dropdown-trigger {
+    padding-right: 8px; 
+  }
+  
+  

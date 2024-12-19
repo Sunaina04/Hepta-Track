@@ -61,3 +61,8 @@ export interface AddSubscriptionProps{
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface AddAdsProps{
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}

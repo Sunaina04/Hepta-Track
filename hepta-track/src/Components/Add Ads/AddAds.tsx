@@ -10,10 +10,11 @@ import { Button } from 'primereact/button'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
-import { AddSubscriptionProps } from '../../Type/ComponentBasedTypes'
+import { AddAdsProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
+import { FileUpload } from 'primereact/fileupload'
 
-const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }) => {
+const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
@@ -77,16 +78,16 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 </span>
                                 <div className="mt-2"></div>
                                 <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
-                            />
+                                    style={{
+                                        width: '270px',
+                                        height: '32px',
+                                        border: '1px solid #D5E1EA',
+                                        borderRadius: '0.50rem',
+                                        fontSize: '0.8rem',
+                                        paddingLeft: '0.5rem',
+                                        outline: "none"
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -111,18 +112,18 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                         <div className="flex flex-col  mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm mb-1">Status</label>
                             <Dropdown
-                                    placeholder="Select"
-                                    editable
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
-                                />
+                                placeholder="Select"
+                                editable
+                                style={{
+                                    width: '270px',
+                                    height: '32px',
+                                    border: '1px solid #D5E1EA',
+                                    borderRadius: '0.50rem',
+                                    fontSize: '0.8rem',
+                                    paddingLeft: '0.5rem',
+                                    outline: "none"
+                                }}
+                            />
                         </div>
                     </div>
 
@@ -144,45 +145,72 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                         />
                     </div>
 
-                     {/*Save button*/}
-                            <Button
-                              label="Save"
-                              style={{
-                                backgroundColor: '#00B300',
-                                color: 'white',
-                                border: 'none',
-                                width: '89px',
-                                height: '42px',
-                                marginTop: '60px',
-                                borderRadius: '0.50rem',
-                                
-                              }}
-                            />
-                  
-                            {/*Back button*/}
-                            <Button
-                              label="Back"
-                              style={{
-                                width: '89px',
-                                height: '42px',
-                                backgroundColor: 'white',
-                                boxShadow: 'none',
-                                color: 'Black',
-                                borderRadius: '0.50rem',
-                                marginTop: '10px',
-                                marginLeft: '30px',
-                                border: '1px solid black',
-                              }}
-                              onClick={() => {
-                                setVisible(false)
-                              }}
-                            />
-                  
-                            {/*Delete user button */}
-                            <div className='mt-[-30px]'>
-                            <Button
-                              label="Delete"
-                              style={{
+
+                    {/*File upload */}
+
+
+                    <FileUpload
+                        //ref={fileUploadRef} 
+                        // name="demo[]" 
+                         url="/api/upload" 
+                         multiple accept="image/*"
+                        //  maxFileSize={1000000}
+                        // onUpload={onTemplateUpload}
+                        // onSelect={onTemplateSelect}
+                        // onError={onTemplateClear}
+                        // onClear={onTemplateClear}
+                        // headerTemplate={headerTemplate}
+                        // itemTemplate={itemTemplate}
+                        // emptyTemplate={emptyTemplate}
+                        // chooseOptions={chooseOptions}
+                        // uploadOptions={uploadOptions}
+                        // cancelOptions={cancelOptions} 
+                        />
+
+
+
+
+
+
+                    {/*Save button*/}
+                    <Button
+                        label="Save"
+                        style={{
+                            backgroundColor: '#00B300',
+                            color: 'white',
+                            border: 'none',
+                            width: '89px',
+                            height: '42px',
+                            marginTop: '60px',
+                            borderRadius: '0.50rem',
+
+                        }}
+                    />
+
+                    {/*Back button*/}
+                    <Button
+                        label="Back"
+                        style={{
+                            width: '89px',
+                            height: '42px',
+                            backgroundColor: 'white',
+                            boxShadow: 'none',
+                            color: 'Black',
+                            borderRadius: '0.50rem',
+                            marginTop: '10px',
+                            marginLeft: '30px',
+                            border: '1px solid black',
+                        }}
+                        onClick={() => {
+                            setVisible(false)
+                        }}
+                    />
+
+                    {/*Delete user button */}
+                    <div className='mt-[-30px]'>
+                        <Button
+                            label="Delete"
+                            style={{
                                 width: '100px',
                                 height: '42px',
                                 backgroundColor: '#E14942',
@@ -190,9 +218,9 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 color: 'white',
                                 borderRadius: '0.50rem',
                                 marginLeft: '750px',
-                              }}
-                            />
-                            </div>
+                            }}
+                        />
+                    </div>
                 </Dialog>
             </div>
 
@@ -200,4 +228,4 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
     )
 }
 
-export default AddSubscription
+export default AddAds

@@ -6,6 +6,7 @@ import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
 import { promotionData } from '../../Utils/DummyData'
 import InputTextWithHeader from '../../CommonComponent/InputTextWithHeader'
 import CustomModal from '../../CustomComponent/CustomModal'
+import AddAds from '../../Add Ads/AddAds'
 
 const AdsPromotions = () => {
 
@@ -121,7 +122,8 @@ const AdsPromotions = () => {
             visible={modalVisible}
             onClick={handleButtonClick}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-            // children={<AddUser />}
+            children={<AddAds
+              visible= {modalVisible} setVisible={setModalVisible} />}
             dialogStyle={{
               height: '580px',
               minHeight: '580px',
