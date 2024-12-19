@@ -94,7 +94,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
 
               {/* Phone Number */}
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-                <label className="text-sm  mb-1">Phone</label>
+                <div className="text-sm  mb-1">Phone</div>
                 <InputText
                   style={{
                     width: '270px',
@@ -114,7 +114,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               {/* Email */}
 
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-                <label className="text-sm mb-1">Email Address</label>
+                <div className="text-sm mb-1">Email Address</div>
                 <InputText
                   style={{
                     width: '270px',
@@ -239,7 +239,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
             <div className="flex gap-8 mt-5">
               {/* Role */}
               <div>
-                <h1 className=" text-sm mb-2">Role</h1>
+                <div className=" text-sm mb-2">Role</div>
                 <Dropdown
                   placeholder="Select Role"
                   editable
@@ -258,7 +258,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               {/* Account Status */}
 
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-                <label className="text-sm  mb-1">Account Status</label>
+                <div className="text-sm  mb-1">Account Status</div>
                 <Dropdown
                   placeholder="Select Status"
                   editable
@@ -278,7 +278,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
 
               {/* Phone Number */}
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-                <label className="text-sm  mb-1">Phone</label>
+                <div className="text-sm  mb-1">Phone</div>
                 <InputText
                   style={{
                     width: '265px',

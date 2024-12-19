@@ -15,7 +15,7 @@ import { RadioButton } from 'primereact/radiobutton'
 import { FileUpload } from 'primereact/fileupload'
 import { Tag } from 'primereact/tag'
 import UploadImages from '../CommonComponent/Upload images/UploadImages'
-
+import { InputTextarea } from 'primereact/inputtextarea'
 const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
@@ -23,27 +23,27 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [checked, setChecked] = useState(true)
     const dispatch = useDispatch()
 
-  
 
-  const [editMode, setEditMode] = useState<boolean>(
-    //editModeWorkOrder ? editModeWorkOrder : false || editModeEstimate ? editModeEstimate : false,
-  )
-  const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-  const [lastChangedField, setLastChangedField] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [approveModalOpen, setApproveModalOpen] = useState(false)
-  const [denyModalOpen, setDenyModalOpen] = useState(false)
-  const [imageVisible, setImageVisible] = useState(false)
-  const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
-  const [statusChanged, setStatusChanged] = useState(
-   // workOrderData?.inventoryResponseDtoList?.length > 0 &&
-      //workOrderData?.workOrderStatusDto?.id === 10,
-  )
-  
-  const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
-  const [images, setImages] = useState<string[]>([])
-  const [vendorId, setVendorId] = useState<any>()
-  const [isDirty, setIsDirty] = useState<boolean>(false)
+
+    const [editMode, setEditMode] = useState<boolean>(
+        //editModeWorkOrder ? editModeWorkOrder : false || editModeEstimate ? editModeEstimate : false,
+    )
+    const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
+    const [lastChangedField, setLastChangedField] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState(false)
+    const [approveModalOpen, setApproveModalOpen] = useState(false)
+    const [denyModalOpen, setDenyModalOpen] = useState(false)
+    const [imageVisible, setImageVisible] = useState(false)
+    const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
+    const [statusChanged, setStatusChanged] = useState(
+        // workOrderData?.inventoryResponseDtoList?.length > 0 &&
+        //workOrderData?.workOrderStatusDto?.id === 10,
+    )
+
+    const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
+    const [images, setImages] = useState<string[]>([])
+    const [vendorId, setVendorId] = useState<any>()
+    const [isDirty, setIsDirty] = useState<boolean>(false)
 
 
 
@@ -79,10 +79,10 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        width: '87vh',
+                        width: '90vh',
                         backgroundColor: 'white',
                         minWidth: '200px',
-                        height: '500px',
+                        height: '700px',
                         minHeight: '260px',
                         borderRadius: '1rem',
                         fontWeight: '400',
@@ -95,12 +95,12 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     <h1 className="font-bold text-2xl"> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
-                        {/* Subscription Name*/}
+                        {/* Add Name*/}
                         <div>
                             <div>
                                 <span className="text-sm">
                                     <div className="flex gap-1">
-                                        Subscription Name
+                                        Add Name
                                     </div>
                                 </span>
                                 <div className="mt-2"></div>
@@ -118,7 +118,7 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                             </div>
                         </div>
 
-                        {/* Amount*/}
+                        {/* Date*/}
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Amount</label>
                             <InputText
@@ -155,39 +155,41 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     </div>
 
                     {/* Detail */}
+                    <div className='mt-5'>
+                        <label className="text-sm">Detail</label>
+                        <div className='mt-2'>
 
-                    <div className='mt-8'>
-                        <label className="text-sm mb-1">Detail</label>
-                        <InputText
-                            style={{
-                                width: '850px',
-                                height: '100px',
-                                border: '1px solid #D5E1EA',
-                                borderRadius: '0.50rem',
-                                fontSize: '0.8rem',
-                                paddingLeft: '0.5rem',
-                                outline: "none",
-                                marginTop: "5px"
-                            }}
-                        />
+                            <InputTextarea
+                                style={{
+                                    width: '850px',
+                                    height: '100px',
+                                    border: '1px solid #D5E1EA',
+                                    borderRadius: '0.50rem',
+                                    fontSize: '0.8rem',
+                                    paddingLeft: '0.5rem',
+                                    outline: "none",
+                                    marginTop: "7px",
+                                    resize: "none"
+                                }}
+                            />
+                        </div>
                     </div>
 
+                    {/*File upload */}
+                    <UploadImages
+                        handleNoteChange={() => { }}
+                        hoveredIndex={hoveredIndex}
+                        handleRemoveImage={() => { }}
+                        setHoveredIndex={setHoveredIndex}
+                        handleImageChange={() => { }
+                        }
+                        setImageVisible={setImageVisible}
+                        imageRequestDtoList={imageRequestDtoList}
+                        isLoading={isLoading}
+                        images={images}
 
-                   {/*File upload */}
-                   <UploadImages
-            handleNoteChange={()=> {}}
-            hoveredIndex={hoveredIndex}
-            handleRemoveImage={()=> {}}
-            setHoveredIndex={setHoveredIndex}
-           handleImageChange={()=> {}
-            }
-            setImageVisible={setImageVisible}
-            imageRequestDtoList={imageRequestDtoList}
-            isLoading={isLoading}
-            images={images}
-           
-          />
-                  
+                    />
+
 
 
                     {/*Save button*/}
