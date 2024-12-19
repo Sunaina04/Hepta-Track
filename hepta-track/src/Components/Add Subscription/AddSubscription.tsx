@@ -10,11 +10,10 @@ import { Button } from 'primereact/button'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
-import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
+import { AddSubscriptionProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
-import { InputTextarea } from 'primereact/inputtextarea'
 
-const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
+const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
@@ -65,19 +64,53 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                     }}>
 
 
-                    <h1 className="font-bold text-2xl"> Add New Expenses<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+                    <h1 className="font-bold text-2xl"> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
-                        {/* Select Expense type */}
+                        {/* Subscription Name*/}
                         <div>
                             <div>
                                 <span className="text-sm">
                                     <div className="flex gap-1">
-                                        Select Expense type
+                                        Subscription Name
                                     </div>
                                 </span>
                                 <div className="mt-2"></div>
-                                <Dropdown
+                                <InputText
+                                style={{
+                                    width: '270px',
+                                    height: '32px',
+                                    border: '1px solid #D5E1EA',
+                                    borderRadius: '0.50rem',
+                                    fontSize: '0.8rem',
+                                    paddingLeft: '0.5rem',
+                                    outline: "none"
+                                }}
+                            />
+                            </div>
+                        </div>
+
+                        {/* Amount*/}
+                        <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
+                            <label className="text-sm  mb-1">Amount</label>
+                            <InputText
+                                style={{
+                                    width: '270px',
+                                    height: '32px',
+                                    border: '1px solid #D5E1EA',
+                                    borderRadius: '0.50rem',
+                                    fontSize: '0.8rem',
+                                    paddingLeft: '0.5rem',
+                                    outline: "none"
+                                }}
+                            />
+                        </div>
+
+                        {/* Status*/}
+
+                        <div className="flex flex-col  mt-1" style={{ marginLeft: '20px' }}>
+                            <label className="text-sm mb-1">Status</label>
+                            <Dropdown
                                     placeholder="Select"
                                     editable
                                     style={{
@@ -90,48 +123,14 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                                         outline: "none"
                                     }}
                                 />
-                            </div>
-                        </div>
-
-                        {/* Enter Price */}
-                        <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
-                            <label className="text-sm  mb-1">Enter Price</label>
-                            <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
-                            />
-                        </div>
-
-                        {/* Split Expense type*/}
-
-                        <div className="flex flex-col  mt-1" style={{ marginLeft: '20px' }}>
-                            <label className="text-sm mb-1">Select Expense type</label>
-                            <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
-                            />
                         </div>
                     </div>
 
-                    {/* Description */}
+                    {/* Detail */}
 
                     <div className='mt-8'>
-                        <label className="text-sm mb-1">Description</label>
-                        <InputTextarea
+                        <label className="text-sm mb-1">Detail</label>
+                        <InputText
                             style={{
                                 width: '850px',
                                 height: '150px',
@@ -140,77 +139,11 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                                 fontSize: '0.8rem',
                                 paddingLeft: '0.5rem',
                                 outline: "none",
-                                marginTop: "5px",
-                                resize: "none" 
+                                marginTop: "5px"
                             }}
                         />
                     </div>
 
-
-
-                    {/*Select Payment type */}
-
-                    <div className='text-sm mt-7'>Select Payment Type</div>
-                    <div className="flex flex-wrap gap-32 mt-4">
-                       <div className="flex align-items-center">
-                            <RadioButton 
-                            //</div> onChange={} 
-                             checked={checked}
-                             variant='filled'
-                             style={{accentColor: '#00B300'}}
-                            />
-                         <label  className="text-[#32645F] font-bold ml-2">Given</label>
-                        </div>
-
-                        <div className="flex align-items-center">
-                            <RadioButton  
-                            //</div> onChange={} 
-                            //checked={checked}
-                            style={{accentColor: "#00B300"}}
-                            />
-                         <label className=" text-[#32645F] font-bold ml-2">Taken</label>
-                        </div>
-                    </div>
- 
-                
-                   {/* Farmer name*/}
-                    
-                   <div className="flex flex-col mt-[-60px]" style={{ marginLeft: '330px' }}>
-                            <label className="text-sm mb-1">Father Name</label>
-                            <Dropdown
-                            placeholder="Select"
-                                    editable
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
-                                />
-                        </div>
-                      
-                      <div className='ml-[610px] mt-[-30px]'>or</div>
-                                    
-                                    {/* Add new */}
-                                   <div className='-mt-7'>
-                                    <Button
-                                      label="Add New"
-                                      style={{
-                                        backgroundColor: '#082825',
-                                        borderRadius: '0.50rem',
-                                        color: 'white',
-                                        border: '#00426F',
-                                        width: '100px',
-                                        height: '32px',
-                                        marginLeft: "635px",
-                                      }}
-                                    />
-                                    </div>
-                  
-                   
                      {/*Save button*/}
                             <Button
                               label="Save"
@@ -267,4 +200,4 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
     )
 }
 
-export default AddExpense
+export default AddSubscription

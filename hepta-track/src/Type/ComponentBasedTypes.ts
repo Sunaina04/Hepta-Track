@@ -56,3 +56,8 @@ export interface AddExpenseProps{
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface AddSubscriptionProps{
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}

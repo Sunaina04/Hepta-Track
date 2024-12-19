@@ -6,6 +6,7 @@ import DataTableComponent from '../../CommonComponent/Table/DataTableComponent'
 import { subscriptionData } from '../../Utils/DummyData'
 import InputTextWithHeader from '../../CommonComponent/InputTextWithHeader'
 import CustomModal from '../../CustomComponent/CustomModal'
+import AddSubscription from '../../Add Subscription/AddSubscription'
 const Subscriptions = () => {
   const [modalVisible, setModalVisible] = useState(false)
     
@@ -120,7 +121,9 @@ const Subscriptions = () => {
             visible={modalVisible}
             onClick={handleButtonClick}
             icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
-            // children={<AddUser />}
+             children={<AddSubscription
+              visible={modalVisible} 
+              setVisible={setModalVisible} />}
             dialogStyle={{
               height: '580px',
               minHeight: '580px',
