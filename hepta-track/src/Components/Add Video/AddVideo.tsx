@@ -10,21 +10,21 @@ import { Button } from 'primereact/button'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
-import { AddAdsProps } from '../../Type/ComponentBasedTypes'
+import { AddVideoProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
 import { FileUpload } from 'primereact/fileupload'
 import { Tag } from 'primereact/tag'
-import UploadImages from '../CommonComponent/Upload images/UploadImages'
+import UploadVideo from '../CommonComponent/Video Upload/VideoUpload'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
 
 
-const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
+const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [checked, setChecked] = useState(true)
-    const [dateRange, setDateRange] = useState<Date[] | null>(null);
+    const [date, setDate] = useState<Date | null>(null)
     const dispatch = useDispatch()
 
 
@@ -96,15 +96,15 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     }}>
 
 
-                    <h1 className="font-bold text-2xl"> Add New Promotions<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+                    <h1 className="font-bold text-2xl"> Add/Edit Video<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
-                        {/* Ad Name*/}
+                        {/*  Name*/}
                         <div>
                             <div>
                                 <span className="text-sm">
                                     <div className="flex gap-1">
-                                        Ad Name
+                                        Name
                                     </div>
                                 </span>
                                 <div className="mt-2"></div>
@@ -127,10 +127,9 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                             <label className="text-sm  mb-1">Date</label>
                             <Calendar
                                 showIcon={true}
-                                value={dateRange}
-                                onChange={(e) => setDateRange(e.value as Date[])}
-                                selectionMode="range"
-                                placeholder="From Date - To Date"
+                                value={date}
+                                onChange={(e) => setDate(e.value as Date)}
+                                placeholder="Date"
                                 style={{
                                     width: '270px',
                                         height: '32px',
@@ -185,15 +184,15 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     </div>
 
                     {/*File upload */}
-                    <UploadImages
+                    <UploadVideo
                         handleNoteChange={() => { }}
                         hoveredIndex={hoveredIndex}
-                        handleRemoveImage={() => { }}
+                        handleRemoveVideo={() => { }}
                         setHoveredIndex={setHoveredIndex}
-                        handleImageChange={() => { }
+                        handleVideoChange={() => { }
                         }
-                        setImageVisible={setImageVisible}
-                        imageRequestDtoList={imageRequestDtoList}
+                        setVideoVisible={setImageVisible}
+                        VideoRequestDtoList={imageRequestDtoList}
                         isLoading={isLoading}
                         images={images}
 
@@ -257,4 +256,4 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     )
 }
 
-export default AddAds
+export default AddVideo

@@ -33,5 +33,21 @@
   .p-dropdown .p-dropdown-trigger {
     padding-right: 8px; 
   }
+ /* For Custom Calendar Styles */
+.custom-calendar .p-calendar .p-inputtext {
+    padding-left: 2.5rem !important; /* Adjust padding to make space for the icon */
+  }
+  
+  .custom-calendar .p-calendar .p-calendar-trigger {
+    position: absolute !important; /* Ensure the icon stays inside the input */
+    left: 0.5rem !important; /* Move the icon to the left side */
+    right: auto !important; /* Reset right alignment */
+    top: 50% !important; /* Center the icon vertically */
+    transform: translateY(-50%);
+  }
+  
+  /* Adjust the input text field padding for all PrimeReact Calendars */
+/* Target input text field padding */
+
   
   

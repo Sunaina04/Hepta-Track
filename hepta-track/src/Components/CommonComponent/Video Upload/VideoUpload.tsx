@@ -3,18 +3,18 @@ import { InputText } from 'primereact/inputtext'
 import React, { useRef } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { FaFileUpload } from 'react-icons/fa'
-import { ShowImagesProps } from '../../../Type/ComponentBasedTypes'
+import { ShowVideoProps } from '../../../Type/ComponentBasedTypes'
 import { Toast } from 'primereact/toast'
 
 
-const UploadImages: React.FC<ShowImagesProps> = ({
+const UploadVideo: React.FC<ShowVideoProps> = ({
     handleNoteChange,
     hoveredIndex,
-    handleRemoveImage,
+    handleRemoveVideo,
     setHoveredIndex,
-    handleImageChange,
-    setImageVisible,
-    imageRequestDtoList,
+    handleVideoChange,
+    setVideoVisible,
+    VideoRequestDtoList,
     isLoading,
     images,
     toastRef,
@@ -34,9 +34,9 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                         <input
                             id="file-input"
                             type="file"
-                            accept="image/*"
+                            accept="video/mp4, video/mpeg" 
                             multiple
-                            onChange={handleImageChange}
+                            onChange={handleVideoChange}
                             style={{
                                 display: 'none',
                             }}
@@ -57,7 +57,7 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                                 <img src="/assets/images/upload.png" alt="Upload Icon" />
                                 <div style={{ textAlign: 'center', width: "220px", color: "#416072" }}>
                                     Drag and drop files here.<br />
-                                    All jpg, png, pdf types are supported
+                                    All mp4, mpeg pdf types are supported
                                 </div>
 
                             </div>
@@ -77,7 +77,7 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                                         onMouseEnter={() => setHoveredIndex(index)}
                                         onMouseLeave={() => setHoveredIndex(null)}>
                                         <AiOutlineDelete
-                                            onClick={() => handleRemoveImage(index)}
+                                            onClick={() => handleRemoveVideo(index)}
                                             style={{
                                                 position: 'absolute',
                                                 top: '165px',
@@ -134,4 +134,4 @@ const UploadImages: React.FC<ShowImagesProps> = ({
     )
 }
 
-export default UploadImages
+export default UploadVideo

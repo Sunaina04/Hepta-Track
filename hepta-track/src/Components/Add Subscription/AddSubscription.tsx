@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef, useContext } from 'react'
 import { InputText } from 'primereact/inputtext'
+import { InputTextarea } from 'primereact/inputtextarea'
 import { Dropdown } from 'primereact/dropdown'
 import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
@@ -130,7 +131,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
 
                     <div className='mt-8'>
                         <label className="text-sm mb-1">Detail</label>
-                        <InputText
+                        <InputTextarea
                             style={{
                                 width: '850px',
                                 height: '100px',
@@ -139,7 +140,8 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 fontSize: '0.8rem',
                                 paddingLeft: '0.5rem',
                                 outline: "none",
-                                marginTop: "5px"
+                                marginTop: "5px",
+                                resize: "none"
                             }}
                         />
                     </div>

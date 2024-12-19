@@ -67,6 +67,13 @@ export interface AddAdsProps{
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+
+export interface AddVideoProps{
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+
 export interface ShowImagesProps {
   handleNoteChange: (index: number, value: string) => void
   hoveredIndex: number | null
@@ -75,6 +82,19 @@ export interface ShowImagesProps {
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   setImageVisible: (visible: boolean) => void
   imageRequestDtoList: { note: string }[]
+  isLoading: boolean
+  images: string[]
+  toastRef?: any
+}
+
+export interface ShowVideoProps {
+  handleNoteChange: (index: number, value: string) => void
+  hoveredIndex: number | null
+  handleRemoveVideo: (index: number) => void
+  setHoveredIndex: (index: number | null) => void
+  handleVideoChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setVideoVisible: (visible: boolean) => void
+  VideoRequestDtoList: { note: string }[]
   isLoading: boolean
   images: string[]
   toastRef?: any
