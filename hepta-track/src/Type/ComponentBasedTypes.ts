@@ -66,3 +66,16 @@ export interface AddAdsProps{
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface ShowImagesProps {
+  handleNoteChange: (index: number, value: string) => void
+  hoveredIndex: number | null
+  handleRemoveImage: (index: number) => void
+  setHoveredIndex: (index: number | null) => void
+  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setImageVisible: (visible: boolean) => void
+  imageRequestDtoList: { note: string }[]
+  isLoading: boolean
+  images: string[]
+  toastRef?: any
+}

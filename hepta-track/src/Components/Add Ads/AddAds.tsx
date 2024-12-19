@@ -13,6 +13,8 @@ import { RootState } from '../../Store/Store'
 import { AddAdsProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
 import { FileUpload } from 'primereact/fileupload'
+import { Tag } from 'primereact/tag'
+import UploadImages from '../CommonComponent/Upload images/UploadImages'
 
 const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
@@ -20,6 +22,31 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [email, setEmail] = useState('')
     const [checked, setChecked] = useState(true)
     const dispatch = useDispatch()
+
+  
+
+  const [editMode, setEditMode] = useState<boolean>(
+    //editModeWorkOrder ? editModeWorkOrder : false || editModeEstimate ? editModeEstimate : false,
+  )
+  const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
+  const [lastChangedField, setLastChangedField] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [approveModalOpen, setApproveModalOpen] = useState(false)
+  const [denyModalOpen, setDenyModalOpen] = useState(false)
+  const [imageVisible, setImageVisible] = useState(false)
+  const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
+  const [statusChanged, setStatusChanged] = useState(
+   // workOrderData?.inventoryResponseDtoList?.length > 0 &&
+      //workOrderData?.workOrderStatusDto?.id === 10,
+  )
+  
+  const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
+  const [images, setImages] = useState<string[]>([])
+  const [vendorId, setVendorId] = useState<any>()
+  const [isDirty, setIsDirty] = useState<boolean>(false)
+
+
+
 
     const open = useSelector((state: RootState) => state.user.isOpen)
 
@@ -146,30 +173,21 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     </div>
 
 
-                    {/*File upload */}
-
-
-                    <FileUpload
-                        //ref={fileUploadRef} 
-                        // name="demo[]" 
-                         url="/api/upload" 
-                         multiple accept="image/*"
-                        //  maxFileSize={1000000}
-                        // onUpload={onTemplateUpload}
-                        // onSelect={onTemplateSelect}
-                        // onError={onTemplateClear}
-                        // onClear={onTemplateClear}
-                        // headerTemplate={headerTemplate}
-                        // itemTemplate={itemTemplate}
-                        // emptyTemplate={emptyTemplate}
-                        // chooseOptions={chooseOptions}
-                        // uploadOptions={uploadOptions}
-                        // cancelOptions={cancelOptions} 
-                        />
-
-
-
-
+                   {/*File upload */}
+                   <UploadImages
+            handleNoteChange={()=> {}}
+            hoveredIndex={hoveredIndex}
+            handleRemoveImage={()=> {}}
+            setHoveredIndex={setHoveredIndex}
+           handleImageChange={()=> {}
+            }
+            setImageVisible={setImageVisible}
+            imageRequestDtoList={imageRequestDtoList}
+            isLoading={isLoading}
+            images={images}
+           
+          />
+                  
 
 
                     {/*Save button*/}
