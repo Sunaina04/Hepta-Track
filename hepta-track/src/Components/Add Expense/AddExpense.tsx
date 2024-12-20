@@ -52,16 +52,15 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        width: '87vh',
                         backgroundColor: 'white',
-                        minWidth: '200px',
                         height: '630px',
                         minHeight: '260px',
                         borderRadius: '1rem',
                         fontWeight: '400',
                         cursor: 'alias',
                         marginLeft: '200px',
-                        padding: '2.5rem'
+                        padding: '2.5rem',
+                        overflow: "auto"
                     }}>
 
 
@@ -128,10 +127,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                     </div>
 
                     {/* Description */}
-
-                    <div className='mt-8'>
-                        <label className="text-sm mb-1">Description</label>
-                        <InputTextarea
+                    
+                    <div className="text-sm mt-8">Description</div>
+                     <InputTextarea
                             style={{
                                 width: '850px',
                                 height: '150px',
@@ -144,8 +142,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                                 resize: "none" 
                             }}
                         />
-                    </div>
-
+                   
+                    
 
 
                     {/*Select Payment type */}

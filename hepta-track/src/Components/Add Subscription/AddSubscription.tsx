@@ -52,16 +52,16 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        width: '87vh',
                         backgroundColor: 'white',
-                        minWidth: '200px',
                         height: '500px',
                         minHeight: '260px',
                         borderRadius: '1rem',
                         fontWeight: '400',
                         cursor: 'alias',
                         marginLeft: '200px',
-                        padding: '2.5rem'
+                        padding: '2.5rem',
+                        overflow: "auto"
+                        
                     }}>
 
 
@@ -129,8 +129,8 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
 
                     {/* Detail */}
 
-                    <div className='mt-8'>
-                        <label className="text-sm mb-1">Detail</label>
+                
+                    <div className="text-sm mt-8 mb-1">Detail</div>
                         <InputTextarea
                             style={{
                                 width: '850px',
@@ -144,9 +144,10 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 resize: "none"
                             }}
                         />
-                    </div>
+                   
 
                      {/*Save button*/}
+                     <div className=' mt-8 flex flex-grow gap-10'>
                             <Button
                               label="Save"
                               style={{
@@ -155,7 +156,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 border: 'none',
                                 width: '89px',
                                 height: '42px',
-                                marginTop: '60px',
+                               
                                 borderRadius: '0.50rem',
                                 
                               }}
@@ -171,8 +172,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 boxShadow: 'none',
                                 color: 'Black',
                                 borderRadius: '0.50rem',
-                                marginTop: '10px',
-                                marginLeft: '30px',
+                               
                                 border: '1px solid black',
                               }}
                               onClick={() => {
@@ -191,9 +191,11 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 boxShadow: 'none',
                                 color: 'white',
                                 borderRadius: '0.50rem',
-                                marginLeft: '750px',
+                                marginTop: "40px",
+                                marginLeft: '490px',
                               }}
                             />
+                            </div>
                             </div>
                 </Dialog>
             </div>

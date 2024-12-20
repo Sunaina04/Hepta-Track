@@ -83,16 +83,15 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        width: '90vh',
                         backgroundColor: 'white',
-                        minWidth: '200px',
                         height: '700px',
                         minHeight: '260px',
                         borderRadius: '1rem',
                         fontWeight: '400',
                         cursor: 'alias',
                         marginLeft: '200px',
-                        padding: '2.5rem'
+                        padding: '2.5rem',
+                        overflow: "auto"
                     }}>
 
 

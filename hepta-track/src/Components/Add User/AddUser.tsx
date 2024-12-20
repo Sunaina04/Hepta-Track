@@ -53,15 +53,13 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
           onHide={() => { }}
           closable={false}
           style={{
-            width: '85vh',
             backgroundColor: 'white',
-            minWidth: '200px',
             height: '650px',
-            minHeight: '260px',
             borderRadius: '1rem',
             fontWeight: '400',
             cursor: 'alias',
-            marginLeft: '200px'
+            marginLeft: '200px',
+            overflow: "auto"
           }}>
 
           <div className='p-7'>
@@ -246,11 +244,11 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                   
                   }}
                 />
               </div>
@@ -265,11 +263,11 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                   
                   }}
                 />
               </div>
@@ -283,11 +281,11 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '265px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                  
                   }}
                 />
               </div>
@@ -316,12 +314,12 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
                     marginLeft: "6px",
-                    outline: "none"
+                   
                   }}
                 />
               </div>
@@ -333,13 +331,13 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA', // Default blue border
+                    border: '1px solid #00426F', 
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
                     marginLeft: '20px',
                     marginTop: '32px',
-                    outline: 'none', // Removes default focus outline
+                   
                   }}
                 />
 
@@ -374,7 +372,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
             style={{
               backgroundColor: '#00B300',
               color: 'white',
-              border: 'none',
+              border: '#00426',
               width: '89px',
               height: '42px',
               marginTop: '40px',

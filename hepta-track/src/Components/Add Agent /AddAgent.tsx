@@ -54,15 +54,14 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
           onHide={() => { }}
           closable={false}
           style={{
-            width: '85vh',
             backgroundColor: 'white',
-            minWidth: '200px',
             height: '650px',
             minHeight: '260px',
             borderRadius: '1rem',
             fontWeight: '400',
             cursor: 'alias',
-            marginLeft: '200px'
+            marginLeft: '200px',
+            overflow: "auto"
           }}>
 
           <div className='p-7'>
@@ -136,14 +135,6 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
 
             {/* Adress */}
             <div className="flex gap-6 mt-6">
-              <div>
-
-                <div className="text-sm">
-                  Address
-                </div>
-                <div className="mt-1"></div>
-                {/*Street*/}
-
                 <InputText
                   placeholder='Street/Building'
                   //value={phone}
@@ -232,7 +223,6 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                     }}
                   />
                 </div>
-              </div>
             </div>
 
 
@@ -246,11 +236,11 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                   
                   }}
                 />
               </div>
@@ -265,11 +255,11 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                    
                   }}
                 />
               </div>
@@ -283,11 +273,11 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '265px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
-                    outline: "none"
+                  
                   }}
                 />
               </div>
@@ -316,12 +306,12 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA',
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
                     marginLeft: "6px",
-                    outline: "none"
+                   
                   }}
                 />
               </div>
@@ -333,13 +323,13 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
                   style={{
                     width: '270px',
                     height: '32px',
-                    border: '1px solid #D5E1EA', // Default blue border
+                    border: '1px solid #00426F',
                     borderRadius: '0.50rem',
                     fontSize: '0.8rem',
                     paddingLeft: '0.5rem',
                     marginLeft: '20px',
                     marginTop: '32px',
-                    outline: 'none', // Removes default focus outline
+                   
                   }}
                 />
 
@@ -374,7 +364,7 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
             style={{
               backgroundColor: '#00B300',
               color: 'white',
-              border: 'none',
+              border: '#00426F',
               width: '89px',
               height: '42px',
               marginTop: '40px',
@@ -395,7 +385,7 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
               borderRadius: '0.50rem',
               marginTop: '10px',
               marginLeft: '30px',
-              border: '1px solid black',
+              border: '#00426F',
             }}
             onClick={() => {
               setVisible(false)
@@ -413,6 +403,7 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
               color: 'white',
               borderRadius: '0.50rem',
               marginLeft: '550px',
+              border: "#00426F"
             }}
           />
         </Dialog>
