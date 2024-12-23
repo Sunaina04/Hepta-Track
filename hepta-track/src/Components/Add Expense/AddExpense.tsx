@@ -153,60 +153,71 @@ const handleSave = () => {
                        )}
 
 
- 
-<div className="flex items-center gap-6 mt-4">
-    {/* Radio Buttons */}
-    <div className="flex items-center gap-4">
-        <div className="flex items-center">
-            <RadioButton
-                checked={checked}
-                variant="filled"
-                style={{ accentColor: '#00B300' }}
-            />
-            <label className="text-[#32645F] font-bold ml-2">Given</label>
-        </div>
-        <div className="flex items-center">
-            <RadioButton
-                style={{ accentColor: "#00B300" }}
-            />
-            <label className="text-[#32645F] font-bold ml-2">Taken</label>
-        </div>
-    </div>
 
-    {/* Dropdown */}
-    <div className="flex flex-col ml-32 ">
-        <label className="text-sm mb-1">Father Name</label>
-        <Dropdown
-            placeholder="Select"
-            editable
-            style={dropdownStyle}
+
+<div className="flex flex-col mt-4">
+    {/* Main Heading Row */}
+    <div className="flex items-center gap-6">
+        {/* Payment Type Heading */}
+        <div className="flex flex-col">
+            <div className="text-sm mb-2">Select Payment Type</div>
+            <div className="flex gap-4">
+                {/* Radio Buttons */}
+                <div className="flex items-center">
+                    <RadioButton
+                        checked={checked}
+                        variant="filled"
+                        style={{ accentColor: '#00B300' }}
+                    />
+                    <label className="text-[#32645F] font-bold ml-2">Given</label>
+                </div>
+                <div className="flex items-center">
+                    <RadioButton
+                        style={{ accentColor: "#00B300" }}
+                    />
+                    <label className="text-[#32645F] font-bold ml-2">Taken</label>
+                </div>
+            </div>
+            {/* Error Message for Radio Buttons */}
+            {errorMessage.paymentType && (
+                <div className="text-red-500 text-sm mt-1">{errorMessage.paymentType}</div>
+            )}
+        </div>
+
+        {/* Father's Name Section */}
+        <div className="flex flex-col ml-28">
+            <label className="text-sm mb-1">Father Name</label>
+            <Dropdown
+                placeholder="Select"
+                editable
+                style={dropdownStyle}
+            />
+            {/* Error Message for Father's Name */}
+            {errorMessage.fathername && (
+                <div className="text-red-500 text-sm mt-1">{errorMessage.fathername}</div>
+            )}
+        </div>
+
+        {/* OR Text */}
+        <div className="text-sm font-medium mt-6">or</div>
+
+        {/* Add New Button */}
+        <Button
+            label="Add New"
+            style={{
+                backgroundColor: '#082825',
+                borderRadius: '0.50rem',
+                color: 'white',
+                border: '#00426F',
+                width: '100px',
+                height: '32px',
+                marginTop: "20px"
+              
+            }}
         />
-        {errorMessage.fathername && (
-            <div className="text-red-500 text-sm mt-2">{errorMessage.fathername}</div>
-        )}
     </div>
-
-    {/* OR */}
-    <div className="text-sm font-medium">or</div>
-
-    {/* Add New Button */}
-    <Button
-        label="Add New"
-        style={{
-            backgroundColor: '#082825',
-            borderRadius: '0.50rem',
-            color: 'white',
-            border: '#00426F',
-            width: '100px',
-            height: '32px',
-        }}
-    />
 </div>
 
-{/* Error Message for Radio Buttons */}
-{errorMessage.paymentType && (
-    <div className="text-red-500 text-sm -mt-5">{errorMessage.paymentType}</div>
-)}
 
 
 
