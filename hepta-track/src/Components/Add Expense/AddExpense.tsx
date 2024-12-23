@@ -13,37 +13,75 @@ import { RootState } from '../../Store/Store'
 import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
 import { InputTextarea } from 'primereact/inputtextarea'
-import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle , dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle} from '../Styles/styles'
+import './AddExpense.css'
 
 const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [checked, setChecked] = useState(true)
-    const dispatch = useDispatch()
+    const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
+    const [expenseType,setExpenseType] = useState("")
+    const [price,setPrice] = useState("")
+    const [description,setDescription] = useState("")
+    const [paymentType,setPaymentType] = useState("")
+    const [fatherName,setFatherName] = useState("")
 
+    const dispatch = useDispatch()
     const open = useSelector((state: RootState) => state.user.isOpen)
 
     const handleToggleDrawer = () => {
         dispatch(setOpen(!open))
     }
 
+
+
+  const validateForm = () => {
+    let errors: { [key: string]: string } = {};
+
+
+    if (!expenseType) {
+      errors.expenseType = "Expense Type is required"
+    }
+
+    if (!price) {
+        errors.price = "Price is required"
+    }
+     
+    if (!description) {
+        errors.description = "Description is required"
+    }
+
+    if( !paymentType) {
+        errors.paymentType = "Payment type is required"
+    }
+
+    if(!fatherName) {
+        errors.fathername = "Father name is required"
+    }
+
+
+
+    setErrorMessage(errors);
+    return Object.keys(errors).length === 0;
+};
+
+
+const handleSave = () => {
+    const isValid = validateForm()
+}
+
+    
+
+
+
     return (
         <>
 
             {visible && (
                 <div
-                    style={{
-                        position: "fixed",
-                        marginLeft: open ? "280px" : "110px",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        backdropFilter: "blur(5px)",
-                        zIndex: 100,
-                    }}
+                     style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
                 ></div>
             )}
             <div>
@@ -53,17 +91,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        backgroundColor: 'white',
-                        height: '630px',
-                        minHeight: '260px',
-                        borderRadius: '1rem',
-                        fontWeight: '400',
-                        cursor: 'alias',
-                        marginLeft: '200px',
-                        padding: '2.5rem',
-                        overflow: "auto"
-                    }}>
-
+                        ...dialogStyle,
+                    }}
+                >
 
                     <h1 className="font-bold text-2xl"> Add New Expenses<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
@@ -80,8 +110,11 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                                 <Dropdown
                                     placeholder="Select"
                                     editable
-                                   style={dropdownStyle}
+                                    style={dropdownStyle}
                                 />
+                                {errorMessage.expenseType && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.expenseType}</div>
+                       )}
                             </div>
                         </div>
 
@@ -89,8 +122,11 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Enter Price</label>
                             <InputText
-                               style={inputTextStyle}
+                                style={inputTextStyle}
                             />
+                            {errorMessage.price && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.price}</div>
+                       )}
                         </div>
 
                         {/* Split Expense type*/}
@@ -100,121 +136,105 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                             <InputText
                                 style={inputTextStyle}
                             />
+                            {errorMessage.expenseType && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.expenseType}</div>
+                       )}
                         </div>
                     </div>
 
                     {/* Description */}
-                    
+
                     <div className="text-sm mt-8">Description</div>
-                     <InputTextarea
-                            style={inputTextAreaStyle}
-                        />
-                   
+                    <InputTextarea
+                        style={inputTextAreaStyle}
+                    />
+                    {errorMessage.description && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.description}</div>
+                       )}
 
-                    {/*Select Payment type */}
 
-                    <div className='text-sm mt-7'>Select Payment Type</div>
-                    <div className="flex flex-wrap gap-32 mt-4">
-                       <div className="flex align-items-center">
-                            <RadioButton 
-                            //</div> onChange={} 
-                             checked={checked}
-                             variant='filled'
-                             style={{accentColor: '#00B300'}}
-                            />
-                         <label  className="text-[#32645F] font-bold ml-2">Given</label>
-                        </div>
-
-                        <div className="flex align-items-center">
-                            <RadioButton  
-                            //</div> onChange={} 
-                            //checked={checked}
-                            style={{accentColor: "#00B300"}}
-                            />
-                         <label className=" text-[#32645F] font-bold ml-2">Taken</label>
-                        </div>
-                    </div>
  
-                
-                   {/* Farmer name*/}
-                    
-                   <div className="flex flex-col mt-[-60px]" style={{ marginLeft: '330px' }}>
-                            <label className="text-sm mb-1">Father Name</label>
-                            <Dropdown
-                            placeholder="Select"
-                                    editable
-                                   style={dropdownStyle}
-                                />
-                        </div>
-                      
-                      <div className='ml-[610px] mt-[-30px]'>or</div>
-                                    
-                                    {/* Add new */}
-                                   <div className='-mt-7'>
-                                    <Button
-                                      label="Add New"
-                                      style={{
-                                        backgroundColor: '#082825',
-                                        borderRadius: '0.50rem',
-                                        color: 'white',
-                                        border: '#00426F',
-                                        width: '100px',
-                                        height: '32px',
-                                        marginLeft: "635px",
-                                      }}
-                                    />
-                                    </div>
-                  
-                   
-                     {/*Save button*/}
-                            <Button
-                              label="Save"
-                              style={{
-                                backgroundColor: '#00B300',
-                                color: 'white',
-                                border: 'none',
-                                width: '89px',
-                                height: '42px',
-                                marginTop: '70px',
-                                borderRadius: '0.50rem',
-                                
-                              }}
-                            />
-                  
-                            {/*Back button*/}
-                            <Button
-                              label="Back"
-                              style={{
-                                width: '89px',
-                                height: '42px',
-                                backgroundColor: 'white',
-                                boxShadow: 'none',
-                                color: 'Black',
-                                borderRadius: '0.50rem',
-                                marginTop: '10px',
-                                marginLeft: '30px',
-                                border: '1px solid black',
-                              }}
-                              onClick={() => {
-                                setVisible(false)
-                              }}
-                            />
-                  
-                            {/*Delete user button */}
-                            <div className='mt-[-30px]'>
-                            <Button
-                              label="Delete"
-                              style={{
-                                width: '100px',
-                                height: '42px',
-                                backgroundColor: '#E14942',
-                                boxShadow: 'none',
-                                color: 'white',
-                                borderRadius: '0.50rem',
-                                marginLeft: '750px',
-                              }}
-                            />
-                            </div>
+<div className="flex items-center gap-6 mt-4">
+    {/* Radio Buttons */}
+    <div className="flex items-center gap-4">
+        <div className="flex items-center">
+            <RadioButton
+                checked={checked}
+                variant="filled"
+                style={{ accentColor: '#00B300' }}
+            />
+            <label className="text-[#32645F] font-bold ml-2">Given</label>
+        </div>
+        <div className="flex items-center">
+            <RadioButton
+                style={{ accentColor: "#00B300" }}
+            />
+            <label className="text-[#32645F] font-bold ml-2">Taken</label>
+        </div>
+    </div>
+
+    {/* Dropdown */}
+    <div className="flex flex-col ml-32 ">
+        <label className="text-sm mb-1">Father Name</label>
+        <Dropdown
+            placeholder="Select"
+            editable
+            style={dropdownStyle}
+        />
+        {errorMessage.fathername && (
+            <div className="text-red-500 text-sm mt-2">{errorMessage.fathername}</div>
+        )}
+    </div>
+
+    {/* OR */}
+    <div className="text-sm font-medium">or</div>
+
+    {/* Add New Button */}
+    <Button
+        label="Add New"
+        style={{
+            backgroundColor: '#082825',
+            borderRadius: '0.50rem',
+            color: 'white',
+            border: '#00426F',
+            width: '100px',
+            height: '32px',
+        }}
+    />
+</div>
+
+{/* Error Message for Radio Buttons */}
+{errorMessage.paymentType && (
+    <div className="text-red-500 text-sm -mt-5">{errorMessage.paymentType}</div>
+)}
+
+
+
+
+
+                    {/*Save button*/}
+                    <Button
+                        label="Save"
+                        style={saveButtonStyle}
+                        onClick={handleSave}
+                    />
+
+                    {/*Back button*/}
+                    <Button
+                        label="Back"
+                        style={backButtonStyle}
+                        onClick={() => {
+                            setVisible(false)
+                        }}
+                    />
+
+                    {/*Delete user button */}
+                    <div className='mt-[-30px]'>
+                        <Button
+                            label="Delete"
+                            style={deleteButtonStyle}
+                        />
+                    </div>
                 </Dialog>
             </div>
 

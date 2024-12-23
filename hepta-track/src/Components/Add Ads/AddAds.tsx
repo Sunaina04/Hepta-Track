@@ -17,63 +17,66 @@ import { Tag } from 'primereact/tag'
 import UploadImages from '../CommonComponent/Upload images/UploadImages'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-
+import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle } from '../Styles/styles'
+import './AddAds.css'
 
 const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
-    const [userName, setUserName] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
-    const [checked, setChecked] = useState(true)
+    const [adName, setAdName] = useState('')
     const [dateRange, setDateRange] = useState<Date[] | null>(null);
+    const [status, setStatus] = useState("")
+    const [detail, setDetail] = useState("")
     const dispatch = useDispatch()
-
-
-
-    const [editMode, setEditMode] = useState<boolean>(
-        //editModeWorkOrder ? editModeWorkOrder : false || editModeEstimate ? editModeEstimate : false,
-    )
     const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-    const [lastChangedField, setLastChangedField] = useState<string | null>(null)
-    const [isLoading, setIsLoading] = useState(false)
-    const [approveModalOpen, setApproveModalOpen] = useState(false)
-    const [denyModalOpen, setDenyModalOpen] = useState(false)
     const [imageVisible, setImageVisible] = useState(false)
     const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
-    const [statusChanged, setStatusChanged] = useState(
-        // workOrderData?.inventoryResponseDtoList?.length > 0 &&
-        //workOrderData?.workOrderStatusDto?.id === 10,
-    )
-
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
     const [images, setImages] = useState<string[]>([])
-    const [vendorId, setVendorId] = useState<any>()
-    const [isDirty, setIsDirty] = useState<boolean>(false)
-
-
-
-
+    const [isLoading, setIsLoading] = useState(false)
     const open = useSelector((state: RootState) => state.user.isOpen)
 
     const handleToggleDrawer = () => {
         dispatch(setOpen(!open))
     }
 
+    const validateForm = () => {
+        let errors: { [key: string]: string } = {};
+
+        if (!adName) {
+            errors.adname = "Ad name is required";
+        }
+
+        if (!dateRange || dateRange.length !== 2) {
+            errors.dateRange = "Date range is required";
+        }
+
+        if (!status) {
+            errors.status = "Status is required";
+        }
+
+        if (!detail) {
+            errors.detail = "Detail is required";
+        }
+
+        if (!images.length) {
+            errors.images = "Image is required";
+        }
+
+        setErrorMessage(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+
+    const handleSave = () => {
+        const isValid = validateForm()
+    }
+
+
     return (
         <>
 
             {visible && (
                 <div
-                    style={{
-                        position: "fixed",
-                        marginLeft: open ? "280px" : "110px",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        backdropFilter: "blur(5px)",
-                        zIndex: 100,
-                    }}
+                    style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
                 ></div>
             )}
             <div>
@@ -82,18 +85,8 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     visible={visible}
                     onHide={() => { }}
                     closable={false}
-                    style={{
-                        backgroundColor: 'white',
-                        height: '700px',
-                        minHeight: '260px',
-                        borderRadius: '1rem',
-                        fontWeight: '400',
-                        cursor: 'alias',
-                        marginLeft: '200px',
-                        padding: '2.5rem',
-                        overflow: "auto"
-                    }}>
-
+                    style={dialogStyle}
+                >
 
                     <h1 className="font-bold text-2xl"> Add New Promotions<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
@@ -108,16 +101,11 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                                 </span>
                                 <div className="mt-2"></div>
                                 <InputText
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
+                                    style={inputTextStyle}
                                 />
+                                {errorMessage.adname && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.adname}</div>
+                                )}
                             </div>
                         </div>
 
@@ -130,16 +118,11 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                                 onChange={(e) => setDateRange(e.value as Date[])}
                                 selectionMode="range"
                                 placeholder="From Date - To Date"
-                                style={{
-                                    width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                }}
+                                style={inputTextStyle}
                             />
+                            {errorMessage.dateRange && (
+                                <div className="text-red-500 text-sm mt-1">{errorMessage.dateRange}</div>
+                            )}
                         </div>
 
                         {/* Status*/}
@@ -149,16 +132,11 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                             <Dropdown
                                 placeholder="Select"
                                 editable
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
+                                style={dropdownStyle}
                             />
+                            {errorMessage.status && (
+                                <div className="text-red-500 text-sm mt-1">{errorMessage.status}</div>
+                            )}
                         </div>
                     </div>
 
@@ -166,20 +144,12 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     <div className='mt-5'>
                         <label className="text-sm">Detail</label>
                         <div className='mt-2'>
-
                             <InputTextarea
-                                style={{
-                                    width: '850px',
-                                    height: '100px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none",
-                                    marginTop: "7px",
-                                    resize: "none"
-                                }}
+                                style={inputTextAreaStyle}
                             />
+                            {errorMessage.detail && (
+                                <div className="text-red-500 text-sm mt-1">{errorMessage.detail}</div>
+                            )}
                         </div>
                     </div>
 
@@ -195,40 +165,23 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                         imageRequestDtoList={imageRequestDtoList}
                         isLoading={isLoading}
                         images={images}
-
                     />
-
+                    {errorMessage.images && (
+                        <div className="text-red-500 text-sm mt-1">{errorMessage.images}</div>
+                    )}
 
 
                     {/*Save button*/}
                     <Button
                         label="Save"
-                        style={{
-                            backgroundColor: '#00B300',
-                            color: 'white',
-                            border: 'none',
-                            width: '89px',
-                            height: '42px',
-                            marginTop: '60px',
-                            borderRadius: '0.50rem',
-
-                        }}
+                        style={saveButtonStyle}
+                        onClick={handleSave}
                     />
 
                     {/*Back button*/}
                     <Button
                         label="Back"
-                        style={{
-                            width: '89px',
-                            height: '42px',
-                            backgroundColor: 'white',
-                            boxShadow: 'none',
-                            color: 'Black',
-                            borderRadius: '0.50rem',
-                            marginTop: '10px',
-                            marginLeft: '30px',
-                            border: '1px solid black',
-                        }}
+                        style={backButtonStyle}
                         onClick={() => {
                             setVisible(false)
                         }}
@@ -238,20 +191,13 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     <div className='mt-[-30px]'>
                         <Button
                             label="Delete"
-                            style={{
-                                width: '100px',
-                                height: '42px',
-                                backgroundColor: '#E14942',
-                                boxShadow: 'none',
-                                color: 'white',
-                                borderRadius: '0.50rem',
-                                marginLeft: '750px',
-                            }}
+                            style={deleteButtonStyle}
                         />
                     </div>
+
+
                 </Dialog>
             </div>
-
         </>
     )
 }

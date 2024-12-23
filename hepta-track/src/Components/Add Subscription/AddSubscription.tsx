@@ -13,37 +13,65 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
 import { AddSubscriptionProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
-import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Styles/styles'
+import './AddSubscription.css'
+
 
 const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [checked, setChecked] = useState(true)
-    const dispatch = useDispatch()
+    const [subscriptionName, setSubscriptionName] = useState("")
+    const [amount, setAmount] = useState("")
+    const [status, setStatus] = useState("")
+    const [detail, setDetail] = useState("")
+    const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
 
+    const dispatch = useDispatch()
     const open = useSelector((state: RootState) => state.user.isOpen)
 
     const handleToggleDrawer = () => {
         dispatch(setOpen(!open))
     }
 
+    
+  const validateForm = () => {
+    let errors: { [key: string]: string } = {};
+
+
+    if (!subscriptionName) {
+      errors.subscriptionName = "Subscription Name is required"
+    }
+
+    if (!amount) {
+        errors.amount = "Amount is required"
+    }
+     
+    if (!status) {
+        errors.status = "Status is required"
+    }
+
+    if( !detail) {
+        errors.detail = "Detail is required"
+    }
+
+    setErrorMessage(errors);
+    return Object.keys(errors).length === 0;
+};
+
+
+const handleSave = () => {
+    const isValid = validateForm()
+}
+
+
     return (
         <>
 
             {visible && (
                 <div
-                    style={{
-                        position: "fixed",
-                        marginLeft: open ? "280px" : "110px",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        backdropFilter: "blur(5px)",
-                        zIndex: 100,
-                    }}
+                    style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
                 ></div>
             )}
             <div>
@@ -53,17 +81,10 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                     onHide={() => { }}
                     closable={false}
                     style={{
-                        backgroundColor: 'white',
-                        height: '500px',
-                        minHeight: '260px',
-                        borderRadius: '1rem',
-                        fontWeight: '400',
-                        cursor: 'alias',
-                        marginLeft: '200px',
-                        padding: '2.5rem',
-                        overflow: "auto"
-                        
-                    }}>
+                        ...dialogStyle,
+
+                    }}
+                >
 
 
                     <h1 className="font-bold text-2xl"> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
@@ -79,8 +100,11 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 </span>
                                 <div className="mt-2"></div>
                                 <InputText
-                                style={inputTextStyle}
-                            />
+                                    style={inputTextStyle}
+                                />
+                                 {errorMessage.subscriptionName && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.subscriptionName}</div>
+                       )}
                             </div>
                         </div>
 
@@ -88,8 +112,11 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Amount</label>
                             <InputText
-                               style={inputTextStyle}
+                                style={inputTextStyle}
                             />
+                             {errorMessage.amount && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.amount}</div>
+                       )}
                         </div>
 
                         {/* Status*/}
@@ -97,71 +124,51 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                         <div className="flex flex-col  mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm mb-1">Status</label>
                             <Dropdown
-                                    placeholder="Select"
-                                    editable
-                                   style={dropdownStyle}
-                                />
+                                placeholder="Select"
+                                editable
+                                style={dropdownStyle}
+                            />
+                             {errorMessage.status && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.status}</div>
+                       )}
                         </div>
                     </div>
 
                     {/* Detail */}
-
-                
                     <div className="text-sm mt-8 mb-1">Detail</div>
-                        <InputTextarea
-                            style={inputTextAreaStyle}
-                        />
-                   
+                    <InputTextarea
+                        style={inputTextAreaStyle}
+                    />
+                     {errorMessage.detail && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.detail}</div>
+                       )}
 
-                     {/*Save button*/}
-                     <div className=' mt-8 flex flex-grow gap-10'>
-                            <Button
-                              label="Save"
-                              style={{
-                                backgroundColor: '#00B300',
-                                color: 'white',
-                                border: 'none',
-                                width: '89px',
-                                height: '42px',
-                                borderRadius: '0.50rem',  
-                              }}
-                            />
-                  
-                            {/*Back button*/}
-                            <Button
-                              label="Back"
-                              style={{
-                                width: '89px',
-                                height: '42px',
-                                backgroundColor: 'white',
-                                boxShadow: 'none',
-                                color: 'Black',
-                                borderRadius: '0.50rem',
-                               
-                                border: '1px solid black',
-                              }}
-                              onClick={() => {
+
+                    {/*Save button*/}
+                    <div className='flex flex-grow '>
+                        <Button
+                            label="Save"
+                            style={{ ...saveButtonStyle }}
+                            onClick={handleSave}
+                        />
+
+                        {/*Back button*/}
+                        <Button
+                            label="Back"
+                            style={{ ...backButtonStyle, marginTop: "60px" }}
+                            onClick={() => {
                                 setVisible(false)
-                              }}
-                            />
-                  
-                            {/*Delete user button */}
-                            <div className='mt-[-30px]'>
-                            <Button
-                              label="Delete"
-                              style={{
-                                width: '100px',
-                                height: '42px',
-                                backgroundColor: '#E14942',
-                                boxShadow: 'none',
-                                color: 'white',
-                                borderRadius: '0.50rem',
-                                marginTop: "40px",
-                                marginLeft: '490px',
-                              }}
-                            />
-                            </div>
-                            </div>
+                            }}
+                        />
+
+                        {/*Delete user button */}
+
+                        <Button
+                            label="Delete"
+                            style={{ ...deleteButtonStyle, marginTop: "60px", marginLeft: "550px" }}
+                        />
+
+                    </div>
                 </Dialog>
             </div>
 

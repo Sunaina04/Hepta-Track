@@ -17,41 +17,25 @@ import { Tag } from 'primereact/tag'
 import UploadVideo from '../CommonComponent/Video Upload/VideoUpload'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
-
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Styles/styles'
+import './AddVideo.css'
 
 const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
-    const [userName, setUserName] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
+    const [videoName, setVideoName] = useState('')
     const [checked, setChecked] = useState(true)
     const [date, setDate] = useState<Date | null>(null)
-    const dispatch = useDispatch()
-
-
-
-    const [editMode, setEditMode] = useState<boolean>(
-        //editModeWorkOrder ? editModeWorkOrder : false || editModeEstimate ? editModeEstimate : false,
-    )
     const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-    const [lastChangedField, setLastChangedField] = useState<string | null>(null)
     const [isLoading, setIsLoading] = useState(false)
-    const [approveModalOpen, setApproveModalOpen] = useState(false)
-    const [denyModalOpen, setDenyModalOpen] = useState(false)
-    const [imageVisible, setImageVisible] = useState(false)
-    const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
-    const [statusChanged, setStatusChanged] = useState(
-        // workOrderData?.inventoryResponseDtoList?.length > 0 &&
-        //workOrderData?.workOrderStatusDto?.id === 10,
-    )
-
+    const [videoVisible, setVideoVisible] = useState(false)
+    const [videoRequestDtoList, setVideoRequestDtoList] = useState<any[]>([])
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
-    const [images, setImages] = useState<string[]>([])
-    const [vendorId, setVendorId] = useState<any>()
-    const [isDirty, setIsDirty] = useState<boolean>(false)
+    const [videos, setVideos] = useState<string[]>([])
+    const [status, setStatus] = useState("")
+    const [detail, setDetail] = useState("")
+    
 
 
-
+    const dispatch = useDispatch()
 
     const open = useSelector((state: RootState) => state.user.isOpen)
 
@@ -59,22 +43,49 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
         dispatch(setOpen(!open))
     }
 
+   
+    const validateForm = () => {
+        let errors: { [key: string]: string } = {};
+
+        if (!videoName) {
+            errors.videoname = "Video name is required";
+        }
+
+      
+        if (!date) {
+            errors.date = "Date is required";
+        }
+
+
+        if (!status) {
+            errors.status = "Status is required";
+        }
+
+        if (!detail) {
+            errors.detail = "Detail is required";
+        }
+
+        if (!videos.length) {
+            errors.videos = "Video is required";
+        }
+
+        setErrorMessage(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+
+    const handleSave = () => {
+        const isValid = validateForm()
+    }
+
+
+
     return (
         <>
 
             {visible && (
                 <div
-                    style={{
-                        position: "fixed",
-                        marginLeft: open ? "280px" : "110px",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                        backdropFilter: "blur(5px)",
-                        zIndex: 100,
-                    }}
+                      style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
                 ></div>
             )}
             <div>
@@ -83,18 +94,8 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                     visible={visible}
                     onHide={() => { }}
                     closable={false}
-                    style={{
-                        backgroundColor: 'white',
-                        height: '700px',
-                        minHeight: '260px',
-                        borderRadius: '1rem',
-                        fontWeight: '400',
-                        cursor: 'alias',
-                        marginLeft: '200px',
-                        padding: '2.5rem',
-                        overflow: "auto"
-                    }}>
-
+                    style={dialogStyle}
+                   >
 
                     <h1 className="font-bold text-2xl"> Add/Edit Video<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
@@ -111,6 +112,9 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                                 <InputText
                                     style={inputTextStyle}
                                 />
+                                 {errorMessage.videoname && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.videoname}</div>
+                                )}
                             </div>
                         </div>
 
@@ -124,7 +128,9 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                                 style={inputTextStyle}
                                 showIcon
                             />
-                            
+                             {errorMessage.date && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.date}</div>
+                                )}
                             
                         </div>
 
@@ -137,6 +143,9 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                                 editable
                                 style={dropdownStyle}
                                   />
+                                   {errorMessage.status && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.status}</div>
+                                )}
                         </div>
                     </div>
 
@@ -148,6 +157,9 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                             <InputTextarea
                               style={inputTextAreaStyle}
                             />
+                             {errorMessage.detail && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.detail}</div>
+                                )}
                         </div>
                     </div>
 
@@ -159,43 +171,28 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                         setHoveredIndex={setHoveredIndex}
                         handleVideoChange={() => { }
                         }
-                        setVideoVisible={setImageVisible}
-                        VideoRequestDtoList={imageRequestDtoList}
+                        setVideoVisible={setVideoVisible}
+                        VideoRequestDtoList={videoRequestDtoList}
                         isLoading={isLoading}
-                        images={images}
-
+                        images={videos}
                     />
+                     {errorMessage.videos && (
+                                    <div className="text-red-500 text-sm mt-1">{errorMessage.videos}</div>
+                                )}
 
 
 
                     {/*Save button*/}
                     <Button
                         label="Save"
-                        style={{
-                            backgroundColor: '#00B300',
-                            color: 'white',
-                            border: 'none',
-                            width: '89px',
-                            height: '42px',
-                            marginTop: '60px',
-                            borderRadius: '0.50rem',
-                        }}
+                        style={{...saveButtonStyle}}
+                        onClick={handleSave}
                     />
 
                     {/*Back button*/}
                     <Button
                         label="Back"
-                        style={{
-                            width: '89px',
-                            height: '42px',
-                            backgroundColor: 'white',
-                            boxShadow: 'none',
-                            color: 'Black',
-                            borderRadius: '0.50rem',
-                            marginTop: '10px',
-                            marginLeft: '30px',
-                            border: '1px solid black',
-                        }}
+                        style={backButtonStyle}
                         onClick={() => {
                             setVisible(false)
                         }}
@@ -205,22 +202,14 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                     <div className='mt-[-30px]'>
                         <Button
                             label="Delete"
-                            style={{
-                                width: '100px',
-                                height: '42px',
-                                backgroundColor: '#E14942',
-                                boxShadow: 'none',
-                                color: 'white',
-                                borderRadius: '0.50rem',
-                                marginLeft: '750px',
-                            }}
+                            style={deleteButtonStyle}
                         />
                     </div>
                 </Dialog>
             </div>
-
         </>
     )
 }
 
 export default AddVideo
+

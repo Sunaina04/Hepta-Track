@@ -7,45 +7,87 @@ import { GrFormSubtract } from 'react-icons/gr'
 import { FaFileUpload, FaLessThanEqual } from 'react-icons/fa'
 import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
-import SidebarLayout from '../Sidebar/SidebarLayout'
-import { RootState } from '../../Store/Store'
-import './AddUser.css'
 import { AddUserProps } from '../../Type/ComponentBasedTypes'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { addressStyle, dropdownStyle, inputTextStyle } from '../Styles/styles'
-
+import { RootState } from '../../Store/Store'
+import { addressStyle, dialogStyle, dropdownStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle, savePassword } from '../Styles/styles'
+import './AddUser.css'
 
 const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
   const [userName, setUserName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const dispatch = useDispatch()
-  const open = useSelector((state: RootState) => state.user.isOpen)
+  const [address,setAddress] = useState("")
+  const [role,setRole] = useState("")
+  const [accountStatus,setAccountStatus] = useState("")
+  const [newPassword,setNewPasssword] = useState("")
+  const [confirmNewPassword,setConfirmNewPassword] = useState("")
+ 
 
+
+  const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
+  const dispatch = useDispatch()
+
+  const open = useSelector((state: RootState) => state.user.isOpen)
 
   const handleToggleDrawer = () => {
     dispatch(setOpen(!open))
   }
 
+  const validateForm = () => {
+    let errors: { [key: string]: string } = {};
+
+    if (!userName) {
+        errors.username = "User name is required";
+    }
+
+    if (!phone) {
+      errors.phone = "Phone No is required"
+    }
+
+    if (!email) {
+        errors.email = "Email is required"
+    }
+ 
+    if (!address) {
+      errors.address = "All Address Fields are required"
+  }
+
+   if(!role) {
+    errors.role = "Role is required"
+   }
+
+    if(!accountStatus) {
+      errors.accountStatus = "Account Status is required"
+    }
+
+    if(!newPassword) {
+      errors.newPassword = "New Password is required"
+    }
+
+    if(!confirmNewPassword) {
+      errors.confirmNewPassword = "Confirm New Password is required"
+    }
+
+    setErrorMessage(errors);
+    return Object.keys(errors).length === 0;
+};
+
+
+const handleSave = () => {
+    const isValid = validateForm()
+}
 
   return (
     <>
+
       {visible && (
         <div
-          style={{
-            position: "fixed",
-            marginLeft: open ? "120px" : "-60px",
-            top: 0,
-            left: '170px',
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
-            backdropFilter: "blur(5px)",
-            zIndex: 100,
-          }}
+           style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
         ></div>
       )}
+
 
       <div>
         <Dialog
@@ -54,235 +96,214 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
           onHide={() => { }}
           closable={false}
           style={{
-            backgroundColor: 'white',
-            height: '650px',
-            borderRadius: '1rem',
-            fontWeight: '400',
-            cursor: 'alias',
-            marginLeft: '200px',
-            overflow: "auto"
-          }}>
+            ...dialogStyle, 
+            padding: '0px',
+            height: "700px"
+          }}
+          >
 
           <div className='p-7'>
-            <h1 className="font-bold text-2xl">Edit/Add User  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+            <h1 className="font-bold text-2xl">Edit/Add Agent  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
             <div className="flex mt-4">
               {/* User Name */}
               <div>
                 <div>
                   <span className="text-sm">
-                    <div className="flex gap-1">
+                    
                       User Name
-                    </div>
+                   
                   </span>
                   <div className="mt-2"></div>
                   <InputText
                     style={inputTextStyle}
                   />
+                    {errorMessage.username && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.username}</div>
+                       )}
                 </div>
               </div>
 
               {/* Phone Number */}
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-                <div className="text-sm  mb-1">Phone</div>
+                <label className="text-sm  mb-1">Phone</label>
                 <InputText
-                 style={inputTextStyle}
+                  style={inputTextStyle}
                 />
+                 {errorMessage.phone && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.phone}</div>
+                       )}
               </div>
-
-
 
 
               {/* Email */}
 
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
-                <div className="text-sm mb-1">Email Address</div>
+                <label className="text-sm mb-1">Email Address</label>
                 <InputText
                  style={inputTextStyle}
                 />
+                  {errorMessage.email && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.email}</div>
+                       )}
               </div>
             </div>
 
 
+            <div className='px-1'>
+              {/* Address Heading */}
+              <h2 className="text-sm mt-4 mb-2">Address</h2>
+             
 
-
-
-            {/* Adress */}
-            <div className="flex gap-6 mt-6">
-              <div>
-
-                <div className="text-sm">
-                  Address
-                </div>
-                <div className="mt-2 fixed"></div>
-                {/*Street*/}
-
+              {/* Address Fields */}
+              <div className="grid lg:grid-cols-4 gap-0 -ml-5">
+                {/* Street/Building */}
                 <InputText
-                  placeholder='Street/Building'
-                  //value={phone}
-                  //onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Street/Building"
                   style={addressStyle}
                 />
 
-                {/*Apt/suite*/}
+                {/* Apt/Suite */}
                 <InputText
-                  placeholder='Apt/Suite'
-                  //value={phone}
-                  //onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Apt/Suite"
                   style={addressStyle}
                 />
 
-
-                {/*country*/}
-
+                {/* Country */}
                 <Dropdown
                   placeholder="Country"
                   editable
                   style={addressStyle}
                 />
 
-
-
-                {/*State*/}
-
+                {/* State */}
                 <Dropdown
                   placeholder="State"
                   editable
                   style={addressStyle}
                 />
 
-
-                {/*ZipCode*/}
-                <div className='mt-3'>
+                {/* Zip Code */}
+                <div className="col-span-2 lg:col-span-1 mt-4">
                   <InputText
-                    placeholder='Zip Code'
-                    //value={phone}
-                    //onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Zip Code"
                     style={addressStyle}
                   />
+                   {errorMessage.address && (
+                     <div className="text-red-500 text-sm mt-2 ml-5 ">{errorMessage.address}</div>
+                       )}
                 </div>
               </div>
             </div>
 
 
+
+
             <div className="flex gap-8 mt-5">
               {/* Role */}
               <div>
-                <div className=" text-sm mb-2">Role</div>
+                <h1 className=" text-sm mb-2">Role</h1>
                 <Dropdown
                   placeholder="Select Role"
                   editable
-                  style={dropdownStyle}
+                  style={{...dropdownStyle,  border: '1px solid #00426F',}}
                 />
+                 {errorMessage.role && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.role}</div>
+                       )}
               </div>
 
               {/* Account Status */}
 
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-                <div className="text-sm  mb-1">Account Status</div>
+                <label className="text-sm  mb-1">Account Status</label>
                 <Dropdown
                   placeholder="Select Status"
                   editable
-                  style={dropdownStyle}
+                  style={{...dropdownStyle,  border: '1px solid #00426F',}}
                 />
+                 {errorMessage.accountStatus && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.accountStatus}</div>
+                       )}
               </div>
 
 
 
               {/* Phone Number */}
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
-                <div className="text-sm  mb-1">Phone</div>
+                <label className="text-sm  mb-1">Phone</label>
                 <InputText
-                  style={inputTextStyle}
+                  style={{...dropdownStyle,  border: '1px solid #00426F',}}
                 />
+                 {errorMessage.phone && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.phone}</div>
+                       )}
               </div>
             </div>
           </div>
 
-          {/* Set Password */}
-          <div className=" ml-4  ">
-            {/* Container for inputs and button */}
-
-            <div
-              className="  flex  p-2 border rounded-lg"
-              style={{
-                backgroundColor: '#EDF3F9',
-                width: '890px',
-                height: '120px',
-              }}>
-              {/* New password */}
-              <div className="mb-4">
-                <div className='text-sm  mb-1'>Set password</div>
-                <InputText
-                  className="mt-2"
-                  //value={phone}
-                  placeholder="New Password"
-                  //onChange={(e) => setPhone(e.target.value)}
-                  style={inputTextStyle}
-                />
-              </div>
-
-              {/* Confirm New Password */}
-              <div>
-                <InputText
-                  placeholder="Confirm New Password"
-                  style={inputTextStyle}
-                />
-
-              </div>
-
-              <div>
-                {/* Save Password */}
-                <Button
-                  label="Save Password"
-                  style={{
-                    backgroundColor: '#082825',
-                    borderRadius: '0.50rem',
-                    color: 'white',
-                    border: '#00426F',
-                    width: '270px',
-                    height: '32px',
-                    marginLeft: "20px",
-                    marginTop: '32px'
-
-                  }}
-                />
-
-              </div>
-            </div>
-          </div>
-
-
-
+         
+                  <div className="flex justify-center ">
+                    {/* Outer Container */}
+                    <div
+                      className="p-4 border rounded-lg"
+                      style={{
+                        backgroundColor: '#EDF3F9',
+                        width: '890px',
+                      }}
+                    >
+                      {/* Heading */}
+                      <h2 className="text-sm  mb-2">Set Password</h2>
+        
+                      {/* Input Fields and Button */}
+                      <div className="flex flex-wrap gap-4">
+                        {/* New Password */}
+                        <div className="flex-1 min-w-[200px]">
+                          <InputText
+                            placeholder="New Password"
+                            className="w-full"
+                            style={{...dropdownStyle,  border: '1px solid #00426F',}}
+                          />
+                           {errorMessage.newPassword && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.newPassword}</div>
+                       )}
+                        </div>
+        
+                        {/* Confirm Password */}
+                        <div className="flex-1 min-w-[200px]">
+                          <InputText
+                            placeholder="Confirm New Password"
+                            className="w-full"
+                            style={{...dropdownStyle,  border: '1px solid #00426F',}}
+                          />
+                           {errorMessage.confirmNewPassword && (
+                     <div className="text-red-500 text-sm mt-1">{errorMessage.confirmNewPassword}</div>
+                       )}
+                        </div>
+        
+                        {/* Save Password Button */}
+                        <div className="flex-1 flex">
+                          <Button
+                            label="Save Password"
+                            style={savePassword}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+        
           {/*Save button*/}
           <Button
             label="Save"
-            style={{
-              backgroundColor: '#00B300',
-              color: 'white',
-              border: '#00426',
-              width: '89px',
-              height: '42px',
-              marginTop: '40px',
-              borderRadius: '0.50rem',
-              marginLeft: '30px'
-            }}
+             style={{...saveButtonStyle , marginLeft: "30px"}}
+             onClick={handleSave}
           />
 
           {/*Back button*/}
           <Button
             label="Back"
-            style={{
-              width: '89px',
-              height: '42px',
-              backgroundColor: 'white',
-              boxShadow: 'none',
-              color: 'Black',
-              borderRadius: '0.50rem',
-              marginTop: '10px',
-              marginLeft: '30px',
-              border: '1px solid black',
-            }}
+            style={backButtonStyle}
             onClick={() => {
               setVisible(false)
             }}
@@ -291,15 +312,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
           {/*Delete user button */}
           <Button
             label="Delete User"
-            style={{
-              width: '100px',
-              height: '42px',
-              backgroundColor: '#E14942',
-              boxShadow: 'none',
-              color: 'white',
-              borderRadius: '0.50rem',
-              marginLeft: '550px',
-            }}
+             style={{...deleteButtonStyle , marginLeft: "550px"}}
           />
         </Dialog>
       </div>
@@ -311,3 +324,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
 }
 
 export default AddUser
+
+
+
+
