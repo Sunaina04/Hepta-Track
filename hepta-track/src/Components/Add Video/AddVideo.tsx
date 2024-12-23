@@ -17,6 +17,7 @@ import { Tag } from 'primereact/tag'
 import UploadVideo from '../CommonComponent/Video Upload/VideoUpload'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
+import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
 
 
 const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
@@ -108,15 +109,7 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                                 </span>
                                 <div className="mt-2"></div>
                                 <InputText
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
+                                    style={inputTextStyle}
                                 />
                             </div>
                         </div>
@@ -125,20 +118,14 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Date</label>
                             <Calendar
-                                showIcon={true}
                                 value={date}
                                 onChange={(e) => setDate(e.value as Date)}
                                 placeholder="Date"
-                                style={{
-                                    width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                }}
+                                style={inputTextStyle}
+                                showIcon
                             />
+                            
+                            
                         </div>
 
                         {/* Status*/}
@@ -148,16 +135,8 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                             <Dropdown
                                 placeholder="Select"
                                 editable
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
-                            />
+                                style={dropdownStyle}
+                                  />
                         </div>
                     </div>
 
@@ -167,17 +146,7 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                         <div className='mt-2'>
 
                             <InputTextarea
-                                style={{
-                                    width: '850px',
-                                    height: '100px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none",
-                                    marginTop: "7px",
-                                    resize: "none"
-                                }}
+                              style={inputTextAreaStyle}
                             />
                         </div>
                     </div>
@@ -210,7 +179,6 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                             height: '42px',
                             marginTop: '60px',
                             borderRadius: '0.50rem',
-
                         }}
                     />
 

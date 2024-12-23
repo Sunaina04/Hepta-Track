@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
 import { AddSubscriptionProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
+import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
 
 const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
@@ -78,15 +79,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 </span>
                                 <div className="mt-2"></div>
                                 <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
+                                style={inputTextStyle}
                             />
                             </div>
                         </div>
@@ -95,15 +88,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Amount</label>
                             <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
+                               style={inputTextStyle}
                             />
                         </div>
 
@@ -114,15 +99,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                             <Dropdown
                                     placeholder="Select"
                                     editable
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
+                                   style={dropdownStyle}
                                 />
                         </div>
                     </div>
@@ -132,17 +109,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                 
                     <div className="text-sm mt-8 mb-1">Detail</div>
                         <InputTextarea
-                            style={{
-                                width: '850px',
-                                height: '100px',
-                                border: '1px solid #D5E1EA',
-                                borderRadius: '0.50rem',
-                                fontSize: '0.8rem',
-                                paddingLeft: '0.5rem',
-                                outline: "none",
-                                marginTop: "5px",
-                                resize: "none"
-                            }}
+                            style={inputTextAreaStyle}
                         />
                    
 
@@ -156,9 +123,7 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
                                 border: 'none',
                                 width: '89px',
                                 height: '42px',
-                               
-                                borderRadius: '0.50rem',
-                                
+                                borderRadius: '0.50rem',  
                               }}
                             />
                   

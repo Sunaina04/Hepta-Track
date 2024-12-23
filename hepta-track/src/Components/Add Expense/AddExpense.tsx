@@ -13,6 +13,7 @@ import { RootState } from '../../Store/Store'
 import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
 import { InputTextarea } from 'primereact/inputtextarea'
+import { dropdownStyle, inputTextAreaStyle, inputTextStyle } from '../Styles/styles'
 
 const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
@@ -79,15 +80,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                                 <Dropdown
                                     placeholder="Select"
                                     editable
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
+                                   style={dropdownStyle}
                                 />
                             </div>
                         </div>
@@ -96,15 +89,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                         <div className="flex flex-col mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm  mb-1">Enter Price</label>
                             <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
+                               style={inputTextStyle}
                             />
                         </div>
 
@@ -113,15 +98,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                         <div className="flex flex-col  mt-1" style={{ marginLeft: '20px' }}>
                             <label className="text-sm mb-1">Select Expense type</label>
                             <InputText
-                                style={{
-                                    width: '270px',
-                                    height: '32px',
-                                    border: '1px solid #D5E1EA',
-                                    borderRadius: '0.50rem',
-                                    fontSize: '0.8rem',
-                                    paddingLeft: '0.5rem',
-                                    outline: "none"
-                                }}
+                                style={inputTextStyle}
                             />
                         </div>
                     </div>
@@ -130,21 +107,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                     
                     <div className="text-sm mt-8">Description</div>
                      <InputTextarea
-                            style={{
-                                width: '850px',
-                                height: '150px',
-                                border: '1px solid #D5E1EA',
-                                borderRadius: '0.50rem',
-                                fontSize: '0.8rem',
-                                paddingLeft: '0.5rem',
-                                outline: "none",
-                                marginTop: "5px",
-                                resize: "none" 
-                            }}
+                            style={inputTextAreaStyle}
                         />
                    
-                    
-
 
                     {/*Select Payment type */}
 
@@ -178,15 +143,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
                             <Dropdown
                             placeholder="Select"
                                     editable
-                                    style={{
-                                        width: '270px',
-                                        height: '32px',
-                                        border: '1px solid #D5E1EA',
-                                        borderRadius: '0.50rem',
-                                        fontSize: '0.8rem',
-                                        paddingLeft: '0.5rem',
-                                        outline: "none"
-                                    }}
+                                   style={dropdownStyle}
                                 />
                         </div>
                       

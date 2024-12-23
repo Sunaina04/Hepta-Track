@@ -13,6 +13,7 @@ import './AddUser.css'
 import { AddUserProps } from '../../Type/ComponentBasedTypes'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { addressStyle, dropdownStyle, inputTextStyle } from '../Styles/styles'
 
 
 const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
@@ -76,16 +77,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   </span>
                   <div className="mt-2"></div>
                   <InputText
-                    style={{
-                      width: '270px',
-                      height: '32px',
-                      border: '1px solid #D5E1EA',
-                      borderRadius: '0.50rem',
-                      fontSize: '0.8rem',
-                      paddingLeft: '0.5rem',
-                      outline: "none"
-
-                    }}
+                    style={inputTextStyle}
                   />
                 </div>
               </div>
@@ -94,15 +86,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
                 <div className="text-sm  mb-1">Phone</div>
                 <InputText
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    outline: "none"
-                  }}
+                 style={inputTextStyle}
                 />
               </div>
 
@@ -114,15 +98,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '20px' }}>
                 <div className="text-sm mb-1">Email Address</div>
                 <InputText
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    outline: "none"
-                  }}
+                 style={inputTextStyle}
                 />
               </div>
             </div>
@@ -145,15 +121,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   placeholder='Street/Building'
                   //value={phone}
                   //onChange={(e) => setPhone(e.target.value)}
-                  style={{
-                    width: '200px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    outline: "none"
-                  }}
+                  style={addressStyle}
                 />
 
                 {/*Apt/suite*/}
@@ -161,17 +129,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   placeholder='Apt/Suite'
                   //value={phone}
                   //onChange={(e) => setPhone(e.target.value)}
-                  style={{
-                    width: '200px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    marginLeft: "15px",
-                    outline: "none",
-                   
-                  }}
+                  style={addressStyle}
                 />
 
 
@@ -180,16 +138,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                 <Dropdown
                   placeholder="Country"
                   editable
-                  style={{
-                    width: '200px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    marginLeft: "15px",
-                    outline: "none"
-                  }}
+                  style={addressStyle}
                 />
 
 
@@ -199,17 +148,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                 <Dropdown
                   placeholder="State"
                   editable
-                  style={{
-                    width: '200px',
-                    height: '32px',
-                    border: '1px solid #D5E1EA',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    marginLeft: "19px",
-                    outline: "none"
-
-                  }}
+                  style={addressStyle}
                 />
 
 
@@ -219,15 +158,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                     placeholder='Zip Code'
                     //value={phone}
                     //onChange={(e) => setPhone(e.target.value)}
-                    style={{
-                      width: '200px',
-                      height: '32px',
-                      border: '1px solid #D5E1EA',
-                      borderRadius: '0.50rem',
-                      fontSize: '0.8rem',
-                      paddingLeft: '0.5rem',
-                      outline: "none"
-                    }}
+                    style={addressStyle}
                   />
                 </div>
               </div>
@@ -241,15 +172,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                 <Dropdown
                   placeholder="Select Role"
                   editable
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #00426F',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                   
-                  }}
+                  style={dropdownStyle}
                 />
               </div>
 
@@ -260,15 +183,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                 <Dropdown
                   placeholder="Select Status"
                   editable
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #00426F',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                   
-                  }}
+                  style={dropdownStyle}
                 />
               </div>
 
@@ -278,15 +193,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               <div className="flex flex-col items-start mt-1" style={{ marginLeft: '-10px' }}>
                 <div className="text-sm  mb-1">Phone</div>
                 <InputText
-                  style={{
-                    width: '265px',
-                    height: '32px',
-                    border: '1px solid #00426F',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                  
-                  }}
+                  style={inputTextStyle}
                 />
               </div>
             </div>
@@ -311,16 +218,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
                   //value={phone}
                   placeholder="New Password"
                   //onChange={(e) => setPhone(e.target.value)}
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #00426F',
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    marginLeft: "6px",
-                   
-                  }}
+                  style={inputTextStyle}
                 />
               </div>
 
@@ -328,17 +226,7 @@ const AddUser: React.FC<AddUserProps> = ({ visible, setVisible }) => {
               <div>
                 <InputText
                   placeholder="Confirm New Password"
-                  style={{
-                    width: '270px',
-                    height: '32px',
-                    border: '1px solid #00426F', 
-                    borderRadius: '0.50rem',
-                    fontSize: '0.8rem',
-                    paddingLeft: '0.5rem',
-                    marginLeft: '20px',
-                    marginTop: '32px',
-                   
-                  }}
+                  style={inputTextStyle}
                 />
 
               </div>
