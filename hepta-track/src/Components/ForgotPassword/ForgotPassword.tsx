@@ -1,13 +1,45 @@
 import React, { Component } from 'react'
 import { useState, useRef } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, Navigate } from 'react-router-dom'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
 
-class ForgotPassword extends Component {
-  render() {
+const ForgotPassword = () => {
+   
+   const [email, setEmail] = useState<string>("");
+   const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({});
+  const navigate = useNavigate()
+
+  
+
+
+   const validateForm = (): boolean => {
+       const errors: { [key: string]: string } = {};
+   
+       if (email.trim() === "") {
+           errors.email = "Email is required";
+       }
+   
+      
+       setErrorMessage(errors);
+   
+   
+       return Object.keys(errors).length === 0; 
+   };
+   
+   const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
+     e.preventDefault();
+   
+     const isValid = validateForm();
+   
+     if (isValid) {  
+         navigate('/resetPassword')
+     } 
+   };
+
+
     return (
       <>
         <Toast
@@ -32,19 +64,17 @@ class ForgotPassword extends Component {
               />
             </div>
 
-            <div className="flex flex-col justify-center text-center mt-[3rem]">
-              {/* {errors && (
-              <div className="mb-4">
-                <span className="text-red-500 text-sm">
-                  {errors}
-                  </span>
-              </div>
-            )}
+            <div className="flex flex-col justify-center mt-[3rem]">
+            {errorMessage.email && (
+                     <div className="text-red-500 text-sm ml-6 mb-1">{errorMessage.email}</div>
+                       )}
+              {/* 
             {message && (
               <div className="mb-4">
                 <span className="text-green-500 text-sm">{message}</span>
               </div>
             )} */}
+            
               <div className="flex flex-col gap-5">
                 <div className="p-input-icon-left relative flex justify-center ">
                   <div className="p-input-icon-left relative flex justify-center">
@@ -58,10 +88,10 @@ class ForgotPassword extends Component {
                         color: '#00426F',
                         borderRadius: '10px',
                       }}
-                      // value={email}
+                       value={email}
                       // type="email"
                       placeholder="Enter Your registered email"
-                      // onChange={handleChange}
+                       onChange={(e) => setEmail(e.target.value)}
                       // onKeyUp={handleKeyUp}
                     />
                     <img
@@ -132,9 +162,9 @@ class ForgotPassword extends Component {
                   fontWeight: '500',
                   justifyContent: 'center',
                 }}
-                //onClick={handleSubmit}
+              onClick={handleSave}
               >
-                <Link to="/ResetPassword">Submit</Link>
+                Submit
               </Button>
 
               <Button
@@ -153,16 +183,16 @@ class ForgotPassword extends Component {
                   justifyContent: 'center',
                 }}
                 className="mt-5 "
-                // onClick={() => navigateToLoginPage('/Login')}
+                onClick={() => navigate('/login')}
               >
-                <Link to="/">Back</Link>
+               Back
               </Button>
             </div>
           </div>
         </div>
       </>
     )
-  }
+  
 }
 
 export default ForgotPassword

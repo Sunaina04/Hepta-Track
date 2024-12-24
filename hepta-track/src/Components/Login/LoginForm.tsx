@@ -1,14 +1,52 @@
-import React, { Component, useRef } from 'react'
+import React, { Component, useRef , useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Toast } from 'primereact/toast'
 import { Password } from 'primereact/password'
 import './login.css'
+import { ProgressSpinner } from 'primereact/progressspinner'
+
 
 const LoginForm = () => {
+  
   // const toast = useRef < Toast > null
-  const navigate = useNavigate()
+  
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
+  
+  const validateForm = (): boolean => {
+    const errors: { [key: string]: string } = {};
+
+    if (email.trim() === "") {
+        errors.email = "Email is required";
+    }
+
+    if (password.trim() === "") {
+        errors.password = "Password is required";
+    }
+
+    setErrorMessage(errors);
+
+
+    return Object.keys(errors).length === 0; 
+};
+
+const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+
+  const isValid = validateForm();
+
+  if (isValid) {  
+      navigate('/dashboard');
+  } 
+};
+
+
+
 
   return (
     <>
@@ -39,27 +77,27 @@ const LoginForm = () => {
               id="logo"
             />
           </div>
-          <div className="flex flex-col justify-center text-center mt-[5rem] min-[320px]:w[270px]">
-            <div className="text-red-500 mb-2 text-sm">
-              {/* {errors.email && <p>{errors.email}</p>} */}
-            </div>
+         
+          <div className="flex flex-col justify-center  mt-[5rem] min-[320px]:w[270px]">
+          {errorMessage.email && (
+                     <div className="text-red-500 text-sm ml-7 mb-1">{errorMessage.email}</div>
+                       )}
             <div className="flex flex-col items-center">
               <div className="p-input-icon-left" id="input-field">
                 <InputText
-                  name="username"
-                  // value={username}
-                  // onChange={handleChange}
+                  name="email"
+                   value={email}
+                   onChange={(e)=> setEmail(e.target.value)}
                   // onKeyUp={handleKeyUp}
-                  // disabled={isLoading}
-                  // placeholder={isLoading ? 'Loading...' : 'Enter Your Email'}
+                   disabled={isLoading}
+                   placeholder={isLoading ? 'Loading...' : 'Enter Your Email'}
                   id="input-field"
                   style={{
                     width: '500px',
                     height: '60px',
                     padding: '0 4rem 0 3rem',
-                    border: '1px solid #C5D9E0',
+                    border: '1px solid #D5E1EA',
                     fontSize: '14px',
-                    color: 'black',
                     borderRadius: '10px',
                   }}
                 />
@@ -77,8 +115,11 @@ const LoginForm = () => {
                   }}
                 />
               </div>
-              <div className="text-red-500 mb-5 mt-3 text-sm">
-                {/* {<p>{errors.password}</p>} */}
+              
+              <div className="text-red-500 mb-1 mt-6 text-sm">
+              {errorMessage.password && (
+                     <div className="text-red-500 text-sm mr-[350px]">{errorMessage.password}</div>
+                       )}
               </div>
               <div className="p-input-icon-left">
                 <div
@@ -87,21 +128,21 @@ const LoginForm = () => {
                   <Password
                     type={'text'}
                     name="password"
-                    // value={password}
-                    // onChange={handleChange}
+                     value={password}
+                     onChange={(e)=> setPassword(e.target.value)}
                     // onKeyUp={handleKeyUp}
-                    // feedback={false}
+                     feedback={false}
                     // toggleMask
-                    // disabled={isLoading}
-                    // placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
+                     disabled={isLoading}
+                     placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
                     style={{
-                      padding: '0 2rem 0 3rem',
-                      border: '1px solid #C5D9E0',
-                      fontSize: '18px',
-                      color: 'black',
-                      borderRadius: '10px',
                       width: '500px',
                       height: '60px',
+                      padding: '0 4rem 0 3rem',
+                      border: '1px solid #D5E1EA',
+                      fontSize: '14px',
+                      borderRadius: '10px',
+                      
                     }}
                   />
                   <img
@@ -121,7 +162,7 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              {/* {isLoading && (
+               {isLoading && (
                   <ProgressSpinner
                     style={{
                       position: 'absolute',
@@ -132,7 +173,7 @@ const LoginForm = () => {
                       height: '50px',
                     }}
                   />
-                )} */}
+                )} 
               <div className="flex justify-end mb-8 mt-5 w-[500px] cursor-pointer underline">
                 <span
                   className="font-normal"
@@ -166,8 +207,8 @@ const LoginForm = () => {
                   fontWeight: '500',
                   justifyContent: 'center',
                 }}
-                onClick={() => navigate('/dashboard')}
-                // disabled={isLoading}
+                onClick={handleSave}
+                disabled={isLoading}
               >
                 <p className="text-white">Login</p>
               </Button>
@@ -182,7 +223,7 @@ const LoginForm = () => {
             }}>
             <p className="text-center mt-8 text-[#00426F] leading-6 font-[400]">
               Lorem Ipsum is simply dummy text of prinitng and typesetting industry. Lorem ipsum has
-              been the industry's standard dummy text ever since the 1500's
+              been the industry's standard dummy text ever since the 1500's 
             </p>
           </div>
         </div>

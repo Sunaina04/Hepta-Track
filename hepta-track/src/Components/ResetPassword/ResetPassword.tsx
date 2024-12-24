@@ -7,9 +7,107 @@ import { Toast } from 'primereact/toast'
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
 import './ResetPassword.css'
+import 'primereact/resources/themes/lara-light-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
-class ResetPassword extends Component {
-  render() {
+const ResetPassword = () => {
+  
+   const [password, setPassword] = useState<string>("");
+   const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
+  
+
+
+    const validateForm = (): boolean => {
+
+      const errors: { [key: string]: string } = {};
+
+      const passwordValidationRegex = {
+        lowercase: /[a-z]/,          // At least one lowercase letter
+        uppercase: /[A-Z]/,          // At least one uppercase letter
+        numeric: /\d/,               // At least one numeric character
+        length: /.{8,}/,             // At least 8 characters
+      };
+
+      
+  if (password.trim() === "") {
+    errors.password = "Password is required";
+  } else {
+    if (!passwordValidationRegex.lowercase.test(password)) {
+      errors.password = "Password must contain at least one lowercase letter";
+    }
+    if (!passwordValidationRegex.uppercase.test(password)) {
+      errors.password = "Password must contain at least one uppercase letter";
+    }
+    if (!passwordValidationRegex.numeric.test(password)) {
+      errors.password = "Password must contain at least one numeric character";
+    }
+    if (!passwordValidationRegex.length.test(password)) {
+      errors.password = "Password must be at least 8 characters long";
+    }
+  }
+
+ 
+  if (confirmPassword.trim() === "") {
+    errors.confirmpassword = "Confirm Password is required";
+  } else if (confirmPassword !== password) {
+    errors.confirmpassword = "Passwords do not match";
+  }
+
+      setErrorMessage(errors);
+  
+  
+      return Object.keys(errors).length === 0; 
+  };
+  
+  const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  
+    const isValid = validateForm();
+  
+    if (isValid) {  
+        navigate('/login');
+    } 
+  };
+
+  const header = <div className="font-bold mb-3">Pick a password</div>;
+  const footer = (
+    <>
+        <Divider />
+        <p className="mt-2">Suggestions</p>
+        <ul className="pl-2 ml-2 mt-0 line-height-3">
+            <li>At least one lowercase</li>
+            <li>At least one uppercase</li>
+            <li>At least one numeric</li>
+            <li>Minimum 8 characters</li>
+        </ul>
+    </>
+);
+
+
+
+  const customTemplate = (value: string) => {
+    return (
+      <ul>
+        <li style={{ color: value.length >= 8 ? 'green' : 'red' }}>
+          At least 8 characters
+        </li>
+        <li style={{ color: /[A-Z]/.test(value) ? 'green' : 'red' }}>
+          At least one uppercase letter
+        </li>
+        <li style={{ color: /[0-9]/.test(value) ? 'green' : 'red' }}>
+          At least one number
+        </li>
+      </ul>
+    );
+  };
+
+
+
+
     return (
       <>
         <div
@@ -47,12 +145,14 @@ class ResetPassword extends Component {
                       placeholder="New Password"
                       name="newPassword"
                       type="text"
-                      // onChange={handleChange}
-                      // value={password}
-                      // footer={footer}
-                      // toggleMask
+                       onChange={(e) => setPassword(e.target.value)}
+                       value={password}
+                       feedback={true}
+                       header={header}
+                       footer={footer}
+                      //toggleMask
                       style={{
-                        padding: '1rem 4rem 0 3rem',
+                        padding: '0.5rem 2rem 0 3rem',
                         border: '1px solid #C5D9E0',
                         fontSize: '16px',
                         color: '#00426F',
@@ -61,6 +161,7 @@ class ResetPassword extends Component {
                         height: '60px',
                       }}
                     />
+                   
                     <img
                       src="/assets/icons/key.png"
                       alt="Key Icon"
@@ -76,9 +177,12 @@ class ResetPassword extends Component {
                       }}
                     />
                   </div>
+                  {errorMessage.password && (
+                     <div className="text-red-500 text-sm mt-3 -ml-[120px]">{errorMessage.password}</div>
+                       )}
                 </div>
-                {/* 
-          {isLoading && (
+                
+          {/* {isLoading && (
             <ProgressSpinner
               style={{
                 position: 'absolute',
@@ -90,30 +194,37 @@ class ResetPassword extends Component {
               }}
               strokeWidth="4"
             />
-          )} */}
+          )}  */}
                 <div className="p-input-icon-left relative flex justify-center">
                   <div>
                     <div className="card flex justify-content-center">
-                      <Password
-                        // toggleMask
+                      <Password 
                         placeholder="Confirm Password"
                         name="confirmPassword"
-                        // onChange={handleChange}
-                        // value={confirmPassword}
-                        // footer={footer}
-
+                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        value={confirmPassword}
+                         footer={footer}
+                        feedback={true}
+                          header = {header}
+                         
                         style={{
-                          padding: '1rem 4rem 0 3rem',
+                          padding: '0.5rem 2rem 0 3rem',
                           border: '1px solid #C5D9E0',
                           fontSize: '16px',
                           color: '#00426F',
                           borderRadius: '10px',
                           width: '500px',
                           height: '60px',
+                          paddingRight: "2.5rem"
                         }}
+                        //toggleMask
                       />
+                      
                     </div>
+                    
                   </div>
+                  
+                  
                   <img
                     src="/assets/icons/key.png"
                     alt="Key Icon"
@@ -128,6 +239,9 @@ class ResetPassword extends Component {
                     }}
                   />
                 </div>
+                {errorMessage.confirmpassword && (
+                     <div className="text-red-500 text-sm -mt-3 -ml-[300px]">{errorMessage.confirmpassword}</div>
+                       )}
               </div>
             </div>
             <div className="flex flex-col items-center mt-8">
@@ -148,7 +262,7 @@ class ResetPassword extends Component {
                   fontWeight: '500',
                   justifyContent: 'center',
                 }}
-                //onClick={handleResetPassword}
+                onClick={handleSave}
               >
                 <p>Confirm</p>
               </Button>
@@ -169,16 +283,16 @@ class ResetPassword extends Component {
                   justifyContent: 'center',
                   marginBottom: '30px',
                 }}
-                //onClick={() => navigateToLoginPage('/Login')}
+                onClick={() => navigate('/forgotPassword')}
               >
-                <Link to="/ForgotPassword">Back</Link>
+                Back
               </Button>
             </div>
           </div>
         </div>
       </>
     )
-  }
+  
 }
 
 export default ResetPassword
