@@ -200,6 +200,7 @@ textarea:focus {
   border: 2px solid transparent;  /* Set an initial transparent border */
   border-radius: 10px; /* Optional: Add border radius for rounded corners */
   transition: border-color 0.3s ease; /* Smooth transition for border color */
+  
 }
 
 /* Outer Box gets a blue border on focus */
@@ -220,3 +221,4 @@ textarea:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+

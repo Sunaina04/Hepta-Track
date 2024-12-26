@@ -21,7 +21,9 @@ const ForgotPassword = () => {
        if (email.trim() === "") {
            errors.email = "Email is required";
        }
-   
+       else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        errors.email = "Please enter a valid email address";
+      }
       
        setErrorMessage(errors);
    
@@ -65,9 +67,6 @@ const ForgotPassword = () => {
             </div>
 
             <div className="flex flex-col justify-center mt-[3rem]">
-            {errorMessage.email && (
-                     <div className="text-red-500 text-sm ml-6 mb-1">{errorMessage.email}</div>
-                       )}
               {/* 
             {message && (
               <div className="mb-4">
@@ -84,7 +83,7 @@ const ForgotPassword = () => {
                         height: '60px',
                         padding: '0 4rem 0 3rem',
                         border: '1px solid #C5D9E0',
-                        fontSize: '16px',
+                        fontSize: '13px',
                         color: '#00426F',
                         borderRadius: '10px',
                       }}
@@ -111,7 +110,11 @@ const ForgotPassword = () => {
                     />
                   </div>
                 </div>
+               
               </div>
+              {errorMessage.email && (
+                     <div className="text-red-500 text-sm ml-6 mt-2">{errorMessage.email}</div>
+                       )}
 
               {/* {isLoading && (
               <ProgressSpinner
