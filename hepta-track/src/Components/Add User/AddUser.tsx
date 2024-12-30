@@ -103,7 +103,7 @@ const handleSave = () => {
           >
 
           <div className='p-7'>
-            <h1 className="font-bold text-2xl">Edit/Add Agent  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+            <h1 className="font-bold text-2xl">Edit/Add User  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
             <div className="flex mt-4">
               {/* User Name */}

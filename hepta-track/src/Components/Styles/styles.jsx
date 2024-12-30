@@ -96,7 +96,7 @@ export const backButtonStyle = {
 }
 
 export const deleteButtonStyle = {
-    width: '100px',
+    width: '105px',
     height: '42px',
     backgroundColor: '#E14942',
     boxShadow: 'none',
@@ -112,4 +112,16 @@ export const savePassword = {
     border: '#00426F',
     width: '100%',
     height: '32px',
+}
+
+
+export const loadingBlur: CSSProperties = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backdropFilter: "blur(5px)",
+    zIndex: 100,
 }

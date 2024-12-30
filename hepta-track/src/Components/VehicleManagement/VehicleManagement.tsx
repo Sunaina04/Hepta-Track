@@ -5,6 +5,8 @@ import Header from '../Sidebar/LayoutComponents/Header'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
 import { columnStyle } from '../Utils/Style'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
+import { Paginator } from 'primereact/paginator'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const VehicleManagement = () => {
   const vehicleColumns = useMemo(
@@ -154,13 +156,13 @@ const VehicleManagement = () => {
           <InputTextWithHeader
             placeholder="Search"
             inputTextStyle={{
-              width: '100%',
+              width: '250px',
               height: '44px',
               padding: '0 4rem 0 3rem',
               border: '1px solid #C5D9E0',
               fontSize: '16px',
               color: '#000000',
-              borderRadius: '4px',
+              borderRadius: '12px',
               minHeight: '44px',
               fontWeight: 400,
               backgroundColor: 'rgb(242 242 242 / 0%)',
@@ -178,41 +180,70 @@ const VehicleManagement = () => {
         </div>
       </div>
 
-      <div
-        className={`bg-#00426F overflow-x-hidden ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
-        <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
-          <DataTableComponent
-            tableStyle={{
-              fontSize: '12px',
-              color: '#000000',
-              fontWeight: 500,
-              backgroundColor: '#FFFFFF',
-            }}
-            data={vehicleData}
-            //   selectionMode="single"
-            //   onSelectionChange={(e: any) => {
-            //     setSelectedMooring(e.value)
-            //   }}
-            //   selection={selectedMooring}
-            rowStyle={(rowData: any) => rowData}
-            dataKey="id"
-            columns={vehicleColumns}
-            actionButtons={ActionButtonColumn}
-            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
-            //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
-            //   emptyMessage={
-            //     <div className="text-center mt-14">
-            //       <img
-            //         src="/assets/images/empty.png"
-            //         alt="Empty Data"
-            //         className="w-20 mx-auto mb-4"
-            //       />
-            //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
-            //     </div>
-            //   }
-          />
-        </div>
-      </div>
+  
+<div className="flex-grow ml-[3rem] mr-[2.30rem] border border-solid border-[#D5E1EA] bg-white rounded-lg h-[95vh] mb-3 relative">
+  <div className="flex flex-col h-full">
+    <div className="flex-grow overflow-y-auto">
+      <DataTableComponent
+        tableStyle={{
+          fontSize: '12px',
+          color: '#000000',
+          fontWeight: 500,
+          backgroundColor: '#FFFFFF',
+          cursor: 'pointer',
+        }}
+        data={vehicleData}
+        columns={vehicleColumns}
+        actionButtons={ActionButtonColumn}
+        style={{
+          borderBottom: '1px solid #D5E1EA',
+          fontWeight: '400',
+          padding: '10px',
+        }}
+        emptyMessage={
+          <div className="text-center mt-40">
+            <img
+              src="/assets/images/empty.png"
+              alt="Empty Data"
+              className="w-28 mx-auto mb-4"
+            />
+            <div className="bg-white border-t border-[#D5E1EA] p-2">
+              <ProgressSpinner
+                style={{
+                  position: 'absolute',
+                  top: '70%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '50px',
+                  height: '50px',
+                }}
+                strokeWidth="4"
+              />
+            </div>
+          </div>
+        }
+      />
+    </div>
+
+    <div
+      data-testid="PaginatorOne"
+      className="absolute bottom-0 left-0 w-full bg-white border-t border-[#D5E1EA] p-2"
+    >
+      <Paginator
+        // first={pageNumber1}
+        // rows={pageSize}
+        // totalRecords={totalRecords}
+        // rowsPerPageOptions={[5, 10, 20, 30]}
+        // onPageChange={onPageChange}
+        style={{
+          padding: '0rem',
+        }}
+      />
+    </div>
+  </div>
+</div>
+
+
     </>
   )
 }

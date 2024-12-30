@@ -30,12 +30,10 @@
   }
   
   
-  .p-dropdown .p-dropdown-trigger {
-    padding-right: 8px; 
-  }
+
  /* For Custom Calendar Styles */
 .custom-calendar .p-calendar .p-inputtext {
-    padding-left: 2.5rem !important; /* Adjust padding to make space for the icon */
+    padding-left: 1rem !important; /* Adjust padding to make space for the icon */
   }
   
   .custom-calendar .p-calendar .p-calendar-trigger {

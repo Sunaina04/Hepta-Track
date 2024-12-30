@@ -114,13 +114,13 @@ const UserManagement = () => {
             <InputTextWithHeader
               placeholder="Search"
               inputTextStyle={{
-                width: '100%',
+                width: '250px',
                 height: '44px',
                 padding: '0 4rem 0 3rem',
                 border: '1px solid #C5D9E0',
                 fontSize: '16px',
                 color: '#000000',
-                borderRadius: '4px',
+                borderRadius: '12px',
                 minHeight: '44px',
                 fontWeight: 400,
                 backgroundColor: 'rgb(242 242 242 / 0%)',
@@ -160,63 +160,68 @@ const UserManagement = () => {
         </div>
       </div>
 
-      <div className="flex-grow overflow-hidden ml-[3rem] mr-[2.30rem]  border border-solid border-[#D5E1EA] bg-white rounded-lg">
-        <div className="flex flex-col h-[570px]">
-          <div className="flex-grow overflow-auto">
-            <DataTableComponent
-              tableStyle={{
-                fontSize: '12px',
-                color: '#000000',
-                fontWeight: 500,
-                backgroundColor: '#FFFFFF',
-                cursor: 'pointer',
-              }}
-              data={dummyUserData}
-              columns={userColumns}
-              actionButtons={ActionButtonColumn}
-              style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
-              emptyMessage={
-                <div className="text-center mt-40">
-                  <img
-                    src="/assets/images/empty.png"
-                    alt="Empty Data"
-                    className="w-28 mx-auto mb-4"
-                  />
-                  {/* <p className="text-gray-500 font-[600] text-lg">{properties.noDataMessage}</p> */}
-                  <div data-testid="progress">
-                    <ProgressSpinner
-                      style={{
-                        position: 'absolute',
-                        top: '70%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: '50px',
-                        height: '50px',
-                      }}
-                      strokeWidth="4"
-                    />
-                  </div>
-                </div>
-              }
+      <div className="flex-grow ml-[3rem] mr-[2.30rem] border border-solid border-[#D5E1EA] bg-white rounded-lg h-[95vh] mb-3 relative">
+  <div className="flex flex-col h-full">
+    <div className="flex-grow overflow-y-auto">
+      <DataTableComponent
+        tableStyle={{
+          fontSize: '12px',
+          color: '#000000',
+          fontWeight: 500,
+          backgroundColor: '#FFFFFF',
+          cursor: 'pointer',
+        }}
+        data={dummyUserData}
+        columns={userColumns}
+        actionButtons={ActionButtonColumn}
+        style={{
+          borderBottom: '1px solid #D5E1EA',
+          fontWeight: '400',
+          padding: '10px',
+        }}
+        emptyMessage={
+          <div className="text-center mt-40">
+            <img
+              src="/assets/images/empty.png"
+              alt="Empty Data"
+              className="w-28 mx-auto mb-4"
             />
+            <div className="bg-white border-t border-[#D5E1EA] p-2">
+              <ProgressSpinner
+                style={{
+                  position: 'absolute',
+                  top: '70%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '50px',
+                  height: '50px',
+                }}
+                strokeWidth="4"
+              />
+            </div>
           </div>
+        }
+      />
+    </div>
 
-          <div data-testid="PaginatorOne" className="mt-4">
-            <Paginator
-              // first={pageNumber1}
-              // rows={pageSize}
-              // totalRecords={totalRecords}
-              // rowsPerPageOptions={[5, 10, 20, 30]}
-              // onPageChange={onPageChange}
-              style={{
-                backgroundColor: 'white',
-                borderTop: '1px solid #D5E1EA',
-                padding: '0.5rem',
-              }}
-            />
-          </div>
-        </div>
-      </div>
+    <div
+      data-testid="PaginatorOne"
+      className="absolute bottom-0 left-0 w-full bg-white border-t border-[#D5E1EA] p-2"
+    >
+      <Paginator
+        // first={pageNumber1}
+        // rows={pageSize}
+        // totalRecords={totalRecords}
+        // rowsPerPageOptions={[5, 10, 20, 30]}
+        // onPageChange={onPageChange}
+        style={{
+          padding: '0rem',
+        }}
+      />
+    </div>
+  </div>
+</div>
+
     </>
   )
 }

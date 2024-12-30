@@ -1,6 +1,6 @@
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
-import React, { Component, useState } from 'react'
+import React, { Component, useState , useEffect} from 'react'
 import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
@@ -10,7 +10,7 @@ import './ResetPassword.css'
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-
+import { loadingBlur } from '../Styles/styles'
 
 
 const ResetPassword = () => {
@@ -18,22 +18,33 @@ const ResetPassword = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
 
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+  
+
+  
   const validateForm = (): boolean => {
     const errors: { [key: string]: string } = {};
     const passwordValidationRegex = {
-      lowercase: /[a-z]/, // At least one lowercase letter
-      uppercase: /[A-Z]/, // At least one uppercase letter
-      numeric: /\d/, // At least one numeric character
-      length: /.{8,}/, // At least 8 characters
+      lowercase: /[a-z]/, 
+      uppercase: /[A-Z]/, 
+      numeric: /\d/,
+      length: /.{8,}/,
     };
 
     const passwordErrors: string[] = [];
 
-    // Password Validation
     if (password.trim() === "") {
       passwordErrors.push("Password is required");
     } else {
@@ -55,7 +66,7 @@ const ResetPassword = () => {
       errors.password = passwordErrors.join(". ");
     }
 
-    // Confirm Password Validation
+   
     if (confirmPassword.trim() === "") {
       errors.confirmpassword = "Confirm Password is required";
     } else if (confirmPassword !== password) {
@@ -114,6 +125,15 @@ const ResetPassword = () => {
 
   return (
     <>
+
+
+       {isLoading && (
+                            <div
+                                style={{ ...loadingBlur }}
+                            ></div>
+                        )}
+
+
       <div
         className="w-full h-screen flex justify-center items-center"
         id="message"
@@ -190,21 +210,20 @@ const ResetPassword = () => {
                 </div>
               )}
 
+              {isLoading && (
+                           <ProgressSpinner
+                             style={{
+                               position: 'absolute',
+                               top: '50%',
+                               left: '50%',
+                               transform: 'translate(-50%, -50%)',
+                               width: '50px',
+                               height: '50px',
+                             }}
+                           />
+                         )}
 
 
-              {/* {isLoading && (
-            <ProgressSpinner
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '50px',
-                height: '50px',
-              }}
-              strokeWidth="4"
-            />
-          )}  */}
               <div className="p-input-icon-left relative flex justify-center">
                 <div>
                   <div className="card flex justify-content-center">

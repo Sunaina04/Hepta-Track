@@ -1,4 +1,4 @@
-import React, { Component, useRef, useState } from 'react'
+import React, { Component, useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
@@ -6,6 +6,7 @@ import { Toast } from 'primereact/toast'
 import { Password } from 'primereact/password'
 import './login.css'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import { loadingBlur } from '../Styles/styles'
 
 
 const LoginForm = () => {
@@ -15,8 +16,19 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer); 
+  }, []);
+
+
 
   const validateForm = (): boolean => {
     const errors: { [key: string]: string } = {};
@@ -44,15 +56,23 @@ const LoginForm = () => {
 
     const isValid = validateForm();
 
-    if (isValid) {
-      navigate('/dashboard');
-    }
+    
+    if (isValid) {  
+      navigate('/dashboard')
+  }
   };
 
   return (
 
     <>
       {/* <Toast ref={toast} /> */}
+
+      {isLoading && (
+                      <div
+                          style={{ ...loadingBlur }}
+                      ></div>
+                  )}
+
       <div
         className="w-full h-screen flex justify-center items-center"
         id="header"
@@ -88,7 +108,7 @@ const LoginForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   // onKeyUp={handleKeyUp}
-                  disabled={isLoading}
+                
                   placeholder={isLoading ? 'Loading...' : 'Enter Your Email'}
                   id="input-field"
                   style={{
@@ -129,7 +149,7 @@ const LoginForm = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   feedback={false}
 
-                  disabled={isLoading}
+                 
                   placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
                   inputClassName="custom-password"
                   style={{
@@ -210,7 +230,7 @@ const LoginForm = () => {
                   justifyContent: 'center',
                 }}
                 onClick={handleSave}
-                disabled={isLoading}
+               
               >
                 <p className="text-white">Login</p>
               </Button>
