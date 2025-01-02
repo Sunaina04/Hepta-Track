@@ -66,13 +66,6 @@ const LoginForm = () => {
 
     <>
       {/* <Toast ref={toast} /> */}
-
-      {isLoading && (
-                      <div
-                          style={{ ...loadingBlur }}
-                      ></div>
-                  )}
-
       <div
         className="w-full h-screen flex justify-center items-center"
         id="header"

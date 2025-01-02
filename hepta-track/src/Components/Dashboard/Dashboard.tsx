@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import UserChart from '../CommonComponent/Chart/UserChart'
 import Header from '../Sidebar/LayoutComponents/Header'
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import Notifications from './Notifications'
+import { loadingBlur } from '../Styles/styles'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const Dashboard: React.FC = () => {
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
   return (
-    <>
+    <> 
+  
+
       <Header header="DASHBOARD" />
       <div className="p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
@@ -15,7 +30,7 @@ const Dashboard: React.FC = () => {
             percentageColor="#DFFDDF"
             icon="/assets/icons/arrowUp.png"
             value="$2,554.00"
-            label="Total Revenue" 
+            label="Total Revenue"
           />
           <StatCard
             percentage="-0.03%"
@@ -49,6 +64,22 @@ const Dashboard: React.FC = () => {
           <Notifications />
         </div>
       </div>
+
+
+      {isLoading && (
+        <ProgressSpinner
+        style={{
+          position: 'absolute',
+          top: '45%',
+          left: '45%',
+          transform: 'translate(-50%, -50%)',
+          width: '50px',
+          height: '50px',
+        }}
+        strokeWidth="4"
+      />
+      )}
+
     </>
   )
 }

@@ -1,7 +1,7 @@
 import StatCard from '../CommonComponent/StatCard/StatCard'
 import CustomModal from '../CustomComponent/CustomModal'
 import { AddNewButtonStyle, DialogStyle } from '../Utils/Style'
-import { useMemo, useState } from 'react'
+import { useMemo, useState , useEffect } from 'react'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import Header from '../Sidebar/LayoutComponents/Header'
@@ -11,9 +11,24 @@ import AddUser from '../Add User/AddUser'
 import { dummyAgentData } from '../Utils/DummyData'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Paginator } from 'primereact/paginator'
+import { loadingBlur } from '../Styles/styles'
+
 
 const AgentManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+  
+
 
   const columnStyle = {
     backgroundColor: '#082825',
@@ -87,6 +102,7 @@ const AgentManagement = () => {
   }
   return (
     <>
+
       <Header header="AGENT MANAGEMENT" />
       <div className="flex justify-between">
         <div className="flex mt-8 ml-4">
@@ -187,23 +203,25 @@ const AgentManagement = () => {
               alt="Empty Data"
               className="w-28 mx-auto mb-4"
             />
-            <div className="bg-white border-t border-[#D5E1EA] p-2">
-              <ProgressSpinner
-                style={{
-                  position: 'absolute',
-                  top: '70%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '50px',
-                  height: '50px',
-                }}
-                strokeWidth="4"
-              />
-            </div>
           </div>
         }
       />
     </div>
+
+    {isLoading && (
+            <ProgressSpinner
+            style={{
+              position: 'absolute',
+              top: '45%',
+              left: '45%',
+              transform: 'translate(-50%, -50%)',
+              width: '50px',
+              height: '50px',
+            }}
+            strokeWidth="4"
+          />
+          )}
+
 
     <div
       data-testid="PaginatorOne"

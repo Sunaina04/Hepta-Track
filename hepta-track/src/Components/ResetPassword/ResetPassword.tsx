@@ -125,15 +125,6 @@ const ResetPassword = () => {
 
   return (
     <>
-
-
-       {isLoading && (
-                            <div
-                                style={{ ...loadingBlur }}
-                            ></div>
-                        )}
-
-
       <div
         className="w-full h-screen flex justify-center items-center"
         id="message"

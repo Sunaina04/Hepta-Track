@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState , useEffect } from 'react'
 import { AddNewButtonStyle, columnStyle, DialogStyle } from '../../Utils/Style'
 import { ActionButtonColumnProps } from '../../../Type/Components/TableTypes'
 import Header from '../../Sidebar/LayoutComponents/Header'
@@ -9,9 +9,23 @@ import CustomModal from '../../CustomComponent/CustomModal'
 import AddAds from '../../Add Ads/AddAds'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import { loadingBlur } from '../../Styles/styles'
+
 
 const AdsPromotions = () => {
 
+   const [isLoading, setIsLoading] = useState<boolean>(true);
+    
+    
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+    
+        return () => clearTimeout(timer);
+      }, []);
+    
+    
    const [modalVisible, setModalVisible] = useState(false)
   
     const handleButtonClick = () => {
@@ -83,6 +97,7 @@ const AdsPromotions = () => {
 
   return (
     <>
+
       <Header header="ADS PROMOTIONS" />
 
       <div className="flex justify-end mr-12">
@@ -162,23 +177,27 @@ const AdsPromotions = () => {
               alt="Empty Data"
               className="w-28 mx-auto mb-4"
             />
-            <div className="bg-white border-t border-[#D5E1EA] p-2">
-              <ProgressSpinner
-                style={{
-                  position: 'absolute',
-                  top: '70%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '50px',
-                  height: '50px',
-                }}
-                strokeWidth="4"
-              />
-            </div>
+
           </div>
         }
       />
     </div>
+
+
+    {isLoading && (
+            <ProgressSpinner
+            style={{
+              position: 'absolute',
+              top: '45%',
+              left: '45%',
+              transform: 'translate(-50%, -50%)',
+              width: '50px',
+              height: '50px',
+            }}
+            strokeWidth="4"
+          />
+          )}
+
 
     <div
       data-testid="PaginatorOne"

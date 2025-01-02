@@ -1,5 +1,5 @@
 import StatCard from '../CommonComponent/StatCard/StatCard'
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import Header from '../Sidebar/LayoutComponents/Header'
 import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
 import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
@@ -7,7 +7,23 @@ import { columnStyle } from '../Utils/Style'
 import { tractorKitData } from '../Utils/DummyData'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import { loadingBlur } from '../Styles/styles'
+
+
+
 const SmartTractorKit = () => {
+ const [isLoading, setIsLoading] = useState<boolean>(true);
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
   const tractorKitColumns = useMemo(
     () => [
       {
@@ -75,6 +91,7 @@ const SmartTractorKit = () => {
 
   return (
     <>
+  
       <Header header="SMART TRACTOR KIT" />
       <div className="flex mt-8 ml-4">
         <StatCard
@@ -119,23 +136,26 @@ const SmartTractorKit = () => {
               alt="Empty Data"
               className="w-28 mx-auto mb-4"
             />
-            <div className="bg-white border-t border-[#D5E1EA] p-2">
-              <ProgressSpinner
-                style={{
-                  position: 'absolute',
-                  top: '70%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '50px',
-                  height: '50px',
-                }}
-                strokeWidth="4"
-              />
-            </div>
           </div>
         }
       />
     </div>
+
+
+
+    {isLoading && (
+            <ProgressSpinner
+            style={{
+              position: 'absolute',
+              top: '45%',
+              left: '45%',
+              transform: 'translate(-50%, -50%)',
+              width: '50px',
+              height: '50px',
+            }}
+            strokeWidth="4"
+          />
+          )}
 
     <div
       data-testid="PaginatorOne"
@@ -150,7 +170,7 @@ const SmartTractorKit = () => {
         style={{
           padding: '0rem',
         }}
-      />
+      /> 
     </div>
   </div>
 </div>

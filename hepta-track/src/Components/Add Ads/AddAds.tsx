@@ -19,6 +19,7 @@ import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
 import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle } from '../Styles/styles'
 import './AddAds.css'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [adName, setAdName] = useState('')
@@ -87,7 +88,6 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                     closable={false}
                     style={dialogStyle}
                 >
-
                     <h1 className="font-bold text-2xl"> Add New Promotions<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
@@ -194,10 +194,11 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                             style={deleteButtonStyle}
                         />
                     </div>
-
-
                 </Dialog>
+               
+                
             </div>
+            
         </>
     )
 }
