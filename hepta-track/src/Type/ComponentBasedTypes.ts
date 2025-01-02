@@ -85,6 +85,7 @@ export interface ShowImagesProps {
   isLoading: boolean
   images: string[]
   toastRef?: any
+  style?: React.CSSProperties; 
 }
 
 export interface ShowVideoProps {

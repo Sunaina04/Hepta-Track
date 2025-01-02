@@ -21,7 +21,7 @@ const UploadVideo: React.FC<ShowVideoProps> = ({
 }) => {
 
 
-    const uploadIcon = '/home/thinkpad/Desktop/office/Hepta-Track/hepta-track/public/assets/images/upload.png';
+    const uploadIcon = '/assets/images/upload.png';
 
 
 

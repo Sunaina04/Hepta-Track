@@ -23,7 +23,7 @@ const UserManagement = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -216,8 +216,8 @@ const UserManagement = () => {
             <ProgressSpinner
             style={{
               position: 'absolute',
-              top: '45%',
-              left: '45%',
+              top: '40%',
+              left: '50%',
               transform: 'translate(-50%, -50%)',
               width: '50px',
               height: '50px',

@@ -56,7 +56,7 @@ export const dialogStyle = {
     fontWeight: '400',
     cursor: 'alias',
     marginLeft: '200px',
-    padding: '2.5rem',
+    padding: '1rem',
     overflow: "auto"
 }
 
@@ -69,7 +69,7 @@ export const dialogblur: CSSProperties = {
     height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.3)",
     backdropFilter: "blur(5px)",
-    zIndex: 100,
+    zIndex: 10,
 };
 
 
@@ -124,4 +124,8 @@ export const loadingBlur: CSSProperties = {
     backgroundColor: "rgba(0, 0, 0, 0.3)",
     backdropFilter: "blur(5px)",
     zIndex: 100,
+}
+
+export const uploadImageStyle = {
+    width: "300px"
 }

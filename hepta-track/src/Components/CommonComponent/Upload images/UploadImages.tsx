@@ -1,13 +1,9 @@
-import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
-import React, { useRef } from 'react'
-import { AiOutlineDelete } from 'react-icons/ai'
-import { FaFileUpload } from 'react-icons/fa'
-import { ShowImagesProps } from '../../../Type/ComponentBasedTypes'
-import { Toast } from 'primereact/toast'
+import React from 'react';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { Toast } from 'primereact/toast';
+import { ShowImagesProps } from '../../../Type/ComponentBasedTypes';
 
-
-const UploadImages: React.FC<ShowImagesProps> = ({
+const UploadImages: React.FC<ShowImagesProps & { customStyle?: React.CSSProperties }> = ({
     handleNoteChange,
     hoveredIndex,
     handleRemoveImage,
@@ -18,17 +14,12 @@ const UploadImages: React.FC<ShowImagesProps> = ({
     isLoading,
     images,
     toastRef,
+    customStyle, // Custom style prop
 }) => {
-
-
-    const uploadIcon = '/home/thinkpad/Desktop/office/Hepta-Track/hepta-track/public/assets/images/upload.png';
-
-
-
     return (
         <div>
             <Toast ref={toastRef} />
-            <div className={` border  mt-6`} style={{ width: "850px" }}>
+            <div className={`border mt-6`} style={{ ...customStyle }}>
                 <div className="flex justify-center text-center">
                     <div>
                         <input
@@ -37,9 +28,7 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                             accept="image/*"
                             multiple
                             onChange={handleImageChange}
-                            style={{
-                                display: 'none',
-                            }}
+                            style={{ display: 'none' }}
                         />
                         <label
                             htmlFor="file-input"
@@ -51,17 +40,32 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                                 cursor: 'pointer',
                                 display: 'flex',
                                 alignItems: 'center',
-                                marginLeft: "-120px"
-                            }}>
-                            <div className="mt-12" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                                marginLeft: '-120px',
+                            }}
+                        >
+                            <div
+                                className="mt-12"
+                                style={{
+                                    textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                }}
+                            >
                                 <img src="/assets/images/upload.png" alt="Upload Icon" />
-                                <div style={{ textAlign: 'center', width: "220px", color: "#416072" }}>
-                                    Drag and drop files here.<br />
+                                <div
+                                    style={{
+                                        textAlign: 'center',
+                                        width: '220px',
+                                        color: '#416072',
+                                    }}
+                                >
+                                    Drag and drop files here.
+                                    <br />
                                     All jpg, png, pdf types are supported
                                 </div>
-
                             </div>
-
                         </label>
                     </div>
                 </div>
@@ -70,12 +74,16 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                     {images.length > 0 && (
                         <div className="mt-2">
                             <div className="flex gap-16 flex-wrap">
-                                {images?.map((image: string | undefined, index: number) => (
+                                {images.map((image: string | undefined, index: number) => (
                                     <div
                                         key={index}
-                                        style={{ position: 'relative', display: 'inline-block' }}
+                                        style={{
+                                            position: 'relative',
+                                            display: 'inline-block',
+                                        }}
                                         onMouseEnter={() => setHoveredIndex(index)}
-                                        onMouseLeave={() => setHoveredIndex(null)}>
+                                        onMouseLeave={() => setHoveredIndex(null)}
+                                    >
                                         <AiOutlineDelete
                                             onClick={() => handleRemoveImage(index)}
                                             style={{
@@ -104,25 +112,6 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                                                 boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                                             }}
                                         />
-                                        {/* <div className="mt-2">
-                      <InputText
-                        value={imageRequestDtoList[index]?.note || ''}
-                        onChange={(e) => handleNoteChange(index, e.target.value)}
-                        placeholder="Add note"
-                        style={{
-                          width: '300px',
-                          height: '40px',
-                          border: '1px solid #D5E1EA',
-                          borderRadius: '0.50rem',
-                          fontSize: '0.8rem',
-                          boxShadow: 'none',
-                          paddingLeft: '0.5rem',
-                          color: 'black',
-                          resize: 'none',
-                          marginTop: '10px',
-                        }}
-                      />
-                    </div> */}
                                     </div>
                                 ))}
                             </div>
@@ -131,7 +120,7 @@ const UploadImages: React.FC<ShowImagesProps> = ({
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default UploadImages
+export default UploadImages;

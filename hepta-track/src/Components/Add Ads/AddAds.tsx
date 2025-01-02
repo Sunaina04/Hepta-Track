@@ -17,7 +17,7 @@ import { Tag } from 'primereact/tag'
 import UploadImages from '../CommonComponent/Upload images/UploadImages'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle } from '../Styles/styles'
+import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle, uploadImageStyle } from '../Styles/styles'
 import './AddAds.css'
 import { ProgressSpinner } from 'primereact/progressspinner'
 
@@ -72,7 +72,7 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     }
 
 
-    return (
+        return (
         <>
 
             {visible && (
@@ -165,6 +165,8 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                         imageRequestDtoList={imageRequestDtoList}
                         isLoading={isLoading}
                         images={images}
+                        customStyle={{ width: '850px' }} 
+                        
                     />
                     {errorMessage.images && (
                         <div className="text-red-500 text-sm mt-1">{errorMessage.images}</div>
