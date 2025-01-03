@@ -17,15 +17,15 @@ import { Tag } from 'primereact/tag'
 import UploadVideo from '../CommonComponent/Video Upload/VideoUpload'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Styles/styles'
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Utils/Style'
 import './AddVideo.css'
-
+import { ProgressSpinner } from 'primereact/progressspinner'
 const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
     const [videoName, setVideoName] = useState('')
     const [checked, setChecked] = useState(true)
     const [date, setDate] = useState<Date | null>(null)
     const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-    const [isLoading, setIsLoading] = useState(false)
+   
     const [videoVisible, setVideoVisible] = useState(false)
     const [videoRequestDtoList, setVideoRequestDtoList] = useState<any[]>([])
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
@@ -33,17 +33,18 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
     const [status, setStatus] = useState("")
     const [detail, setDetail] = useState("")
     
+    
+      const [isLoading, setIsLoading] = useState<boolean>(true);
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+    
+        return () => clearTimeout(timer);
+      }, []);
+    
+    
 
-
-    const dispatch = useDispatch()
-
-    const open = useSelector((state: RootState) => state.user.isOpen)
-
-    const handleToggleDrawer = () => {
-        dispatch(setOpen(!open))
-    }
-
-   
     const validateForm = () => {
         let errors: { [key: string]: string } = {};
 
@@ -83,20 +84,8 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
     return (
         <>
 
-            {visible && (
-                <div
-                      style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
-                ></div>
-            )}
             <div>
-                <Dialog
-                    modal={false}
-                    visible={visible}
-                    onHide={() => { }}
-                    closable={false}
-                    style={dialogStyle}
-                   >
-
+          
                     <h1 className="font-bold text-2xl"> Add/Edit Video<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
@@ -158,7 +147,7 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                               style={inputTextAreaStyle}
                             />
                              {errorMessage.detail && (
-                                    <div className="text-red-500 text-sm mt-1">{errorMessage.detail}</div>
+                                    <div className="text-red-500 text-sm ">{errorMessage.detail}</div>
                                 )}
                         </div>
                     </div>
@@ -205,8 +194,22 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
                             style={deleteButtonStyle}
                         />
                     </div>
-                </Dialog>
+            
             </div>
+             
+                  {isLoading && (
+                             <ProgressSpinner
+                             style={{
+                               position: 'absolute',
+                               top: '50%',
+                               left: '50%',
+                               transform: 'translate(-50%, -50%)',
+                               width: '50px',
+                               height: '50px',
+                             }}
+                             strokeWidth="4"
+                           />
+                           )}
         </>
     )
 }

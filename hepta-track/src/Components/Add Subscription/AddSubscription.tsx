@@ -13,9 +13,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
 import { AddSubscriptionProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
-import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Styles/styles'
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle } from '../Utils/Style'
 import './AddSubscription.css'
-
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
@@ -27,14 +27,16 @@ const AddSubscription: React.FC<AddSubscriptionProps> = ({ visible, setVisible }
     const [status, setStatus] = useState("")
     const [detail, setDetail] = useState("")
     const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-
-    const dispatch = useDispatch()
-    const open = useSelector((state: RootState) => state.user.isOpen)
-
-    const handleToggleDrawer = () => {
-        dispatch(setOpen(!open))
-    }
-
+     const [isLoading, setIsLoading] = useState<boolean>(true);
+            useEffect(() => {
+              const timer = setTimeout(() => {
+                setIsLoading(false);
+              }, 1000);
+          
+              return () => clearTimeout(timer);
+            }, []);
+        
+   
     
   const validateForm = () => {
     let errors: { [key: string]: string } = {};
@@ -69,22 +71,7 @@ const handleSave = () => {
     return (
         <>
 
-            {visible && (
-                <div
-                    style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
-                ></div>
-            )}
             <div>
-                <Dialog
-                    modal={false}
-                    visible={visible}
-                    onHide={() => { }}
-                    closable={false}
-                    style={{
-                        ...dialogStyle,
-
-                    }}
-                >
 
 
                     <h1 className="font-bold text-2xl"> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
@@ -169,9 +156,22 @@ const handleSave = () => {
                         />
 
                     </div>
-                </Dialog>
+               
             </div>
 
+  {isLoading && (
+                 <ProgressSpinner
+                 style={{
+                   position: 'absolute',
+                   top: '50%',
+                   left: '50%',
+                   transform: 'translate(-50%, -50%)',
+                   width: '50px',
+                   height: '50px',
+                 }}
+                 strokeWidth="4"
+               />
+               )}
         </>
     )
 }

@@ -5,7 +5,7 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
-import { loadingBlur } from '../Styles/styles'
+import { loadingBlur } from '../Utils/Style'
 
 const ForgotPassword = () => {
 

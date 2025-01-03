@@ -26,8 +26,13 @@ const CustomModal: React.FC<CustomModalProps> = ({
         visible={visible}
         modal={false}
         onHide={onHide}
+        closable={false}
         draggable={false}
-        style={dialogStyle}
+        focusOnShow={false}
+        style={{
+                    ...dialogStyle, 
+                    padding: '0px',
+                  }}
         className="custom-modal">
         {children}
       </Dialog>

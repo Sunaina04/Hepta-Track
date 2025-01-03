@@ -11,18 +11,22 @@ import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
 import AddExpense from '../Add Expense/AddExpense'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { loadingBlur } from '../Styles/styles'
-
+import { loadingBlur } from '../Utils/Style'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../Store/Store'
+import { dialogStyle, dialogblur } from '../Utils/Style'
 
 const ExpenseManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const dispatch = useDispatch()
+
+  const open = useSelector((state: RootState) => state.user.isOpen)
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -147,12 +151,14 @@ const ExpenseManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddExpense visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                height: '580px',
-                minHeight: '580px',
-                overflowY: 'auto',
-                ...DialogStyle,
+                ...dialogStyle, height: "600px"
               }}
             />
+            {modalVisible && (
+              <div
+                style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
+              ></div>
+            )}
           </div>
         </div>
       </div>
@@ -190,17 +196,17 @@ const ExpenseManagement = () => {
           </div>
 
           {isLoading && (
-             <ProgressSpinner
-             style={{
-               position: 'absolute',
-               top: '40%',
-               left: '50%',
-               transform: 'translate(-50%, -50%)',
-               width: '50px',
-               height: '50px',
-             }}
-             strokeWidth="4"
-           />
+            <ProgressSpinner
+              style={{
+                position: 'absolute',
+                top: '40%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '50px',
+                height: '50px',
+              }}
+              strokeWidth="4"
+            />
           )}
 
           <div

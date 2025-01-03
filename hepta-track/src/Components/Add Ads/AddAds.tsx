@@ -17,7 +17,7 @@ import { Tag } from 'primereact/tag'
 import UploadImages from '../CommonComponent/Upload images/UploadImages'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle, uploadImageStyle } from '../Styles/styles'
+import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle, uploadImageStyle } from '../Utils/Style'
 import './AddAds.css'
 import { ProgressSpinner } from 'primereact/progressspinner'
 
@@ -32,12 +32,15 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
     const [imageRequestDtoList, setImageRequestDtoList] = useState<any[]>([])
     const [hoveredIndex, setHoveredIndex] = useState<null | number>(null)
     const [images, setImages] = useState<string[]>([])
-    const [isLoading, setIsLoading] = useState(false)
-    const open = useSelector((state: RootState) => state.user.isOpen)
-
-    const handleToggleDrawer = () => {
-        dispatch(setOpen(!open))
-    }
+    
+        const [isLoading, setIsLoading] = useState<boolean>(true);
+        useEffect(() => {
+          const timer = setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
+      
+          return () => clearTimeout(timer);
+        }, []);
 
     const validateForm = () => {
         let errors: { [key: string]: string } = {};
@@ -75,19 +78,10 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
         return (
         <>
 
-            {visible && (
-                <div
-                    style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
-                ></div>
-            )}
+            
+       
             <div>
-                <Dialog
-                    modal={false}
-                    visible={visible}
-                    onHide={() => { }}
-                    closable={false}
-                    style={dialogStyle}
-                >
+                
                     <h1 className="font-bold text-2xl"> Add New Promotions<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
@@ -148,7 +142,7 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                                 style={inputTextAreaStyle}
                             />
                             {errorMessage.detail && (
-                                <div className="text-red-500 text-sm mt-1">{errorMessage.detail}</div>
+                                <div className="text-red-500 text-sm ">{errorMessage.detail}</div>
                             )}
                         </div>
                     </div>
@@ -196,11 +190,21 @@ const AddAds: React.FC<AddAdsProps> = ({ visible, setVisible }) => {
                             style={deleteButtonStyle}
                         />
                     </div>
-                </Dialog>
-               
                 
             </div>
-            
+            {isLoading && (
+                        <ProgressSpinner
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          width: '50px',
+                          height: '50px',
+                        }}
+                        strokeWidth="4"
+                      />
+                      )}
         </>
     )
 }

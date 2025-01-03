@@ -13,8 +13,9 @@ import { RootState } from '../../Store/Store'
 import { AddExpenseProps } from '../../Type/ComponentBasedTypes'
 import { RadioButton } from 'primereact/radiobutton'
 import { InputTextarea } from 'primereact/inputtextarea'
-import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle , dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle} from '../Styles/styles'
+import { dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle , dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle} from '../Utils/Style'
 import './AddExpense.css'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
     const [userName, setUserName] = useState('')
@@ -27,14 +28,16 @@ const AddExpense: React.FC<AddExpenseProps> = ({ visible, setVisible }) => {
     const [description,setDescription] = useState("")
     const [paymentType,setPaymentType] = useState("")
     const [fatherName,setFatherName] = useState("")
-
-    const dispatch = useDispatch()
-    const open = useSelector((state: RootState) => state.user.isOpen)
-
-    const handleToggleDrawer = () => {
-        dispatch(setOpen(!open))
-    }
-
+    
+        const [isLoading, setIsLoading] = useState<boolean>(true);
+        useEffect(() => {
+          const timer = setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
+      
+          return () => clearTimeout(timer);
+        }, []);
+    
 
 
   const validateForm = () => {
@@ -79,22 +82,7 @@ const handleSave = () => {
     return (
         <>
 
-            {visible && (
-                <div
-                     style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
-                ></div>
-            )}
             <div>
-                <Dialog
-                    modal={false}
-                    visible={visible}
-                    onHide={() => { }}
-                    closable={false}
-                    style={{
-                        ...dialogStyle,
-                    }}
-                >
-
                     <h1 className="font-bold text-2xl"> Add New Expenses<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
@@ -149,7 +137,7 @@ const handleSave = () => {
                         style={inputTextAreaStyle}
                     />
                     {errorMessage.description && (
-                     <div className="text-red-500 text-sm mt-1">{errorMessage.description}</div>
+                     <div className="text-red-500 text-sm ">{errorMessage.description}</div>
                        )}
 
 
@@ -246,9 +234,21 @@ const handleSave = () => {
                             style={deleteButtonStyle}
                         />
                     </div>
-                </Dialog>
             </div>
 
+ {isLoading && (
+             <ProgressSpinner
+             style={{
+               position: 'absolute',
+               top: '50%',
+               left: '50%',
+               transform: 'translate(-50%, -50%)',
+               width: '50px',
+               height: '50px',
+             }}
+             strokeWidth="4"
+           />
+           )}
         </>
     )
 }

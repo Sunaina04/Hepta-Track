@@ -9,12 +9,16 @@ import CustomModal from '../../CustomComponent/CustomModal'
 import AddVideo from '../../Add Video/AddVideo'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Paginator } from 'primereact/paginator'
-import { loadingBlur } from '../../Styles/styles'
-
+import { loadingBlur } from '../../Utils/Style'
+import { dialogStyle , dialogblur } from '../../Utils/Style'
+import { useDispatch , useSelector} from 'react-redux'
+import { RootState } from '../../../Store/Store'
 
 const InstructionalVideos = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
-       
+         const dispatch = useDispatch()
+  const open = useSelector((state: RootState) => state.user.isOpen)
+  
        
          useEffect(() => {
            const timer = setTimeout(() => {
@@ -140,12 +144,15 @@ const InstructionalVideos = () => {
              children={<AddVideo
               visible={modalVisible} setVisible={setModalVisible} />}
             dialogStyle={{
-              height: '580px',
-              minHeight: '580px',
-              overflowY: 'auto',
-              ...DialogStyle,
-            }}
-          />
+                        ...dialogStyle, height: "700px"
+                      }}
+                    />
+                    {modalVisible && (
+                      <div
+                        style={{ ...dialogblur, marginLeft: open ? "280px" : "110px", }}
+                      ></div>
+                  )}
+          
         </div>
       </div>
 

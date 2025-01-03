@@ -7,7 +7,7 @@ import { columnStyle } from '../Utils/Style'
 import { tractorKitData } from '../Utils/DummyData'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { loadingBlur } from '../Styles/styles'
+import { loadingBlur } from '../Utils/Style'
 
 
 

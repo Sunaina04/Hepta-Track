@@ -6,7 +6,7 @@ import { Toast } from 'primereact/toast'
 import { Password } from 'primereact/password'
 import './login.css'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { loadingBlur } from '../Styles/styles'
+import { loadingBlur } from '../Utils/Style'
 
 
 const LoginForm = () => {

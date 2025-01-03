@@ -10,15 +10,18 @@ import AddUser from '../Add User/AddUser'
 import { dummyUserData } from '../Utils/DummyData'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { loadingBlur } from '../Styles/styles'
-
-
-
+import { dialogStyle, loadingBlur } from '../Utils/Style'
+import { dialogblur } from '../Utils/Style'
+import { useSelector , useDispatch } from 'react-redux'
+import { RootState } from '../../Store/Store'
+import { setOpen } from '../../Store/Slice/userSlice'
 
 const UserManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const dispatch = useDispatch()
 
-
+  const open = useSelector((state: RootState) => state.user.isOpen)
+  
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,8 +30,6 @@ const UserManagement = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-
 
   const handleButtonClick = () => {
     setModalVisible(true)
@@ -102,8 +103,6 @@ const UserManagement = () => {
   return (
     <>
 
-     
-
 
       <Header header="USER MANAGEMENT" />
       {/* Stat Cards */}
@@ -158,6 +157,7 @@ const UserManagement = () => {
             />
           </div>
 
+
           {/* Add New Button */}
           <div className="mt-4">
             <CustomModal
@@ -171,12 +171,14 @@ const UserManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                height: '580px',
-                minHeight: '580px',
-                overflowY: 'auto',
-                ...DialogStyle,
+                ...dialogStyle, height: "700px"
               }}
             />
+                   {modalVisible && (
+                    <div
+                       style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
+                    ></div>
+                  )}
           </div>
         </div>
       </div>

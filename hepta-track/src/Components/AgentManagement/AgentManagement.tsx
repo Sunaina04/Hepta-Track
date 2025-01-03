@@ -11,14 +11,25 @@ import AddUser from '../Add User/AddUser'
 import { dummyAgentData } from '../Utils/DummyData'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Paginator } from 'primereact/paginator'
-import { loadingBlur } from '../Styles/styles'
-
+import { loadingBlur } from '../Utils/Style'
+import { dialogStyle , dialogblur} from '../Utils/Style'
+import { useDispatch , useSelector } from 'react-redux'
+import { RootState } from '../../Store/Store'
 
 const AgentManagement = () => {
   const [modalVisible, setModalVisible] = useState(false)
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const dispatch = useDispatch()
+    const open = useSelector((state: RootState) => state.user.isOpen)
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
     useEffect(() => {
       const timer = setTimeout(() => {
         setIsLoading(false);
@@ -168,12 +179,14 @@ const AgentManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddAgent visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                height: '580px',
-                minHeight: '580px',
-                overflowY: 'auto',
-                ...DialogStyle,
+                ...dialogStyle , height:"700px"
               }}
             />
+             {modalVisible && (
+                                <div
+                                   style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
+                                ></div>
+                              )}
           </div>
         </div>
       </div>
@@ -205,6 +218,7 @@ const AgentManagement = () => {
             />
           </div>
         }
+
       />
     </div>
 
@@ -221,7 +235,6 @@ const AgentManagement = () => {
             strokeWidth="4"
           />
           )}
-
 
     <div
       data-testid="PaginatorOne"

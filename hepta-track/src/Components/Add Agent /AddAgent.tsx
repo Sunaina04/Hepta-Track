@@ -11,8 +11,10 @@ import { AddAgentProps } from '../../Type/ComponentBasedTypes'
 import { setOpen } from '../../Store/Slice/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/Store'
-import { addressStyle, dialogStyle, dropdownStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle, savePassword } from '../Styles/styles'
+import { addressStyle, dialogStyle, dropdownStyle, inputTextStyle, dialogblur, saveButtonStyle, backButtonStyle, deleteButtonStyle, savePassword } from '../Utils/Style'
 import './AddAgent.css'
+import { ProgressSpinner } from 'primereact/progressspinner'
+
 
 const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
   const [agentName, setAgentName] = useState('')
@@ -24,13 +26,16 @@ const AddAgent: React.FC<AddAgentProps> = ({ visible, setVisible }) => {
   const [newPassword,setNewPasssword] = useState("")
   const [confirmNewPassword,setConfirmNewPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState<{ [key: string]: string }>({})
-  const dispatch = useDispatch()
-
-  const open = useSelector((state: RootState) => state.user.isOpen)
-
-  const handleToggleDrawer = () => {
-    dispatch(setOpen(!open))
-  }
+  
+  
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
 
   const validateForm = () => {
     let errors: { [key: string]: string } = {};
@@ -79,25 +84,9 @@ const handleSave = () => {
   return (
     <>
 
-      {visible && (
-        <div
-           style={{...dialogblur , marginLeft: open ? "280px" : "110px",}}
-        ></div>
-      )}
-
+    
 
       <div>
-        <Dialog
-          modal={false}
-          visible={visible}
-          onHide={() => { }}
-          closable={false}
-          style={{
-            ...dialogStyle, 
-            padding: '0px',
-            height: "700px"
-          }}
-          >
 
           <div className='p-7'>
             <h1 className="font-bold text-2xl">Edit/Add Agent  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
@@ -312,10 +301,21 @@ const handleSave = () => {
             label="Delete Agent"
              style={{...deleteButtonStyle , marginLeft: "550px"}}
           />
-        </Dialog>
       </div>
 
-
+ {isLoading && (
+            <ProgressSpinner
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '50px',
+              height: '50px',
+            }}
+            strokeWidth="4"
+          />
+          )}
 
     </>
   )

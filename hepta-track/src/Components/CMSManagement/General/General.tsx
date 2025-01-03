@@ -22,7 +22,7 @@ import { Tag } from 'primereact/tag'
 import UploadImages from '../../CommonComponent/Upload images/UploadImages'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Calendar } from 'primereact/calendar'
-import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle } from '../../Styles/styles'
+import { backButtonStyle, deleteButtonStyle, dialogblur, dialogStyle, dropdownStyle, inputTextAreaStyle, inputTextStyle, saveButtonStyle } from '../../Utils/Style'
 
 import { ProgressSpinner } from 'primereact/progressspinner'
 import DataTableButton from '../../CommonComponent/Table/DataTableButton'

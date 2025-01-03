@@ -7,7 +7,7 @@ import { columnStyle } from '../Utils/Style'
 import InputTextWithHeader from '../CommonComponent/InputTextWithHeader'
 import { Paginator } from 'primereact/paginator'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { loadingBlur } from '../Styles/styles'
+import { loadingBlur } from '../Utils/Style'
 
 
 const VehicleManagement = () => {
