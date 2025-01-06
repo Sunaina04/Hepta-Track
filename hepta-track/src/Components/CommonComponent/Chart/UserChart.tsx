@@ -23,7 +23,6 @@ export default function LineStylesDemo() {
           pointRadius: 0,
           borderWidth: 1,
         },
-
         {
           label: 'Last year',
           data: [10500, 13000, 16000, 14000, 10000, 12000, 8000],
