@@ -117,7 +117,7 @@ const UserManagement = () => {
               label="Total Revenue"
             />
           </div>
-          <div>
+          <div className='ml-4'>
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
@@ -171,7 +171,7 @@ const UserManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                ...dialogStyle, height: "700px"
+                ...dialogStyle, height: "650px"
               }}
             />
                    {modalVisible && (

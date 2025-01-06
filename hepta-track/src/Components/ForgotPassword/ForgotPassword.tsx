@@ -31,7 +31,7 @@ const ForgotPassword = () => {
       errors.email = "Email is required";
     }
     else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = "Entered email is not registered with us, Please enter a valid email address";
     }
 
     setErrorMessage(errors);
@@ -83,7 +83,7 @@ const ForgotPassword = () => {
               </div>
             )} */}
             {errorMessage.email && (
-              <div className="text-red-500 text-sm ml-6 mb-2">{errorMessage.email}</div>
+              <div className="text-red-500 text-sm ml-10 mb-2">{errorMessage.email}</div>
             )}
 
             <div className="flex flex-col gap-5">
@@ -101,7 +101,7 @@ const ForgotPassword = () => {
                     }}
                     value={email}
                      type="email"
-                    placeholder={isLoading ? 'Loading...' : 'Enter Your Password'}
+                    placeholder={isLoading ? 'Loading...' : 'Enter Your Registered Email'}
                     onChange={(e) => setEmail(e.target.value)}
                   // onKeyUp={handleKeyUp}
                   />

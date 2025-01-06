@@ -71,10 +71,10 @@ const handleSave = () => {
     return (
         <>
 
-            <div>
+            <div className='p-3'>
 
 
-                    <h1 className="font-bold text-2xl"> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+                    <h1 className="font-bold text-2xl mt-4 "> Edit/Create<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
                         {/* Subscription Name*/}

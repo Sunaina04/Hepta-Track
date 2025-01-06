@@ -31,3 +31,10 @@
 
 
 
+.p-dialog .p-dialog-header {
+  padding: 0; /* Remove padding from the header */
+}
+
+.p-dialog .p-dialog-content {
+  padding-top: 10px; /* Adjust the content padding as needed */
+}

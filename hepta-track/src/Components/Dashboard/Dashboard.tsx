@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
     <> 
       <Header header="DASHBOARD" />
       <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
           <StatCard
             percentage="+11.01%"
             percentageColor="#DFFDDF"
@@ -68,8 +68,8 @@ const Dashboard: React.FC = () => {
         <ProgressSpinner
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
+          top: '60%',
+          left: '45%',
           transform: 'translate(-50%, -50%)',
           width: '50px',
           height: '50px',

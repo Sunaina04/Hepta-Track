@@ -84,9 +84,9 @@ const AddVideo: React.FC<AddVideoProps> = ({ visible, setVisible }) => {
     return (
         <>
 
-            <div>
+            <div className='p-3'>
           
-                    <h1 className="font-bold text-2xl"> Add/Edit Video<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
+                    <h1 className="font-bold text-2xl mt-4"> Add/Edit Video<IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
                     <div className="flex mt-4">
                         {/*  Name*/}

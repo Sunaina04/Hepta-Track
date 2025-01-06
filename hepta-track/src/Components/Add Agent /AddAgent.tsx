@@ -88,7 +88,7 @@ const handleSave = () => {
 
       <div>
 
-          <div className='p-7'>
+          <div className='p-4'>
             <h1 className="font-bold text-2xl">Edit/Add Agent  <IoClose className='ml-[830px] -mt-7' size={35} color="#000000" onClick={() => setVisible(false)} /></h1>
 
             <div className="flex mt-4">
@@ -230,7 +230,7 @@ const handleSave = () => {
           </div>
 
          
-                  <div className="flex justify-center ">
+                  <div className="flex justify-center mt-4 ">
                     {/* Outer Container */}
                     <div
                       className="p-4 border rounded-lg"

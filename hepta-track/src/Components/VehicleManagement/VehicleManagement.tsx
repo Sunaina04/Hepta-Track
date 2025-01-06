@@ -157,7 +157,7 @@ const VehicleManagement = () => {
               label="Total Revenue"
             />
           </div>
-          <div>
+          <div className='ml-4'>
             <StatCard
               percentage="-0.03%"
               percentageColor="text-red-500"
