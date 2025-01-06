@@ -171,7 +171,7 @@ const UserManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddUser visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                ...dialogStyle, height: "650px"
+                ...dialogStyle, height: "600px"
               }}
             />
                    {modalVisible && (

@@ -275,7 +275,7 @@ const handleSave = () => {
                     </div>
                   </div>
         
-        
+        <div className='-mt-3'>
           {/*Save button*/}
           <Button
             label="Save"
@@ -297,7 +297,7 @@ const handleSave = () => {
             label="Delete User"
              style={{...deleteButtonStyle , marginLeft: "550px"}}
           />
-     
+     </div>
       {isLoading && (
                  <ProgressSpinner
                  style={{
