@@ -147,7 +147,7 @@ const Subscriptions = () => {
               visible={modalVisible}
               setVisible={setModalVisible} />}
             dialogStyle={{
-              ...dialogStyle , height: "500px"
+              ...dialogStyle , height: "470px"
             }}
           />
           {modalVisible && (

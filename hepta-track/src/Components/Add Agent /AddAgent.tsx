@@ -279,7 +279,7 @@ const handleSave = () => {
                     </div>
                   </div>
         
-        
+        <div className='-mt-3'>
           {/*Save button*/}
           <Button
             label="Save"
@@ -301,6 +301,7 @@ const handleSave = () => {
             label="Delete Agent"
              style={{...deleteButtonStyle , marginLeft: "550px"}}
           />
+          </div>
       </div>
 
  {isLoading && (

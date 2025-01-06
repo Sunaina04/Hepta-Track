@@ -151,7 +151,7 @@ const ExpenseManagement = () => {
               icon={<img src="/assets/icons/Plus.png" alt="icon" className="w-3.8 h-3.8 ml-2.5" />}
               children={<AddExpense visible={modalVisible} setVisible={setModalVisible} />}
               dialogStyle={{
-                ...dialogStyle, height: "550px"
+                ...dialogStyle, height: "530px"
               }}
             />
             {modalVisible && (

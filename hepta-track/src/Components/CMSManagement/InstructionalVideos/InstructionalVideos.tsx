@@ -144,7 +144,7 @@ const InstructionalVideos = () => {
              children={<AddVideo
               visible={modalVisible} setVisible={setModalVisible} />}
             dialogStyle={{
-                        ...dialogStyle, height: "700px"
+                        ...dialogStyle, height: "670px"
                       }}
                     />
                     {modalVisible && (
