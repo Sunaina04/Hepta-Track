@@ -160,7 +160,7 @@ const AdsPromotions = () => {
 
       <div className="flex-grow ml-[3rem] mr-[2.30rem] border border-solid border-[#D5E1EA] bg-white rounded-lg h-[calc(100vh-165px)] relative">
   <div className="flex flex-col">
-    <div className="flex-grow overflow-y-auto">
+    <div className="flex-grow overflow-y-auto rounded-lg">
       <DataTableComponent
         tableStyle={{
           fontSize: '12px',

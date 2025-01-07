@@ -101,7 +101,7 @@ const SmartTractorKit = () => {
           value="$2,554.00"
           label="Total Revenue"
         />
-        <div className='ml-4'>
+        <div className='-ml-2'>
         <StatCard
           percentage="-0.03%"
           percentageColor="text-red-500"
@@ -114,7 +114,7 @@ const SmartTractorKit = () => {
     
 <div className="flex-grow ml-[3rem] mr-[2.30rem] border border-solid border-[#D5E1EA] bg-white rounded-lg h-[95vh] mb-3 relative">
   <div className="flex flex-col h-full">
-    <div className="flex-grow overflow-y-auto">
+    <div className="flex-grow overflow-y-auto rounded-lg">
       <DataTableComponent
         tableStyle={{
           fontSize: '12px',

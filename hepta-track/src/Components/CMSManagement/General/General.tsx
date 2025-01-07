@@ -65,12 +65,12 @@ const General = () => {
   )
  
   const colorPairs = [
-    { color1: '#2196f3', name1: 'Blue', color2: '#1976d2', name2: 'Blue Focus' },
-    { color1: '#e91e63', name1: 'Magenta', color2: '#c2185b', name2: 'Magenta Focus' },
-    { color1: '#ff9800', name1: 'Orange', color2: '#f57c00', name2: 'Orange Focus' },
-    { color1: '#4caf50', name1: 'Green', color2: '#388e3c', name2: 'Green Focus' },
-    { color1: '#f44336', name1: 'Red', color2: '#d32f2f', name2: 'Red Focus' },
-    { color1: '#303f9f', name1: 'Dark Blue', color2: '#283593', name2: 'Dark Blue Focus' },
+    { color1: '#2196f3', name1: 'Blue', color2: '#5E9ED6', name2: 'Blue Focus' },
+    { color1: '#8b008b ', name1: 'Magenta', color2: '#9C639C', name2: 'Magenta Focus' },
+    { color1: '#ff9800', name1: 'Orange', color2: '#ffbf00 ', name2: 'Orange Focus' },
+    { color1: '#4caf50', name1: 'Green', color2: '#8fbc8f', name2: 'Green Focus' },
+    { color1: '#f44336', name1: 'Red', color2: '#f08080', name2: 'Red Focus' },
+    { color1: '#303f9f', name1: 'Dark Blue', color2: '#5E9ED6', name2: 'Dark Blue Focus' },
   ];
   
 
@@ -80,7 +80,7 @@ const General = () => {
 
       <div
         className={`bg-#00426F  mt-10  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
-        <div className="flex-grow overflow-auto h-[610px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
+        <div className="flex-grow overflow-auto h-[610px] rounded-b-[10px] border-[1px] border-[#D5E1EA] rounded-lg">
           <DataTableComponent
             tableStyle={{
               fontSize: '12px',

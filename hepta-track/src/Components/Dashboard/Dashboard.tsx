@@ -22,7 +22,8 @@ const Dashboard: React.FC = () => {
     <> 
       <Header header="DASHBOARD" />
       <div className="p-6">
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-4 -ml-1">
+          <div>
           <StatCard
             percentage="+11.01%"
             percentageColor="#DFFDDF"
@@ -30,6 +31,8 @@ const Dashboard: React.FC = () => {
             value="$2,554.00"
             label="Total Revenue" 
           />
+          </div>
+          <div className='-ml-1'>
           <StatCard
             percentage="-0.03%"
             percentageColor="text-red-500"
@@ -38,6 +41,8 @@ const Dashboard: React.FC = () => {
             label="Active Users"
             
           />
+          </div>
+          <div className='-ml-2'>
           <StatCard
             percentage="+15.03%"
             percentageColor="text-green-500"
@@ -46,6 +51,8 @@ const Dashboard: React.FC = () => {
             label="Active Agents"
           
           />
+          </div>
+          <div className='-ml-4'>
           <StatCard
             percentage="+6.08%"
             percentageColor="text-green-500"
@@ -54,6 +61,7 @@ const Dashboard: React.FC = () => {
             label="Total Subscriptions"
           
           />
+          </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">

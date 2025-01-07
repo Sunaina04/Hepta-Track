@@ -20,7 +20,7 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <Card
-      className={`p-4 rounded-2xl ml-8  mb-6 border border-[#D4D4D4] h-[160px] w-[345px]`}>
+      className={`p-4 rounded-2xl ml-8  mb-6 border border-[#D4D4D4] h-[165px] w-[350px]`}>
       <div
         className={`flex items-center  rounded-md border border-[#D4D4D4] w-[90px] h-[30px] -mt-8 -ml-4`}>
         <span className={`text-sm font-semibold text-black`}>{percentage}</span>
