@@ -79,7 +79,7 @@ const General = () => {
       <Header header="CMS Management" />
 
       <div
-        className={`bg-#00426F  mt-10  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        className={`bg-#00426F  mt-6  ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
         <div className="flex-grow overflow-auto h-[610px] rounded-b-[10px] border-[1px] border-[#D5E1EA] rounded-lg">
           <DataTableComponent
             tableStyle={{

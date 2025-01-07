@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
             label="Total Revenue" 
           />
           </div>
-          <div className='-ml-1'>
+          <div>
           <StatCard
             percentage="-0.03%"
             percentageColor="text-red-500"
@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
             
           />
           </div>
-          <div className='-ml-2'>
+          <div >
           <StatCard
             percentage="+15.03%"
             percentageColor="text-green-500"
@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
           
           />
           </div>
-          <div className='-ml-4'>
+          <div>
           <StatCard
             percentage="+6.08%"
             percentageColor="text-green-500"
