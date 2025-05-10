@@ -1,0 +1,224 @@
+
+/* #header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  
+  background-size: cover;
+  background-position: center;
+  overflow: auto;
+} */
+/* 
+#header .form-container {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#header .form-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#header .form-content img {
+  margin-bottom: 1rem;
+}
+
+#header .form-content .input-field {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 1rem;
+}
+
+#header .form-content .input-field img {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: auto;
+}
+
+#header .form-content .input-field input {
+  width: 100%;
+  height: 60px;
+  padding-left: 3rem;
+  border: 1px solid #c5d9e0;
+  font-size: 16px;
+  color: #00426f;
+  border-radius: 10px;
+  min-height: 6vh;
+}
+
+#header .form-content .input-field .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+
+#header .form-content .error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+#header .form-content .forgot-password {
+  width: 100%;
+  max-width: 500px;
+  text-align: right;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+#header .form-content .forgot-password a {
+  color: #00426f;
+  text-decoration: underline;
+}
+
+#header .form-content .login-button {
+  width: 100%;
+  max-width: 500px;
+  height: 60px;
+  padding: 0;
+  border: 1px solid #c5d9e0;
+  font-size: 22px;
+  line-height: 25.78px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: #0098ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#header .form-content .info-text {
+  width: 100%;
+  max-width: 500px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 22px;
+  margin-top: 2rem;
+  color: #00426f;
+}
+
+#header .form-content .info-text a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #00426f;
+}
+
+@media (max-width: 768px) {
+  #header .form-container {
+    padding: 1rem;
+  }
+
+  #header .form-content .input-field input {
+    font-size: 14px;
+  }
+
+  #header .form-content .login-button {
+    font-size: 18px;
+  }
+
+  #header .form-content .info-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #header .form-container {
+    padding: 0.5rem;
+  }
+
+  #header .form-content .input-field input {
+    font-size: 12px;
+  }
+
+  #header .form-content .login-button {
+    font-size: 16px;
+  }
+
+  #header .form-content .info-text {
+    font-size: 10px;
+  }
+} */
+
+
+/* Removes border, outline, and box-shadow for all input elements in .p-inputtext */
+
+/* Similarly remove borders, outline, and box-shadow for the .p-password component */
+.p-password input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the blue outline on focus for the password input */
+
+/* Ensure no blue border or outline for all inputs across the page */
+input:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Firefox specific - remove inner border on focus */
+
+/* Remove border, outline, and box-shadow for input inside .p-inputtext */
+
+/* Specifically remove the border and outline on focus for .p-inputtext input */
+.p-inputtext input:focus {
+  border: none !important;   /* Ensure no border on focus */
+  outline: none !important;  /* Ensure no outline on focus */
+  box-shadow: none !important; /* Ensure no shadow on focus */
+}
+
+
+.p-password {
+  position: relative; /* Ensure positioning context for the inner input */
+  border: 2px solid transparent;  /* Set an initial transparent border */
+  border-radius: 10px; /* Optional: Add border radius for rounded corners */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+  
+}
+
+/* Outer Box gets a blue border on focus */
+.p-password:focus-within {
+  border: 2px solid #00426F !important /* Change the border color of the outer box to blue when input is focused */
+}
+
+/* Remove the border from the input element */
+.p-password input {
+  border: none !important;  /* Remove the border of the input field */
+  outline: none !important; /* Remove the outline */
+  box-shadow: none !important; /* Remove any box-shadow */
+}
+
+/* Optional: Remove any outline or border on focus for the input field */
+.p-password input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
