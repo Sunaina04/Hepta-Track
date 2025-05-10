@@ -1,0 +1,133 @@
+import StatCard from '../CommonComponent/StatCard/StatCard'
+import { useMemo } from 'react'
+import Header from '../Sidebar/LayoutComponents/Header'
+import { ActionButtonColumnProps } from '../../Type/Components/TableTypes'
+import DataTableComponent from '../CommonComponent/Table/DataTableComponent'
+import { columnStyle } from '../Utils/Style'
+import { tractorKitData } from '../Utils/DummyData'
+
+const SmartTractorKit = () => {
+  const tractorKitColumns = useMemo(
+    () => [
+      {
+        id: 'deviceId',
+        label: ' Device ID',
+        style: columnStyle,
+      },
+      {
+        id: 'regNumber',
+        label: 'Reg.Number',
+        style: columnStyle,
+      },
+      {
+        id: 'date',
+        label: 'Date',
+        style: columnStyle,
+      },
+      {
+        id: 'activationCode',
+        label: 'Activation Code',
+        style: columnStyle,
+      },
+      {
+        id: 'subscriptionPlan',
+        label: 'Subscription Plan',
+        style: columnStyle,
+      },
+      {
+        id: 'status',
+        label: 'Status',
+        style: columnStyle,
+      },
+    ],
+    // [allowExpansion],
+    [],
+  )
+
+  const ActionButtonColumn: ActionButtonColumnProps = {
+    header: '',
+    buttons: [
+      {
+        color: 'darkGreen',
+        label: 'Unlink',
+        underline: true,
+        // onClick: (rowData) => {
+        //   handleMooringTableRowClick(rowData)
+        // },
+      },
+      {
+        color: 'red',
+        label: 'Delete',
+        underline: true,
+        // onClick: (rowData) => {
+        //   handleMooringTableRowClick(rowData)
+        // },
+      },
+    ],
+    headerStyle: { backgroundColor: '#082825', color: 'white' },
+    style: {
+      borderBottom: '1px solid #D5E1EA ',
+      width: '150px',
+      fontWeight: 700,
+    },
+  }
+
+  return (
+    <>
+      <Header header="SMART TRACTOR KIT" />
+      <div className="flex mt-8 ml-4">
+        <StatCard
+          percentage="+11.01%"
+          percentageColor="text-green-500"
+          icon="/assets/icons/arrowUp.png"
+          value="$2,554.00"
+          label="Total Revenue"
+        />
+        <StatCard
+          percentage="-0.03%"
+          percentageColor="text-red-500"
+          icon="/assets/icons/arrowDown.png"
+          value="3,454"
+          label="Active Users"
+        />
+      </div>
+      <div
+        className={`bg-#00426F overflow-x-hidden ml-[48px] mr-[32px] table-container flex flex-col rounded-t-lg`}>
+        <div className="flex-grow overflow-auto h-[570px] rounded-b-[10px] border-[1px] border-[#D5E1EA]">
+          <DataTableComponent
+            tableStyle={{
+              fontSize: '12px',
+              color: '#000000',
+              fontWeight: 500,
+              backgroundColor: '#FFFFFF',
+            }}
+            data={tractorKitData}
+            //   selectionMode="single"
+            //   onSelectionChange={(e: any) => {
+            //     setSelectedMooring(e.value)
+            //   }}
+            //   selection={selectedMooring}
+            rowStyle={(rowData: any) => rowData}
+            dataKey="id"
+            columns={tractorKitColumns}
+            actionButtons={ActionButtonColumn}
+            style={{ borderBottom: '1px solid #D5E1EA', fontWeight: '400', padding: '10px' }}
+            //   onRowClick={(e: any) => handleRowClickBoatYardDetail(e)}
+            //   emptyMessage={
+            //     <div className="text-center mt-14">
+            //       <img
+            //         src="/assets/images/empty.png"
+            //         alt="Empty Data"
+            //         className="w-20 mx-auto mb-4"
+            //       />
+            //       <p className="text-gray-500 text-lg font-bold">{properties.noDataMessage}</p>
+            //     </div>
+            //   }
+          />
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default SmartTractorKit
